@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "subootio-fe-prod",
+  "builds": [
+    { "src": "next.config.js", "use": "@now/next" }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
