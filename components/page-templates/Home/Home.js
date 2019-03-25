@@ -1,23 +1,32 @@
 import React, { Component } from "react";
+import Link from "next/link";
+import Router from "next/router";
 import withStyles from "@material-ui/core/styles/withStyles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { Typography } from "@material-ui/core";
 import Background from "../../shared/Background/Background";
+import LargeButton from "../../shared/LargeButton/LargeButton";
 
 const backgroundShape = "static/images/shape.svg";
 
 const styles = theme => {
-  console.log(theme);
+  // console.log(theme);
   return {
+    button: {
+      margin: theme.spacing.unit
+    },
     root: {
       flexGrow: 1
     },
     header: {
       marginTop: "100px",
-      marginBottom: "100px"
+      marginBottom: "50px"
     },
     leftmargin: {
       marginLeft: "100px"
+    },
+    topmargin: {
+      marginTop: "50px"
     }
   };
 };
@@ -33,10 +42,23 @@ class Home extends Component {
             <Typography variant="h1">fandem.io</Typography>
           </div>
           <div className={`${classes.subheader} ${classes.leftmargin}`}>
-            <Typography variant="headline">
-              Where football fans come to demonstrate how accurate their
-              predictions are.
+            <Typography variant="h4">
+              The scores predictions and stats site
             </Typography>
+          </div>
+          <div className={`${classes.leftmargin} ${classes.topmargin}`}>
+            <Link href="/signup">
+              <LargeButton
+                variant="contained"
+                type="primary"
+                text="Sign Up"
+                handler={() =>
+                  Router.push({
+                    pathname: "/signup"
+                  })
+                }
+              />
+            </Link>
           </div>
         </div>
       </Background>
