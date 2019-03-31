@@ -7,29 +7,7 @@ import { Typography } from "@material-ui/core";
 import Background from "../../shared/Background/Background";
 import LargeButton from "../../shared/LargeButton/LargeButton";
 
-const backgroundShape = "static/images/shape.svg";
-
-const styles = theme => {
-  // console.log(theme);
-  return {
-    button: {
-      margin: theme.spacing.unit
-    },
-    root: {
-      flexGrow: 1
-    },
-    header: {
-      marginTop: "100px",
-      marginBottom: "50px"
-    },
-    leftmargin: {
-      marginLeft: "100px"
-    },
-    topmargin: {
-      marginTop: "50px"
-    }
-  };
-};
+import styles from "./Home.styles";
 
 class Home extends Component {
   render() {
@@ -46,7 +24,11 @@ class Home extends Component {
               The scores predictions and stats site
             </Typography>
           </div>
-          <div className={`${classes.leftmargin} ${classes.topmargin}`}>
+          <div
+            className={`${classes.leftmargin} ${
+              classes.topmargin
+            } row jc-start ai-center`}
+          >
             <Link href="/signup">
               <LargeButton
                 variant="contained"
@@ -55,6 +37,18 @@ class Home extends Component {
                 handler={() =>
                   Router.push({
                     pathname: "/signup"
+                  })
+                }
+              />
+            </Link>
+            <Link href="/signup">
+              <LargeButton
+                variant="outlined"
+                type="secondary"
+                text="Sign In"
+                handler={() =>
+                  Router.push({
+                    pathname: "/signin"
                   })
                 }
               />

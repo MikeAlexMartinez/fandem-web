@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
-import Reset from '../components/page-templates/Reset/Reset'
+import React from "react";
+import Reset from "../components/page-templates/Reset/Reset";
 
-class ResetPage extends Component {
-  render() {
-    return (
-      <Reset />
-    );
-  }
-}
+const ResetPage = ({ query }) => (
+  <div>
+    <Reset token={query.resetToken || ""} />
+  </div>
+);
 
 export default ResetPage;
