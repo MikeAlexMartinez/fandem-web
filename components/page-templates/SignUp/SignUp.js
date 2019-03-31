@@ -9,7 +9,10 @@ import {
 } from "@material-ui/core";
 import Link from "next/link";
 import validateEmail from "../../../utils/validators/email";
-import validatePassword from "../../../utils/validators/password";
+import validatePassword, {
+  valuesMatch
+} from "../../../utils/validators/password";
+import validateForm from "../../../utils/validators/form";
 import Page from "../../shared/Page/Page";
 import Background from "../../shared/Background/Background";
 
@@ -19,25 +22,15 @@ class SignUp extends Component {
   state = {
     form: {
       fields: {
-        firstName: {
+        name: {
           valid: false,
           value: "",
           touched: false,
           error: "",
           errorMessages: {
-            required: "A First Name is Required"
+            required: "A Name is Required"
           },
-          label: "First Name"
-        },
-        lastName: {
-          valid: false,
-          value: "",
-          touched: false,
-          error: "",
-          errorMessages: {
-            required: "A Last Name is Required"
-          },
-          label: "Last Name"
+          label: "Name"
         },
         email: {
           validator: validateEmail(),
@@ -64,6 +57,7 @@ class SignUp extends Component {
           label: "Password"
         },
         confirmPassword: {
+          formValidator: valuesMatch("password"),
           valid: false,
           value: "",
           touched: false,
@@ -80,10 +74,11 @@ class SignUp extends Component {
 
   handleBlur = e => {
     const { id, value } = e.target;
+    const currentField = this.state.form.fields[id];
     const field = {
-      ...this.state.form.fields[id],
+      ...currentField,
       touched: true,
-      error: ((!value || value === "") && "required") || ""
+      error: ((!value || value === "") && "required") || currentField.error
     };
     this.setState(prevState => {
       return {
@@ -99,30 +94,24 @@ class SignUp extends Component {
     });
   };
 
-  fetchLabel = id => {
+  fetchError = id => {
     const field = this.state.form.fields[id];
-    const { label, error, errorMessages } = field;
+    const { error, errorMessages } = field;
     return error && errorMessages.hasOwnProperty(error)
       ? errorMessages[error]
-      : label;
-  };
-
-  validateForm = () => {
-    const { fields } = this.state.form;
-    return Object.keys(fields).every(key => {
-      const field = fields[key];
-      return field.valid;
-    });
+      : " ";
   };
 
   handleChange = e => {
-    console.log("CHANGED");
-    console.log(e.target);
     const { id, value } = e.target;
-    const field = this.state.form.fields[id];
+    const formFields = this.state.form.fields;
+    const field = formFields[id];
     let error = "";
     if (field.validator) {
       error = field.validator(value);
+    }
+    if (error === "" && field.formValidator) {
+      error = field.formValidator(formFields, value);
     }
     const updatedField = {
       ...field,
@@ -132,15 +121,16 @@ class SignUp extends Component {
       valid: !error
     };
     this.setState(prevState => {
+      const updatedFields = {
+        ...prevState.form.fields,
+        [id]: updatedField
+      };
       return {
         ...prevState,
         form: {
           ...prevState.form,
-          fields: {
-            ...prevState.form.fields,
-            [id]: updatedField
-          },
-          isValid: this.validateForm()
+          fields: updatedFields,
+          isValid: validateForm(updatedFields)
         }
       };
     });
@@ -150,7 +140,7 @@ class SignUp extends Component {
     const {
       form: {
         isValid,
-        fields: { email, firstName, lastName, password, confirmPassword }
+        fields: { email, name, password, confirmPassword }
       }
     } = this.state;
     const { classes } = this.props;
@@ -170,37 +160,26 @@ class SignUp extends Component {
                     error={!!email.error}
                     id="email"
                     type="email"
-                    label={this.fetchLabel("email")}
-                    placeholder="Please enter your email"
+                    label="Email"
+                    placeholder="Please enter your Email"
                     className={classes.textField}
                     margin="normal"
                     variant="outlined"
+                    helperText={this.fetchError("email")}
                     onBlur={this.handleBlur}
                     onChange={this.handleChange}
                   />
-                  {/* First Name */}
+                  {/* Name */}
                   <TextField
-                    error={!!firstName.error}
-                    id="firstName"
+                    error={!!name.error}
+                    id="name"
                     type="text"
-                    label={this.fetchLabel("firstName")}
-                    placeholder="Please enter your first name"
+                    label="Name"
+                    placeholder="Please enter your Name"
                     className={classes.textField}
                     margin="normal"
                     variant="outlined"
-                    onBlur={this.handleBlur}
-                    onChange={this.handleChange}
-                  />
-                  {/* Last Name */}
-                  <TextField
-                    error={!!lastName.error}
-                    id="lastName"
-                    type="text"
-                    label={this.fetchLabel("lastName")}
-                    placeholder="Please enter your last name"
-                    className={classes.textField}
-                    margin="normal"
-                    variant="outlined"
+                    helperText={this.fetchError("name")}
                     onBlur={this.handleBlur}
                     onChange={this.handleChange}
                   />
@@ -213,11 +192,12 @@ class SignUp extends Component {
                     error={!!password.error}
                     id="password"
                     type="password"
-                    label={this.fetchLabel("password")}
-                    placeholder="Please enter a password"
+                    label="Password"
+                    placeholder="Please enter a Password"
                     className={classes.textField}
                     margin="normal"
                     variant="outlined"
+                    helperText={this.fetchError("password")}
                     onBlur={this.handleBlur}
                     onChange={this.handleChange}
                   />
@@ -226,11 +206,12 @@ class SignUp extends Component {
                     error={!!confirmPassword.error}
                     id="confirmPassword"
                     type="password"
-                    label={this.fetchLabel("confirmPassword")}
-                    placeholder="Please repeat your password"
+                    label="Confirm Password"
+                    placeholder="Please repeat your Password"
                     className={classes.textField}
                     margin="normal"
                     variant="outlined"
+                    helperText={this.fetchError("confirmPassword")}
                     onBlur={this.handleBlur}
                     onChange={this.handleChange}
                   />
@@ -253,6 +234,7 @@ class SignUp extends Component {
                 className={classes.buttons}
                 variant="contained"
                 color="secondary"
+                disabled={!isValid}
               >
                 Sign Up
               </Button>

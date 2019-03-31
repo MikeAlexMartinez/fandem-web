@@ -32,7 +32,7 @@ export default function(theme) {
     },
     textField: {
       width: "100%",
-      marginBottom: "20px"
+      marginBottom: "0px"
       // marginLeft: theme.spacing.unit * 1,
       // marginRight: theme.spacing.unit * 1
     }

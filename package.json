@@ -79,11 +79,21 @@
         "presets": [
           "next/babel"
         ],
-        "plugins": []
+        "plugins": [
+          [
+            "inline-react-svg"
+          ]
+        ]
       },
       "test": {
-        "presets": [],
-        "plugins": []
+        "presets": [
+          "next/babel"
+        ],
+        "plugins": [
+          [
+            "inline-react-svg"
+          ]
+        ]
       }
     }
   }
