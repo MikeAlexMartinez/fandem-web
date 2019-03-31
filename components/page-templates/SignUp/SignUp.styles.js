@@ -10,6 +10,14 @@ export default function(theme) {
         "margin-bottom": "0px"
       }
     },
+    inputGroup: {
+      paddingTop: "10px",
+      paddingBottom: "10px"
+    },
+    heading: {
+      "margin-top": "10px",
+      "margin-bottom": "10px"
+    },
     buttons: {
       "margin-right": "15px",
       "&:last-child": {
@@ -18,8 +26,15 @@ export default function(theme) {
     },
     paper: {
       ...theme.mixins.gutters(),
+      width: "400px",
       paddingTop: theme.spacing.unit * 2,
       paddingBottom: theme.spacing.unit * 2
+    },
+    textField: {
+      width: "100%",
+      marginBottom: "20px"
+      // marginLeft: theme.spacing.unit * 1,
+      // marginRight: theme.spacing.unit * 1
     }
   };
 }
