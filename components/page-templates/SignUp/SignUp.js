@@ -5,7 +5,8 @@ import {
   Paper,
   Button,
   TextField,
-  Divider
+  Divider,
+  LinearProgress
 } from "@material-ui/core";
 import Link from "next/link";
 import Router from "next/router";
@@ -251,10 +252,15 @@ class SignUp extends Component {
                     className={`${
                       classes.fieldset
                     } flex column jc-start ai-stretch`}
-                    disabled={loading || error}
+                    disabled={loading}
                     aria-busy={loading}
                   >
                     <div className={`${classes.columnItem}`}>
+                      {loading ? (
+                        <LinearProgress variant="query" />
+                      ) : (
+                        <LinearProgress variant="determinate" value={0} />
+                      )}
                       <Paper
                         className={`${classes.paper} flex column `}
                         elevation={1}
@@ -370,13 +376,6 @@ class SignUp extends Component {
                         </Link>
                       </Typography>
                     </div>
-                    {loading && (
-                      <div className={classes.columnItem}>
-                        <Typography variant="body2">
-                          Creating Account...
-                        </Typography>
-                      </div>
-                    )}
                   </fieldset>
                 </form>
               );
