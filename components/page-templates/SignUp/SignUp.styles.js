@@ -8,6 +8,9 @@ export default function(theme) {
       "margin-bottom": "20px",
       "&:lastchild": {
         "margin-bottom": "0px"
+      },
+      "& p": {
+        "text-align": "center"
       }
     },
     inputGroup: {
@@ -33,6 +36,9 @@ export default function(theme) {
     textField: {
       width: "100%",
       marginBottom: "0px"
+    },
+    fieldset: {
+      border: "none"
     }
   };
 }
