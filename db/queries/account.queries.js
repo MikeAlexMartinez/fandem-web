@@ -6,4 +6,30 @@ const EMAIL_EXISTS_QUERY = gql`
   }
 `;
 
-export { EMAIL_EXISTS_QUERY };
+const CURRENT_USER_QUERY = gql`
+  query CURRENT_USER_QUERY {
+    id
+    email
+    name
+    countryCode
+    phoneNumber
+    favoriteTeam {
+      name
+      shortName
+    }
+    country {
+      name
+    }
+    displayName
+    isPrivate
+    emailValidated
+    subscriptions {
+      name
+    }
+    userRoles {
+      name
+    }
+  }
+`;
+
+export { EMAIL_EXISTS_QUERY, CURRENT_USER_QUERY };

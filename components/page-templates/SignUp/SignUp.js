@@ -229,7 +229,7 @@ class SignUp extends Component {
             {(createUser, { error, loading }) => {
               return (
                 <form
-                  method="post"
+                  method="POST"
                   onSubmit={async e => {
                     e.preventDefault();
                     if (isValid) {
@@ -369,14 +369,16 @@ class SignUp extends Component {
                         Sign Up
                       </Button>
                     </div>
-                    <div className={classes.columnItem}>
-                      <Typography variant="body2">
-                        <Link href="/signin">
-                          <a>Already have an account? Login</a>
-                        </Link>
-                      </Typography>
-                    </div>
                   </fieldset>
+                  <div className={classes.columnItem}>
+                    <Typography variant="body2" className="text-center">
+                      <Link href="/signin">
+                        <a className={`hover-link`}>
+                          Already have an account? Login
+                        </a>
+                      </Link>
+                    </Typography>
+                  </div>
                 </form>
               );
             }}

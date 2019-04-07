@@ -4,6 +4,31 @@ const globalStyles = theme => ({
       textDecoration: "none",
       color: "inherit"
     },
+    ".text-center": {
+      "text-align": "center"
+    },
+    ".hover-link": {
+      position: "relative",
+      "&:before": {
+        content: "''",
+        position: "absolute",
+        width: "100%",
+        height: "2px",
+        backgroundColor: "#1f1693",
+        bottom: "-4px",
+        left: 0,
+        visibility: "hidden",
+        transform: "scaleX(0)",
+        transition: "all 0.12s ease-in-out 0s"
+      },
+      "&:hover": {
+        color: "#1f1693",
+        "&:before": {
+          visibility: "visible",
+          transform: "scaleX(1)"
+        }
+      }
+    },
     ".flex": {
       display: "flex",
       "&.column": {

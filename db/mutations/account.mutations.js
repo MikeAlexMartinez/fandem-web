@@ -14,4 +14,14 @@ const CREATE_USER_MUTATION = gql`
   }
 `;
 
-export { CREATE_USER_MUTATION };
+const SIGN_IN_MUTATION = gql`
+  mutation SIGN_IN_MUTATION($email: String!, $password: String!) {
+    signIn(email: $email, password: $password) {
+      id
+      emailValidated
+      name
+    }
+  }
+`;
+
+export { CREATE_USER_MUTATION, SIGN_IN_MUTATION };

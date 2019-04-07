@@ -1,9 +1,5 @@
 export default function(theme) {
   return {
-    root: {
-      height: "100vh",
-      width: "100vw"
-    },
     columnItem: {
       "margin-bottom": "20px",
       "&:lastchild": {
@@ -33,6 +29,9 @@ export default function(theme) {
     textField: {
       width: "100%",
       marginBottom: "0px"
+    },
+    linkText: {
+      marginTop: "15px"
     },
     fieldset: {
       border: "none"
