@@ -14,8 +14,9 @@ import { Mutation } from "react-apollo";
 
 import validateEmail from "../../../utils/validators/email";
 
-import styles from "./ForgotForm.styles";
 import { REQUEST_RESET_MUTATION } from "../../../db/mutations/account.mutations";
+
+import styles from "./ForgotForm.styles";
 
 class ForgotForm extends Component {
   state = {

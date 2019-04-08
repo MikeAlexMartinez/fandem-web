@@ -1,7 +1,27 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core";
 
-const Reset = props => {
-  return <div>This is Reset</div>;
+import ResetForm from "../../shared/ResetForm/ResetForm";
+
+import Page from "../../shared/Page/Page";
+import Background from "../../shared/Background/Background";
+
+import styles from "./Reset.styles";
+
+const Forgot = ({ classes, token }) => (
+  <Page>
+    <Background>
+      <div className={`${classes.root} flex column jc-center ai-center`}>
+        <ResetForm token={token} />
+      </div>
+    </Background>
+  </Page>
+);
+
+Forgot.propTypes = {
+  classes: PropTypes.object.isRequired,
+  token: PropTypes.string
 };
 
-export default Reset;
+export default withStyles(styles)(Forgot);
