@@ -29,6 +29,9 @@ export default function(theme) {
     textField: {
       width: "100%",
       marginBottom: "0px"
+    },
+    fieldset: {
+      border: "none"
     }
   };
 }

@@ -72,6 +72,19 @@ class ForgotForm extends Component {
     }));
   };
 
+  triggerRequestReset = async requestReset => {
+    try {
+      const data = await requestReset();
+      console.log("success!!!");
+      console.log(data);
+      Router.push({
+        pathname: "/reset"
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   render() {
     const { email } = this.state;
     const { classes } = this.props;
@@ -83,22 +96,13 @@ class ForgotForm extends Component {
         }}
       >
         {(requestReset, { data, loading, error }) => {
-          console.log(`requestReset: ${data}`);
           return (
             <form
               method="POST"
-              onSubmit={async e => {
+              onSubmit={e => {
                 e.preventDefault();
                 if (email.valid) {
-                  try {
-                    await requestReset();
-                  } catch (e) {
-                    console.error(e);
-                    return;
-                  }
-                  Router.push({
-                    pathname: "/reset"
-                  });
+                  this.triggerRequestReset(requestReset);
                 }
               }}
             >
@@ -157,6 +161,7 @@ class ForgotForm extends Component {
                     </Button>
                   </Link>
                   <Button
+                    type="submit"
                     className={classes.buttons}
                     variant="contained"
                     color="secondary"
