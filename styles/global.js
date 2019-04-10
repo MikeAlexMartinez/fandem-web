@@ -64,6 +64,15 @@ const globalStyles = theme => ({
       "&.ai-stretch": {
         "align-items": "stretch"
       }
+    },
+    fieldset: {
+      border: "none",
+      "margin-inline-start": "0",
+      "margin-inline-end": "0",
+      "padding-block-start": "0",
+      "padding-inline-start": "0",
+      "padding-inline-end": "0",
+      "padding-block-end": "0"
     }
   }
 });

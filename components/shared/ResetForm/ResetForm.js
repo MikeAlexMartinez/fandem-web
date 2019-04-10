@@ -12,6 +12,8 @@ import Link from "next/link";
 import Router from "next/router";
 import { Mutation } from "react-apollo";
 
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
+
 // Utils
 import validateHexToken from "../../../utils/validators/hexToken";
 import validatePassword, {
@@ -44,13 +46,12 @@ class ResetForm extends Component {
               format:
                 "The token should be a valid Hex string with 40 characters"
             },
-            label: "Reset Token"
+            label: "Reset Code"
           },
           password: {
             validator: validatePassword(8),
             valid: false,
             value: "",
-            checking: false,
             touched: false,
             error: "",
             errorMessages: {
@@ -63,7 +64,6 @@ class ResetForm extends Component {
             formValidator: valuesMatch("password"),
             valid: false,
             value: "",
-            checking: false,
             touched: false,
             error: "",
             errorMessages: {
@@ -99,6 +99,40 @@ class ResetForm extends Component {
     });
   };
 
+  handleChange = e => {
+    const { id, value } = e.target;
+    const formFields = this.state.form.fields;
+    const field = formFields[id];
+    let error = "";
+    if (field.validator) {
+      error = field.validator(value);
+    }
+    if (error === "" && field.formValidator) {
+      error = field.formValidator(formFields, value);
+    }
+    const updatedField = {
+      ...field,
+      error,
+      value,
+      touched: true,
+      valid: !error
+    };
+    this.setState(prevState => {
+      const updatedFields = {
+        ...prevState.form.fields,
+        [id]: updatedField
+      };
+      return {
+        ...prevState,
+        form: {
+          ...prevState.form,
+          fields: updatedFields,
+          isValid: validateForm(updatedFields)
+        }
+      };
+    });
+  };
+
   fetchError = id => {
     const field = this.state.form.fields[id];
     const { error, errorMessages } = field;
@@ -108,7 +142,155 @@ class ResetForm extends Component {
   };
 
   render() {
-    return <div />;
+    const {
+      form: { isValid, fields }
+    } = this.state;
+    const variables = {
+      resetToken: fields.resetToken.value,
+      password: fields.password.value,
+      confirmPassword: fields.confirmPassword.value
+    };
+    const { classes, token } = this.props;
+    return (
+      <Mutation mutation={RESET_PASSWORD_MUTATION} variables={variables}>
+        {(resetPassword, { error, loading }) => {
+          return (
+            <form
+              method="POST"
+              onSubmit={async e => {
+                e.preventDefault();
+                if (isValid) {
+                  try {
+                    const { data } = await resetPassword();
+                    Router.push({
+                      pathname: "/signin",
+                      query: {
+                        reset: true,
+                        email:
+                          (data &&
+                            data.resetPassword &&
+                            data.resetPassword.email) ||
+                          ""
+                      }
+                    });
+                  } catch (e) {
+                    console.error(e);
+                    return;
+                  }
+                }
+              }}
+              className={`flex column jc-center ai-center`}
+            >
+              {error && <ErrorMessage message={"We encountered an Error!"} />}
+              <fieldset
+                className={`flex column jc-start ai-stretch`}
+                disabled={loading}
+                aria-busy={loading}
+              >
+                <div className={`${classes.columnItem}`}>
+                  {loading ? (
+                    <LinearProgress variant="query" />
+                  ) : (
+                    <LinearProgress variant="determinate" value={0} />
+                  )}
+                  <Paper
+                    className={`${classes.paper} flex column`}
+                    elevation={1}
+                  >
+                    <Typography variant="h5" className={classes.heading}>
+                      Create New Password
+                    </Typography>
+                    {!token && (
+                      <React.Fragment>
+                        <Divider />
+                        <div className={classes.inputGroup}>
+                          {/* Reset Token */}
+                          <TextField
+                            error={!!fields.resetToken.error}
+                            id="resetToken"
+                            type="text"
+                            label="Reset Code"
+                            placeholder="Please enter your Reset Code"
+                            className={classes.textField}
+                            margin="normal"
+                            variant="outlined"
+                            helperText={this.fetchError("resetToken")}
+                            onBlur={this.handleBlur}
+                            onChange={this.handleChange}
+                          />
+                        </div>
+                      </React.Fragment>
+                    )}
+                    <Divider />
+                    <div className={classes.inputGroup}>
+                      {/* Password */}
+                      <TextField
+                        error={!!fields.password.error}
+                        id="password"
+                        type="password"
+                        label="Password"
+                        placeholder="Please enter a Password"
+                        className={classes.textField}
+                        margin="normal"
+                        variant="outlined"
+                        helperText={this.fetchError("password")}
+                        onBlur={this.handleBlur}
+                        onChange={this.handleChange}
+                      />
+                      {/* Confirm Password */}
+                      <TextField
+                        error={!!fields.confirmPassword.error}
+                        id="confirmPassword"
+                        type="password"
+                        label="Confirm Password"
+                        placeholder="Please repeat your Password"
+                        className={classes.textField}
+                        margin="normal"
+                        variant="outlined"
+                        helperText={this.fetchError("confirmPassword")}
+                        onBlur={this.handleBlur}
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                  </Paper>
+                </div>
+              </fieldset>
+              <div
+                className={`${classes.columnItem} flex row jc-center ai-center`}
+              >
+                <Link href="/">
+                  <Button
+                    className={classes.buttons}
+                    variant="outlined"
+                    color="secondary"
+                  >
+                    Home
+                  </Button>
+                </Link>
+                <Button
+                  type="submit"
+                  className={classes.buttons}
+                  variant="contained"
+                  color="secondary"
+                  disabled={!isValid}
+                >
+                  Submit New Password
+                </Button>
+              </div>
+              <div className={classes.columnItem}>
+                <Typography variant="body2" className="text-center">
+                  <Link href="/signin">
+                    <a className={`hover-link`}>
+                      Already have an account? Login
+                    </a>
+                  </Link>
+                </Typography>
+              </div>
+            </form>
+          );
+        }}
+      </Mutation>
+    );
   }
 }
 

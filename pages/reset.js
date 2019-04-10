@@ -1,9 +1,9 @@
 import React from "react";
 import Reset from "../components/page-templates/Reset/Reset";
 
-const ResetPage = ({ query }) => (
+const ResetPage = ({ query: { resetToken } }) => (
   <div>
-    <Reset token={query.resetToken || ""} />
+    <Reset token={resetToken || ""} />
   </div>
 );
 

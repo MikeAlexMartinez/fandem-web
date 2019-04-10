@@ -9,8 +9,9 @@ import {
   LinearProgress
 } from "@material-ui/core";
 import Link from "next/link";
-import Router from "next/router";
 import { Mutation } from "react-apollo";
+import SuccessMessage from "../SuccessMessage/SuccessMessage";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 import validateEmail from "../../../utils/validators/email";
 
@@ -75,12 +76,8 @@ class ForgotForm extends Component {
 
   triggerRequestReset = async requestReset => {
     try {
-      const data = await requestReset();
+      await requestReset();
       console.log("success!!!");
-      console.log(data);
-      Router.push({
-        pathname: "/reset"
-      });
     } catch (e) {
       console.error(e);
     }
@@ -107,7 +104,10 @@ class ForgotForm extends Component {
                 }
               }}
             >
-              {error && <div>We encountered an Error!</div>}
+              {data && data.requestReset && (
+                <SuccessMessage message={data.requestReset.message || ""} />
+              )}
+              {error && <ErrorMessage message={"We encountered an Error!"} />}
               <fieldset
                 className={`${
                   classes.fieldset
@@ -147,31 +147,29 @@ class ForgotForm extends Component {
                     </div>
                   </Paper>
                 </div>
-                <div
-                  className={`${
-                    classes.columnItem
-                  } flex row jc-center ai-center`}
-                >
-                  <Link href="/">
-                    <Button
-                      className={classes.buttons}
-                      variant="outlined"
-                      color="secondary"
-                    >
-                      Home
-                    </Button>
-                  </Link>
-                  <Button
-                    type="submit"
-                    className={classes.buttons}
-                    variant="contained"
-                    color="secondary"
-                    disabled={!email.valid}
-                  >
-                    Reset Password
-                  </Button>
-                </div>
               </fieldset>
+              <div
+                className={`${classes.columnItem} flex row jc-center ai-center`}
+              >
+                <Link href="/">
+                  <Button
+                    className={classes.buttons}
+                    variant="outlined"
+                    color="secondary"
+                  >
+                    Home
+                  </Button>
+                </Link>
+                <Button
+                  type="submit"
+                  className={classes.buttons}
+                  variant="contained"
+                  color="secondary"
+                  disabled={!email.valid}
+                >
+                  Reset Password
+                </Button>
+              </div>
             </form>
           );
         }}

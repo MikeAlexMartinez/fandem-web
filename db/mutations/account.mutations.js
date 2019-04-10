@@ -34,16 +34,16 @@ const REQUEST_RESET_MUTATION = gql`
 
 const RESET_PASSWORD_MUTATION = gql`
   mutation RESET_PASSWORD_MUTATION(
+    $resetToken: String!
     $password: String!
     $confirmPassword: String!
-    $resetToken: String!
   ) {
     resetPassword(
+      resetToken: $resetToken
       password: $password
       confirmPassword: $confirmPassword
-      resetToken: $resetToken
     ) {
-      message
+      email
     }
   }
 `;

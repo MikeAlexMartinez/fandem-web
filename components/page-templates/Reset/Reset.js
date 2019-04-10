@@ -9,7 +9,7 @@ import Background from "../../shared/Background/Background";
 
 import styles from "./Reset.styles";
 
-const Forgot = ({ classes, token }) => (
+const Reset = ({ classes, token }) => (
   <Page>
     <Background>
       <div className={`${classes.root} flex column jc-center ai-center`}>
@@ -19,9 +19,9 @@ const Forgot = ({ classes, token }) => (
   </Page>
 );
 
-Forgot.propTypes = {
+Reset.propTypes = {
   classes: PropTypes.object.isRequired,
   token: PropTypes.string
 };
 
-export default withStyles(styles)(Forgot);
+export default withStyles(styles)(Reset);

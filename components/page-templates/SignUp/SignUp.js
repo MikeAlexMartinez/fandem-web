@@ -345,31 +345,31 @@ class SignUp extends Component {
                         </div>
                       </Paper>
                     </div>
-                    <div
-                      className={`${
-                        classes.columnItem
-                      } flex row jc-center ai-center`}
-                    >
-                      <Link href="/">
-                        <Button
-                          className={classes.buttons}
-                          variant="outlined"
-                          color="secondary"
-                        >
-                          Home
-                        </Button>
-                      </Link>
-                      <Button
-                        type="submit"
-                        className={classes.buttons}
-                        variant="contained"
-                        color="secondary"
-                        disabled={!isValid}
-                      >
-                        Sign Up
-                      </Button>
-                    </div>
                   </fieldset>
+                  <div
+                    className={`${
+                      classes.columnItem
+                    } flex row jc-center ai-center`}
+                  >
+                    <Link href="/">
+                      <Button
+                        className={classes.buttons}
+                        variant="outlined"
+                        color="secondary"
+                      >
+                        Home
+                      </Button>
+                    </Link>
+                    <Button
+                      type="submit"
+                      className={classes.buttons}
+                      variant="contained"
+                      color="secondary"
+                      disabled={!isValid}
+                    >
+                      Sign Up
+                    </Button>
+                  </div>
                   <div className={classes.columnItem}>
                     <Typography variant="body2" className="text-center">
                       <Link href="/signin">
