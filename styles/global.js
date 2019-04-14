@@ -37,6 +37,9 @@ const globalStyles = theme => ({
       "&.row": {
         "flex-direction": "row"
       },
+      "&.jc-start": {
+        "justify-content": "flex-start"
+      },
       "&.jc-sb": {
         "justify-content": "space-between"
       },
@@ -48,6 +51,9 @@ const globalStyles = theme => ({
       },
       "&.jc-center": {
         "justify-content": "center"
+      },
+      "&.ai-start": {
+        "align-items": "flex-start"
       },
       "&.ai-sb": {
         "align-items": "space-between"
