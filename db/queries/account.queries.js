@@ -8,26 +8,28 @@ const EMAIL_EXISTS_QUERY = gql`
 
 const CURRENT_USER_QUERY = gql`
   query CURRENT_USER_QUERY {
-    id
-    email
-    name
-    countryCode
-    phoneNumber
-    favoriteTeam {
+    currentUser {
+      id
+      email
       name
-      shortName
-    }
-    country {
-      name
-    }
-    displayName
-    isPrivate
-    emailValidated
-    subscriptions {
-      name
-    }
-    userRoles {
-      name
+      countryCode
+      phoneNumber
+      favoriteTeam {
+        name
+        shortName
+      }
+      country {
+        name
+      }
+      displayName
+      isPrivate
+      emailValidated
+      subscriptions {
+        name
+      }
+      userRoles {
+        name
+      }
     }
   }
 `;
