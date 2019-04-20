@@ -14,6 +14,8 @@ import { Mutation } from "react-apollo";
 
 import { SIGN_IN_MUTATION } from "../../../db/mutations/account.mutations";
 
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
+
 import validateEmail from "../../../utils/validators/email";
 import validatePassword from "../../../utils/validators/password";
 import validateForm from "../../../utils/validators/form";
@@ -125,11 +127,10 @@ class SignInForm extends Component {
       email: email.value,
       password: password.value
     };
-    const { classes } = this.props;
+    const { classes, message } = this.props;
     return (
       <Mutation mutation={SIGN_IN_MUTATION} variables={variables}>
         {(signIn, { data, error, loading }) => {
-          console.log(data);
           return (
             <form
               method="POST"
@@ -147,9 +148,10 @@ class SignInForm extends Component {
                   });
                 }
               }}
-              className={`flex column jc-center ai-center`}
+              className={`flex column jc-center ai-stretch`}
             >
-              {error && <div>We encountered an Error!</div>}
+              {error && <ErrorMessage message="We encountered an Error!" />}
+              {message && <ErrorMessage message={message} />}
               <fieldset
                 className={`${
                   classes.fieldset

@@ -48,9 +48,27 @@ const RESET_PASSWORD_MUTATION = gql`
   }
 `;
 
+const REQUEST_EMAIL_VALIDATION_MUTATION = gql`
+  mutation REQUEST_EMAIL_VALIDATION_MUTATION {
+    requestEmailValidation {
+      message
+    }
+  }
+`;
+
+const SUBMIT_EMAIL_TOKEN_MUTATION = gql`
+  mutation SUBMIT_EMAIL_TOKEN_MUTATION($validationToken: String!) {
+    validateEmail(validationToken: $validationToken) {
+      message
+    }
+  }
+`;
+
 export {
   CREATE_USER_MUTATION,
   SIGN_IN_MUTATION,
   REQUEST_RESET_MUTATION,
-  RESET_PASSWORD_MUTATION
+  RESET_PASSWORD_MUTATION,
+  REQUEST_EMAIL_VALIDATION_MUTATION,
+  SUBMIT_EMAIL_TOKEN_MUTATION
 };
