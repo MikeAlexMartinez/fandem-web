@@ -57,8 +57,8 @@ const REQUEST_EMAIL_VALIDATION_MUTATION = gql`
 `;
 
 const SUBMIT_EMAIL_TOKEN_MUTATION = gql`
-  mutation SUBMIT_EMAIL_TOKEN_MUTATION($validationToken: String!) {
-    validateEmail(validationToken: $validationToken) {
+  mutation SUBMIT_EMAIL_TOKEN_MUTATION($emailValidationToken: String!) {
+    validateEmail(emailValidationToken: $emailValidationToken) {
       message
     }
   }

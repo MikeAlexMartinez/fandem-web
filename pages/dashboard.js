@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
-import Dashboard from '../components/page-templates/Dashboard/Dashboard'
+import React, { Component } from "react";
+import Dashboard from "../components/page-templates/Dashboard/Dashboard";
 
-class DashboardPage extends Component {
-  render() {
-    return (
-      <Dashboard />
-    );
-  }
-}
+const DashboardPage = ({ query: { emailToken } }) => (
+  <div>
+    <Dashboard token={emailToken || ""} />
+  </div>
+);
 
 export default DashboardPage;
