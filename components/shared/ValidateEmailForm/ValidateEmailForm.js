@@ -9,13 +9,13 @@ import {
   LinearProgress
 } from "@material-ui/core";
 import Link from "next/link";
+import Router from "next/router";
 import { Mutation } from "react-apollo";
 
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 import validateHexToken from "../../../utils/validators/hexToken";
 
-import { CURRENT_USER_QUERY } from "../../../db/queries/account.queries";
 import { SUBMIT_EMAIL_TOKEN_MUTATION } from "../../../db/mutations/account.mutations";
 
 import styles from "./ValidateEmailForm.styles";
@@ -141,10 +141,8 @@ class ValidateEmailForm extends Component {
     const { classes, token } = this.props;
     return (
       <Mutation mutation={SUBMIT_EMAIL_TOKEN_MUTATION} variables={variables}>
-        {(validateEmail, { error, loading }) => {
-          if (token && isValid && !error && !loading) {
-            this.handleEmailValidation(validateEmail, token);
-          }
+        {(validateEmail, { data, error, loading }) => {
+          console.log(data);
           return (
             <form
               method="POST"

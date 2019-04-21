@@ -1,5 +1,5 @@
 import { Query } from "react-apollo";
-import { withStyles } from "@material-ui/core";
+import { withStyles, CircularProgress } from "@material-ui/core";
 
 import { CURRENT_USER_QUERY } from "../../../db/queries/account.queries";
 
@@ -12,8 +12,28 @@ import styles from "./PleaseSignIn.styles";
 const PleaseSignIn = props => (
   <Query query={CURRENT_USER_QUERY}>
     {({ data, loading }) => {
-      if (loading) return <p>Loading...</p>;
-      if (!data.me) {
+      if (loading) {
+        return (
+          <Page>
+            <Background>
+              <div
+                className={`${
+                  props.classes.root
+                } flex column jc-center ai-center`}
+              >
+                <CircularProgress
+                  style={{
+                    height: "200px",
+                    width: "200px"
+                  }}
+                  color="secondary"
+                />
+              </div>
+            </Background>
+          </Page>
+        );
+      }
+      if (!data || !data.currentUser) {
         return (
           <Page>
             <Background>
@@ -27,9 +47,6 @@ const PleaseSignIn = props => (
             </Background>
           </Page>
         );
-      }
-      if (!data.me.emailValidated) {
-        return <div>Please validate your email</div>;
       }
       return props.children;
     }}
