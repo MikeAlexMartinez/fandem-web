@@ -15,7 +15,7 @@ import {
 
 import styles from "./DrawerContents.style";
 
-const DrawerContents = ({ classes }) => (
+const DrawerContents = ({ classes, closeMenu }) => (
   // Profile
   // Contests
   // Settings

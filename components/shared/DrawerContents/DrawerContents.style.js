@@ -5,7 +5,7 @@ export default function(theme) {
       flexGrow: 1
     },
     userProfile: {
-      height: "200px",
+      height: "250px",
       backgroundColor: theme.palette.secondary.light
     }
   };

@@ -19,6 +19,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-plugin-inline-react-svg": "^1.0.1",
     "babel-plugin-styled-components": "^1.7.1",
+    "classnames": "^2.2.6",
     "date-fns": "^2.0.0-alpha.7",
     "downshift": "^2.2.3",
     "email-validator": "^2.0.4",

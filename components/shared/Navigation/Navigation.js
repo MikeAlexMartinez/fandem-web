@@ -9,6 +9,7 @@ import {
   Drawer
 } from "@material-ui/core";
 import { Menu } from "@material-ui/icons";
+import classNames from "classnames";
 
 import styles from "./Navigation.styles";
 
@@ -16,24 +17,30 @@ import DrawerContents from "../DrawerContents/DrawerContents";
 
 class Navigation extends Component {
   state = {
-    mobileOpen: false
+    open: false
   };
 
   handleDrawerToggle = () => {
-    this.setState(state => ({ mobileOpen: !state.mobileOpen }));
+    this.setState(state => ({ open: !state.open }));
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, theme } = this.props;
+    const { open } = this.state;
     return (
-      <div className={`flex`}>
-        <AppBar position="fixed" className={classes.appBar}>
-          <Toolbar>
+      <div className={classes.root}>
+        <AppBar
+          position="fixed"
+          className={classNames(classes.appBar, {
+            [classes.appBarShift]: open
+          })}
+        >
+          <Toolbar disableGutters={!open}>
             <IconButton
               color="inherit"
               aria-label="Open drawer"
               onClick={this.handleDrawerToggle}
-              className={classes.menubutton}
+              className={classNames(classes.menuButton)}
             >
               <Menu />
             </IconButton>
@@ -42,37 +49,27 @@ class Navigation extends Component {
             </Typography>
           </Toolbar>
         </AppBar>
-        <nav className={classes.drawer}>
-          <Hidden smUp implementation="js">
-            <Drawer
-              container={this.props.container}
-              variant="temporary"
-              anchor={classes.theme.direction === "rtl" ? "right" : "left"}
-              open={this.state.mobileOpen}
-              onClose={this.handleDrawerToggle}
-              classes={{
-                paper: classes.drawerPaper
-              }}
-            >
-              <DrawerContents />
-            </Drawer>
-          </Hidden>
-          <Hidden xsDown implementation="js">
-            <Drawer
-              classes={{
-                paper: classes.drawerPaper
-              }}
-              variant="permanent"
-              open
-            >
-              <DrawerContents />
-            </Drawer>
-          </Hidden>
-        </nav>
-        <main className={`${classes.content} flex`}>{this.props.children}</main>
+        <Drawer
+          container={this.props.container}
+          variant="persistent"
+          anchor={classes.theme.direction === "rtl" ? "right" : "left"}
+          open={open}
+          classes={{
+            paper: classes.drawerPaper
+          }}
+        >
+          <DrawerContents />
+        </Drawer>
+        <main
+          className={classNames(classes.content, {
+            [classes.contentShift]: open
+          })}
+        >
+          {this.props.children}
+        </main>
       </div>
     );
   }
 }
 
-export default withStyles(styles)(Navigation);
+export default withStyles(styles, { withTheme: true })(Navigation);
