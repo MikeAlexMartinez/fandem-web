@@ -1,5 +1,11 @@
 import gql from "graphql-tag";
 
+const DISPLAY_NAME_EXISTS_QUERY = gql`
+  query DISPLAY_NAME_EXISTS_QUERY($displayName: String!) {
+    checkDisplayName(displayName: $displayName)
+  }
+`;
+
 const EMAIL_EXISTS_QUERY = gql`
   query EMAIL_EXISTS_QUERY($email: String!) {
     checkEmail(email: $email)
@@ -34,4 +40,4 @@ const CURRENT_USER_QUERY = gql`
   }
 `;
 
-export { EMAIL_EXISTS_QUERY, CURRENT_USER_QUERY };
+export { DISPLAY_NAME_EXISTS_QUERY, EMAIL_EXISTS_QUERY, CURRENT_USER_QUERY };

@@ -3,13 +3,20 @@ import gql from "graphql-tag";
 const CREATE_USER_MUTATION = gql`
   mutation CREATE_USER_MUTATION(
     $email: String!
-    $password: String!
     $name: String!
+    $displayName: String!
+    $password: String!
   ) {
-    createUser(name: $name, email: $email, password: $password) {
+    createUser(
+      name: $name
+      email: $email
+      displayName: $displayName
+      password: $password
+    ) {
       id
       email
       name
+      displayName
     }
   }
 `;
