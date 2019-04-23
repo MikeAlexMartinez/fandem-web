@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Query } from "react-apollo";
 import { CURRENT_USER_QUERY } from "../../../db/queries/account.queries";
 
@@ -7,7 +8,7 @@ const CurrentUser = props => (
   </Query>
 );
 
-User.propTypes = {
+CurrentUser.propTypes = {
   children: PropTypes.func.isRequired
 };
 

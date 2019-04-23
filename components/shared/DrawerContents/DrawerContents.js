@@ -4,9 +4,12 @@ import {
   ListItem,
   withStyles,
   ListItemIcon,
-  ListItemText
+  ListItemText,
+  IconButton
 } from "@material-ui/core";
 import {
+  ChevronLeft,
+  ChevronRight,
   Help,
   ExitToAppRounded,
   BallotOutlined,
@@ -15,7 +18,7 @@ import {
 
 import styles from "./DrawerContents.style";
 
-const DrawerContents = ({ classes, closeMenu }) => (
+const DrawerContents = ({ classes, theme, toggleDrawer }) => (
   // Profile
   // Contests
   // Settings
@@ -24,6 +27,12 @@ const DrawerContents = ({ classes, closeMenu }) => (
   <div className={`${classes.drawerContainer} flex column jc-sb`}>
     {/* Top Half */}
     <div>
+      {/* Toolbar header */}
+      <div className={classes.drawerHeader}>
+        <IconButton onClick={() => toggleDrawer()}>
+          {theme.direction === "ltr" ? <ChevronLeft /> : <ChevronRight />}
+        </IconButton>
+      </div>
       {/* Profile */}
       <div className={classes.userProfile}>User Profile</div>
 
@@ -69,4 +78,4 @@ const DrawerContents = ({ classes, closeMenu }) => (
   </div>
 );
 
-export default withStyles(styles)(DrawerContents);
+export default withStyles(styles, { withTheme: true })(DrawerContents);

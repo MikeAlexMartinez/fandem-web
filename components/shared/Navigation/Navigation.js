@@ -5,7 +5,6 @@ import {
   AppBar,
   Toolbar,
   IconButton,
-  Hidden,
   Drawer
 } from "@material-ui/core";
 import { Menu } from "@material-ui/icons";
@@ -25,7 +24,7 @@ class Navigation extends Component {
   };
 
   render() {
-    const { classes, theme } = this.props;
+    const { classes } = this.props;
     const { open } = this.state;
     return (
       <div className={classes.root}>
@@ -40,7 +39,9 @@ class Navigation extends Component {
               color="inherit"
               aria-label="Open drawer"
               onClick={this.handleDrawerToggle}
-              className={classNames(classes.menuButton)}
+              className={classNames(classes.menuButton, {
+                [classes.hide]: open
+              })}
             >
               <Menu />
             </IconButton>
@@ -58,7 +59,7 @@ class Navigation extends Component {
             paper: classes.drawerPaper
           }}
         >
-          <DrawerContents />
+          <DrawerContents toggleDrawer={this.handleDrawerToggle} />
         </Drawer>
         <main
           className={classNames(classes.content, {

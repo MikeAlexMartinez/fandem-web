@@ -1,5 +1,5 @@
 import React from "react";
-import UserProfile from "../components/page-templates/UserProfile";
+import UserProfile from "../components/page-templates/UserProfile/UserProfile";
 
 const ProfilePage = ({ query: { displayName } }) => {
   return (

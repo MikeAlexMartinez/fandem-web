@@ -48,14 +48,15 @@ export default function(theme) {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen
       }),
-      marginLeft: drawerWidth
+      marginLeft: 0,
+      marginTop: theme.mixins.toolbar.minHeight
     },
     contentShift: {
       transition: theme.transitions.create("margin", {
         easing: theme.transitions.easing.easeOut,
         duration: theme.transitions.duration.enteringScreen
       }),
-      marginLeft: 0
+      marginLeft: drawerWidth
     }
   };
 }
