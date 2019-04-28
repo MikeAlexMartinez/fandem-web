@@ -49,7 +49,15 @@ export default function(theme) {
         duration: theme.transitions.duration.leavingScreen
       }),
       marginLeft: 0,
-      marginTop: theme.mixins.toolbar.minHeight
+      "@media (orientation: landscape)": {
+        marginTop: "48px"
+      },
+      [theme.breakpoints.up("sm")]: {
+        marginTop: "64px"
+      },
+      [theme.breakpoints.down("xs")]: {
+        marginTop: "54px"
+      }
     },
     contentShift: {
       transition: theme.transitions.create("margin", {

@@ -12,10 +12,18 @@ const EMAIL_EXISTS_QUERY = gql`
   }
 `;
 
+const PROFILE_PICTURE_FRAGMENT = gql`
+  fragment ProfilePicture on User {
+    profilePicture: photos(where: { isProfile: true }) {
+      id
+      image
+    }
+  }
+`;
+
 const CURRENT_USER_QUERY = gql`
   query CURRENT_USER_QUERY {
     currentUser {
-      id
       email
       name
       countryCode
@@ -27,6 +35,7 @@ const CURRENT_USER_QUERY = gql`
       country {
         name
       }
+      ...ProfilePicture
       displayName
       isPrivate
       emailValidated
@@ -36,8 +45,27 @@ const CURRENT_USER_QUERY = gql`
       userRoles {
         name
       }
+      followers {
+        followers {
+          user {
+            displayName
+            isPrivate
+            ...ProfilePicture
+          }
+        }
+      }
+      influencers {
+        influencers {
+          user {
+            displayName
+            isPrivate
+            ...ProfilePicture
+          }
+        }
+      }
     }
   }
+  ${PROFILE_PICTURE_FRAGMENT}
 `;
 
 export { DISPLAY_NAME_EXISTS_QUERY, EMAIL_EXISTS_QUERY, CURRENT_USER_QUERY };
