@@ -7,75 +7,81 @@ import { Typography, withStyles, Divider, TextField } from "@material-ui/core";
 import Title from "../Title/Title";
 
 import validateDisplayName from "../../../utils/validators/display-name";
+import validateForm from "../../../utils/validators/form";
 
 import { DISPLAY_NAME_EXISTS_QUERY } from "../../../db/queries/account.queries";
 
 import styles from "./EditProfileForm.styles";
 
 class EditProfileForm extends Component {
-  state = {
-    form: {
-      fields: {
-        name: {
-          valid: true,
-          value: this.props.name,
-          checking: false,
-          touched: false,
-          required: true,
-          error: "",
-          errorMessages: {
-            required: "A Name is Required"
+  constructor(props) {
+    super(props);
+    const { user } = props;
+    this.state = {
+      form: {
+        fields: {
+          name: {
+            valid: true,
+            value: user.name,
+            checking: false,
+            touched: false,
+            required: true,
+            error: "",
+            errorMessages: {
+              required: "A Name is Required"
+            },
+            label: "Name"
           },
-          label: "Name"
-        },
-        displayName: {
-          validator: validateDisplayName(40),
-          valid: true,
-          value: this.props.displayName,
-          checking: false,
-          touched: false,
-          required: true,
-          error: "",
-          errorMessages: {
-            displayNameExists: "Display Name Exists",
-            displayNameUnchecked: "Unable to check Display Name",
-            required: "A Display Name is Required",
-            format:
-              "Please provide a valid format (letters, numbers, hyphens, underscores, spaces & apostrophes)",
-            length: "Your Display Name should be 40 character or less"
+          displayName: {
+            startValue: user.displayName,
+            validator: validateDisplayName(40),
+            valid: true,
+            value: user.displayName,
+            checking: false,
+            touched: false,
+            required: true,
+            error: "",
+            errorMessages: {
+              displayNameExists: "Display Name Exists",
+              displayNameUnchecked: "Unable to check Display Name",
+              required: "A Display Name is Required",
+              format:
+                "Please provide a valid format (letters, numbers, hyphens, underscores, spaces & apostrophes)",
+              length: "Your Display Name should be 40 character or less"
+            },
+            label: "Display Name"
           },
-          label: "Display Name"
-        },
-        isPrivate: {
-          valid: true,
-          value: this.props.isPrivate,
-          checking: false,
-          touched: false,
-          required: true,
-          error: "",
-          errorMessages: {
-            required: "A Display Name is Required"
+          isPrivate: {
+            valid: true,
+            value: user.isPrivate,
+            checking: false,
+            touched: false,
+            required: true,
+            error: "",
+            errorMessages: {
+              required: "A Display Name is Required"
+            },
+            label: "Display Name"
           },
-          label: "Display Name"
+          country: {
+            valid: true,
+            value: user.country || "",
+            touched: false,
+            required: false,
+            label: "Country"
+          },
+          favoriteTeam: {
+            valid: true,
+            value: user.favoriteTeam || "",
+            touched: false,
+            required: false,
+            label: "Favourite Team"
+          }
         },
-        country: {
-          valid: true,
-          value: this.props.country || "",
-          touched: false,
-          required: false,
-          label: "Country"
-        },
-        favoriteTeam: {
-          valid: true,
-          value: this.props.favoriteTeam || "",
-          touched: false,
-          required: false,
-          label: "Favourite Team"
-        }
-      },
-      isValid: true
-    }
-  };
+        isValid: true
+      }
+    };
+  }
 
   fetchError = id => {
     const field = this.state.form.fields[id];
@@ -128,7 +134,7 @@ class EditProfileForm extends Component {
   handleDisplayNameChange = async ({ event, client }) => {
     const { id } = event.target;
     const updatedField = this.handleChange(event, true);
-    if (updatedField.valid) {
+    if (updatedField.startValue !== updatedField.value && updatedField.valid) {
       let error;
 
       // check if displayName exists
@@ -244,7 +250,20 @@ class EditProfileForm extends Component {
                 "flex row jc-start ai-end"
               )}
             >
-              Name
+              <TextField
+                error={!!name.error}
+                id="name"
+                type="text"
+                label="Name"
+                placeholder="Please enter your Name"
+                className={classes.textfield}
+                value={name.value}
+                margin="normal"
+                variant="outlined"
+                helperText={this.fetchError("name")}
+                onBlur={this.handleBlur}
+                onChange={this.handleChange}
+              />
             </div>
             <div
               className={classNames(

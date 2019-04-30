@@ -1,5 +1,6 @@
 import React from "react";
 import { withStyles } from "@material-ui/core";
+import { adopt } from "react-adopt";
 
 import Page from "../../shared/Page/Page";
 import PleaseSignIn from "../../shared/PleaseSignIn/PleaseSignIn";
@@ -8,6 +9,12 @@ import CurrentUser from "../../shared/CurrentUser/CurrentUser";
 import EditProfileForm from "../../shared/EditProfileForm/EditProfileForm";
 
 import styles from "./EditProfile.styles";
+
+const Composed = adopt({
+  currentUser: ({ render }) => <CurrentUser>{render}</CurrentUser>,
+  premTeams: () => {},
+  countries: () => {}
+});
 
 const EditProfile = props => (
   <Page>
