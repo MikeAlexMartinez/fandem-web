@@ -68,4 +68,18 @@ const CURRENT_USER_QUERY = gql`
   ${PROFILE_PICTURE_FRAGMENT}
 `;
 
-export { DISPLAY_NAME_EXISTS_QUERY, EMAIL_EXISTS_QUERY, CURRENT_USER_QUERY };
+const COUNTRIES_QUERY = gql`
+  query COUNTRIES_QUERY {
+    countries {
+      id
+      name
+    }
+  }
+`;
+
+export {
+  DISPLAY_NAME_EXISTS_QUERY,
+  EMAIL_EXISTS_QUERY,
+  CURRENT_USER_QUERY,
+  COUNTRIES_QUERY
+};

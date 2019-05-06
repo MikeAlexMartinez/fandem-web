@@ -299,7 +299,9 @@ class EditProfileForm extends Component {
 }
 
 EditProfileForm.propTypes = {
-  user: PropTypes.object.isRequired
+  user: PropTypes.object.isRequired,
+  countries: PropTypes.array.isRequired,
+  teams: PropTypes.array.isRequired
 };
 
 export default withStyles(styles)(EditProfileForm);

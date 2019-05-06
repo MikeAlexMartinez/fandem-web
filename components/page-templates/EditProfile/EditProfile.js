@@ -6,23 +6,36 @@ import Page from "../../shared/Page/Page";
 import PleaseSignIn from "../../shared/PleaseSignIn/PleaseSignIn";
 import Navigation from "../../shared/Navigation/Navigation";
 import CurrentUser from "../../shared/CurrentUser/CurrentUser";
+import PremTeams from "../../shared/PremTeams/PremTeams";
+import Countries from "../../shared/Countries/Countries";
 import EditProfileForm from "../../shared/EditProfileForm/EditProfileForm";
 
 import styles from "./EditProfile.styles";
+import {
+  composedHasError,
+  composedIsLoading
+} from "../../../utils/composed-utils";
+import ErrorMessage from "../../shared/ErrorMessage/ErrorMessage";
 
 const Composed = adopt({
   currentUser: ({ render }) => <CurrentUser>{render}</CurrentUser>,
-  premTeams: () => {},
-  countries: () => {}
+  premTeams: ({ render }) => <PremTeams>{render}</PremTeams>,
+  countries: ({ render }) => <Countries>{render}</Countries>
 });
 
 const EditProfile = props => (
   <Page>
     <PleaseSignIn>
       <Navigation>
-        <CurrentUser>
-          {({ data: { currentUser } }, error, loading) => {
-            if (loading) {
+        <Composed>
+          {composedResponse => {
+            console.log(composedResponse);
+            if (composedHasError(composedResponse)) {
+              return (
+                <ErrorMessage message={"Error Loading Profile Information"} />
+              );
+            }
+            if (composedIsLoading(composedResponse)) {
               return (
                 <CircularProgress
                   style={{
@@ -33,12 +46,16 @@ const EditProfile = props => (
                 />
               );
             }
-            if (error || !currentUser) {
-              return <div>Error fetching current user</div>;
-            }
-            return <EditProfileForm user={currentUser} />;
+            const { currentUser, countries, premTeams } = composedResponse;
+            return (
+              <EditProfileForm
+                user={currentUser}
+                countries={countries}
+                teams={premTeams}
+              />
+            );
           }}
-        </CurrentUser>
+        </Composed>
       </Navigation>
     </PleaseSignIn>
   </Page>
