@@ -44,7 +44,8 @@ export default function(theme) {
     },
     name: {},
     isprivate: {
-      flex: "1 0 calc(300px)"
+      flex: "1 0 calc(300px)",
+      paddingTop: "4px"
     },
     displayname: {
       flex: "4 0 calc(300px)"
@@ -58,6 +59,12 @@ export default function(theme) {
     textfield: {
       width: "100%",
       marginTop: "0"
+    },
+    button: {
+      margin: theme.spacing.unit
+    },
+    btntext: {
+      paddingLeft: "10px"
     }
   };
 }

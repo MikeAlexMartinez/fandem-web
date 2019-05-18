@@ -71,11 +71,34 @@ const SUBMIT_EMAIL_TOKEN_MUTATION = gql`
   }
 `;
 
+const UPDATE_USER_PROFILE_MUTATION = gql`
+  mutation UPDATE_USER_PROFILE_MUTATION(
+    $displayName: String!
+    $isPrivate: Boolean!
+    $name: String
+    $favoriteTeam: String
+    $country: String
+    $profilePicture: String
+  ) {
+    updateUserProfile(
+      displayName: $displayName
+      isPrivate: $isPrivate
+      name: $name
+      favoriteTeam: $favoriteTeam
+      country: $country
+      profilePicture: $profilePicture
+    ) {
+      id
+    }
+  }
+`;
+
 export {
   CREATE_USER_MUTATION,
   SIGN_IN_MUTATION,
   REQUEST_RESET_MUTATION,
   RESET_PASSWORD_MUTATION,
   REQUEST_EMAIL_VALIDATION_MUTATION,
-  SUBMIT_EMAIL_TOKEN_MUTATION
+  SUBMIT_EMAIL_TOKEN_MUTATION,
+  UPDATE_USER_PROFILE_MUTATION
 };

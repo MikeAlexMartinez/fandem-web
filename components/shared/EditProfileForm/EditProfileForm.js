@@ -2,13 +2,23 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Mutation, ApolloConsumer } from "react-apollo";
-import { Typography, withStyles, Divider, TextField } from "@material-ui/core";
+import {
+  Typography,
+  withStyles,
+  Divider,
+  TextField,
+  FormControlLabel,
+  Switch,
+  Button
+} from "@material-ui/core";
+import { Save } from "@material-ui/icons";
 
 import Title from "../Title/Title";
 import Autocomplete from "../Autocomplete/Autocomplete";
 
 import validateDisplayName from "../../../utils/validators/display-name";
 import validateForm from "../../../utils/validators/form";
+import hasFormChanged from "../../../utils/validators/has-changed";
 
 import { DISPLAY_NAME_EXISTS_QUERY } from "../../../db/queries/account.queries";
 
@@ -22,6 +32,7 @@ class EditProfileForm extends Component {
       form: {
         fields: {
           name: {
+            startValue: user.data.currentUser.name || "",
             valid: true,
             value: user.data.currentUser.name,
             checking: false,
@@ -53,18 +64,14 @@ class EditProfileForm extends Component {
             label: "Display Name"
           },
           isPrivate: {
+            startValue: user.data.currentUser.isPrivate,
             valid: true,
             value: user.data.currentUser.isPrivate,
-            checking: false,
             touched: false,
-            required: true,
-            error: "",
-            errorMessages: {
-              required: "A Display Name is Required"
-            },
-            label: "Display Name"
+            required: false
           },
           country: {
+            startValue: user.data.currentUser.country || "",
             valid: true,
             value: user.data.currentUser.country || "",
             touched: false,
@@ -72,6 +79,7 @@ class EditProfileForm extends Component {
             label: "Country"
           },
           favoriteTeam: {
+            startValue: user.data.currentUser.favoriteTeam || "",
             valid: true,
             value: user.data.currentUser.favoriteTeam || "",
             touched: false,
@@ -79,7 +87,8 @@ class EditProfileForm extends Component {
             label: "Favourite Team"
           }
         },
-        isValid: true
+        isValid: true,
+        hasChanged: false
       }
     };
   }
@@ -90,6 +99,30 @@ class EditProfileForm extends Component {
     return error && errorMessages.hasOwnProperty(error)
       ? errorMessages[error]
       : " ";
+  };
+
+  handlePrivacyChange = evt => {
+    const field = this.state.form.fields.isPrivate;
+    const updatedField = {
+      ...field,
+      value: evt.target.checked,
+      touched: true
+    };
+    this.setState(prevState => {
+      const updatedFields = {
+        ...prevState.form.fields,
+        isPrivate: updatedField
+      };
+      return {
+        ...prevState,
+        form: {
+          ...prevState.form,
+          fields: updatedFields,
+          isValid: validateForm(updatedFields),
+          hasChanged: hasFormChanged(updatedFields)
+        }
+      };
+    });
   };
 
   handleAutoComplete = (id, value) => {
@@ -120,7 +153,8 @@ class EditProfileForm extends Component {
         form: {
           ...prevState.form,
           fields: updatedFields,
-          isValid: validateForm(updatedFields)
+          isValid: validateForm(updatedFields),
+          hasChanged: hasFormChanged(updatedFields)
         }
       };
     });
@@ -157,7 +191,8 @@ class EditProfileForm extends Component {
         form: {
           ...prevState.form,
           fields: updatedFields,
-          isValid: validateForm(updatedFields)
+          isValid: validateForm(updatedFields),
+          hasChanged: hasFormChanged(updatedFields)
         }
       };
     });
@@ -203,11 +238,16 @@ class EditProfileForm extends Component {
           form: {
             ...prevState.form,
             fields: updatedFields,
-            isValid: validateForm(updatedFields)
+            isValid: validateForm(updatedFields),
+            hasChanged: hasFormChanged(updatedFields)
           }
         };
       });
     }
+  };
+
+  saveForm = () => {
+    console.log("Save form");
   };
 
   render() {
@@ -215,23 +255,24 @@ class EditProfileForm extends Component {
     const {
       form: {
         isValid,
+        hasChanged,
         fields: { name, displayName, isPrivate, country, favoriteTeam }
       }
     } = this.state;
-    // photo
-    // Form
-    // displayName
-    // name
-    // isPrivate
-    // country
-    // favouriteTeam
     return (
       <div className={classNames(classes.root)}>
-        <Title title={"Edit Profile"} />
-        {/* 
-          * Photo  DisplayName isPrivate
-                   Name
-        */}
+        <Title title={"Edit Profile"}>
+          <Button
+            variant="contained"
+            className={classes.button}
+            disabled={!isValid || !hasChanged}
+            onClick={this.saveForm}
+            color="primary"
+          >
+            <Save />
+            <span className={classes.btntext}>Save Changes</span>
+          </Button>
+        </Title>
         <div className={classNames(classes.toprow, "flex row jc-start")}>
           <div className={classNames(classes.photo)}>Photo</div>
           <div
@@ -275,7 +316,18 @@ class EditProfileForm extends Component {
                   )}
                 </ApolloConsumer>
               </div>
-              <div className={classNames(classes.isprivate)}>Is Private</div>
+              <div className={classNames(classes.isprivate)}>
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={isPrivate.value}
+                      onChange={this.handlePrivacyChange}
+                      color="primary"
+                    />
+                  }
+                  label="Make Profile Public"
+                />
+              </div>
             </div>
             <div
               className={classNames(

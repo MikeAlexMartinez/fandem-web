@@ -24,6 +24,7 @@ const PROFILE_PICTURE_FRAGMENT = gql`
 const CURRENT_USER_QUERY = gql`
   query CURRENT_USER_QUERY {
     currentUser {
+      id
       email
       name
       countryCode
