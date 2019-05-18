@@ -72,6 +72,7 @@ const COUNTRIES_QUERY = gql`
   query COUNTRIES_QUERY {
     countries {
       id
+      label: name
       name
     }
   }

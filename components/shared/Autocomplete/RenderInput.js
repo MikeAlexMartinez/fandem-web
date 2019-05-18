@@ -3,6 +3,8 @@ import { TextField } from "@material-ui/core";
 
 const RenderInput = ({ InputProps, classes, ref, ...other }) => (
   <TextField
+    variant="outlined"
+    label={InputProps.label}
     InputProps={{
       inputRef: ref,
       classes: {

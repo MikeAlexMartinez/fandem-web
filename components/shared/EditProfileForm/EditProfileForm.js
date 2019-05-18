@@ -5,6 +5,7 @@ import { Mutation, ApolloConsumer } from "react-apollo";
 import { Typography, withStyles, Divider, TextField } from "@material-ui/core";
 
 import Title from "../Title/Title";
+import Autocomplete from "../Autocomplete/Autocomplete";
 
 import validateDisplayName from "../../../utils/validators/display-name";
 import validateForm from "../../../utils/validators/form";
@@ -22,7 +23,7 @@ class EditProfileForm extends Component {
         fields: {
           name: {
             valid: true,
-            value: user.name,
+            value: user.data.currentUser.name,
             checking: false,
             touched: false,
             required: true,
@@ -33,10 +34,10 @@ class EditProfileForm extends Component {
             label: "Name"
           },
           displayName: {
-            startValue: user.displayName,
+            startValue: user.data.currentUser.displayName,
             validator: validateDisplayName(40),
             valid: true,
-            value: user.displayName,
+            value: user.data.currentUser.displayName,
             checking: false,
             touched: false,
             required: true,
@@ -53,7 +54,7 @@ class EditProfileForm extends Component {
           },
           isPrivate: {
             valid: true,
-            value: user.isPrivate,
+            value: user.data.currentUser.isPrivate,
             checking: false,
             touched: false,
             required: true,
@@ -65,14 +66,14 @@ class EditProfileForm extends Component {
           },
           country: {
             valid: true,
-            value: user.country || "",
+            value: user.data.currentUser.country || "",
             touched: false,
             required: false,
             label: "Country"
           },
           favoriteTeam: {
             valid: true,
-            value: user.favoriteTeam || "",
+            value: user.data.currentUser.favoriteTeam || "",
             touched: false,
             required: false,
             label: "Favourite Team"
@@ -89,6 +90,40 @@ class EditProfileForm extends Component {
     return error && errorMessages.hasOwnProperty(error)
       ? errorMessages[error]
       : " ";
+  };
+
+  handleAutoComplete = (id, value) => {
+    const formFields = this.state.form.fields;
+    const field = formFields[id];
+    let error = "";
+    if (field.validator) {
+      error = field.validator(value);
+      console.log(error);
+    }
+    if (error === "" && field.formValidator) {
+      error = field.formValidator(formFields, value);
+    }
+    const updatedField = {
+      ...field,
+      error,
+      value,
+      touched: true,
+      valid: !error
+    };
+    this.setState(prevState => {
+      const updatedFields = {
+        ...prevState.form.fields,
+        [id]: updatedField
+      };
+      return {
+        ...prevState,
+        form: {
+          ...prevState.form,
+          fields: updatedFields,
+          isValid: validateForm(updatedFields)
+        }
+      };
+    });
   };
 
   handleChange = (e, checking) => {
@@ -176,14 +211,13 @@ class EditProfileForm extends Component {
   };
 
   render() {
-    const { classes, user } = this.props;
+    const { classes, user, countries, teams } = this.props;
     const {
       form: {
         isValid,
         fields: { name, displayName, isPrivate, country, favoriteTeam }
       }
     } = this.state;
-    console.log(user);
     // photo
     // Form
     // displayName
@@ -275,10 +309,20 @@ class EditProfileForm extends Component {
                 className={classNames(
                   classes.country,
                   classes.fullrow,
+                  classes.paddingright,
                   "flex row jc-start ai-end"
                 )}
               >
-                Country
+                <div className={classNames(classes.fullrow)}>
+                  <Autocomplete
+                    list={countries.data.countries}
+                    handleChange={value =>
+                      this.handleAutoComplete("country", value)
+                    }
+                    placeholder="Select a country..."
+                    label="Country"
+                  />
+                </div>
               </div>
               <div
                 className={classNames(
@@ -287,7 +331,14 @@ class EditProfileForm extends Component {
                   "flex row jc-start ai-end"
                 )}
               >
-                Favourite Team
+                <Autocomplete
+                  list={teams.data.teams}
+                  handleChange={value =>
+                    this.handleAutoComplete("favoriteTeam", value)
+                  }
+                  placeholder="Select a Team..."
+                  label="Favourite Team"
+                />
               </div>
             </div>
           </div>
@@ -300,8 +351,8 @@ class EditProfileForm extends Component {
 
 EditProfileForm.propTypes = {
   user: PropTypes.object.isRequired,
-  countries: PropTypes.array.isRequired,
-  teams: PropTypes.array.isRequired
+  countries: PropTypes.object.isRequired,
+  teams: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(EditProfileForm);

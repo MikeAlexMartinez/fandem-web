@@ -1,27 +1,29 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import { MenuItem } from "@material-ui/core";
+
 const RenderSuggestion = ({
-  suggestion,
+  listItem,
   index,
   itemProps,
   highlightedIndex,
   selectedItem
 }) => {
   const isHighlighted = highlightedIndex === index;
-  const isSelected = (selectedItem || "").indexOf(suggestion.label) > -1;
+  const isSelected = selectedItem === listItem.label;
 
   return (
     <MenuItem
       {...itemProps}
-      key={suggestion.label}
+      key={listItem.id}
       selected={isHighlighted}
       component="div"
       style={{
         fontWeight: isSelected ? 500 : 400
       }}
     >
-      {suggestion.label}
+      {listItem.label}
     </MenuItem>
   );
 };
@@ -31,7 +33,10 @@ RenderSuggestion.propTypes = {
   index: PropTypes.number,
   itemProps: PropTypes.object,
   selectedItem: PropTypes.string,
-  suggestion: PropTypes.shape({ label: PropTypes.string }).isRequired
+  listItem: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired
+  }).isRequired
 };
 
 export default RenderSuggestion;

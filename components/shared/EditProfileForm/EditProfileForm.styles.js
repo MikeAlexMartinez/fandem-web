@@ -17,7 +17,7 @@ export default function(theme) {
       margin: theme.spacing.unit * 2
     },
     photo: {
-      height: "200px",
+      height: "calc(84px + 84px + 56px)",
       minWidth: "200px",
       borderRadius: "10px",
       marginRight: theme.spacing.unit * 2,
@@ -30,6 +30,9 @@ export default function(theme) {
     },
     spaceright: {
       marginRight: "20px"
+    },
+    paddingright: {
+      paddingRight: "20px"
     },
     names: {
       "&:children": {
