@@ -30,10 +30,14 @@ const CURRENT_USER_QUERY = gql`
       countryCode
       phoneNumber
       favoriteTeam {
+        id
+        label: name
         name
         shortName
       }
       country {
+        id
+        label: name
         name
       }
       ...ProfilePicture
