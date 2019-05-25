@@ -20,7 +20,11 @@ import validateDisplayName from "../../../utils/validators/display-name";
 import validateForm from "../../../utils/validators/form";
 import hasFormChanged from "../../../utils/validators/has-changed";
 
-import { DISPLAY_NAME_EXISTS_QUERY } from "../../../db/queries/account.queries";
+import {
+  DISPLAY_NAME_EXISTS_QUERY,
+  CURRENT_USER_QUERY
+} from "../../../db/queries/account.queries";
+import { UPDATE_USER_PROFILE_MUTATION } from "../../../db/mutations/account.mutations";
 
 import styles from "./EditProfileForm.styles";
 
@@ -246,10 +250,6 @@ class EditProfileForm extends Component {
     }
   };
 
-  saveForm = () => {
-    console.log("Save form");
-  };
-
   render() {
     const { classes, user, countries, teams } = this.props;
     const {
@@ -259,144 +259,195 @@ class EditProfileForm extends Component {
         fields: { name, displayName, isPrivate, country, favoriteTeam }
       }
     } = this.state;
+
+    const variables = {
+      id: user.data.currentUser.id,
+      displayName: displayName.value,
+      isPrivate: isPrivate.value,
+      name: name.value,
+      favoriteTeamId: favoriteTeam.value.id,
+      countryId: country.value.id
+    };
+    console.log(country);
+    console.log(favoriteTeam);
     return (
-      <div className={classNames(classes.root)}>
-        <Title title={"Edit Profile"}>
-          <Button
-            variant="contained"
-            className={classes.button}
-            disabled={!isValid || !hasChanged}
-            onClick={this.saveForm}
-            color="primary"
-          >
-            <Save />
-            <span className={classes.btntext}>Save Changes</span>
-          </Button>
-        </Title>
-        <div className={classNames(classes.toprow, "flex row jc-start")}>
-          <div className={classNames(classes.photo)}>Photo</div>
-          <div
-            className={classNames(
-              classes.names,
-              classes.fullrow,
-              "flex column jc-sb ai-center"
-            )}
-          >
-            <div
-              className={classNames(
-                classes.public,
-                classes.fullrow,
-                "flex row jc-sb ai-start"
-              )}
-            >
-              <div
-                className={classNames(classes.displayname, classes.spaceright)}
-              >
-                <ApolloConsumer>
-                  {client => (
-                    <TextField
-                      error={!!displayName.error}
-                      id="displayName"
-                      type="text"
-                      label="Display Name"
-                      value={displayName.value}
-                      placeholder="Please enter a Display Name"
-                      className={classes.textfield}
-                      margin="normal"
-                      variant="outlined"
-                      helperText={this.fetchError("displayName")}
-                      onBlur={this.handleBlur}
-                      onChange={event => {
-                        this.handleDisplayNameChange({
-                          event,
-                          client
-                        });
-                      }}
-                    />
-                  )}
-                </ApolloConsumer>
-              </div>
-              <div className={classNames(classes.isprivate)}>
-                <FormControlLabel
-                  control={
-                    <Switch
-                      checked={isPrivate.value}
-                      onChange={this.handlePrivacyChange}
-                      color="primary"
-                    />
-                  }
-                  label="Make Profile Public"
-                />
-              </div>
-            </div>
-            <div
-              className={classNames(
-                classes.name,
-                classes.fullrow,
-                "flex row jc-start ai-end"
-              )}
-            >
-              <TextField
-                error={!!name.error}
-                id="name"
-                type="text"
-                label="Name"
-                placeholder="Please enter your Name"
-                className={classes.textfield}
-                value={name.value}
-                margin="normal"
-                variant="outlined"
-                helperText={this.fetchError("name")}
-                onBlur={this.handleBlur}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div
-              className={classNames(
-                classes.fullrow,
-                `flex row jc-start ai-end`
-              )}
-            >
-              <div
-                className={classNames(
-                  classes.country,
-                  classes.fullrow,
-                  classes.paddingright,
-                  "flex row jc-start ai-end"
-                )}
-              >
-                <div className={classNames(classes.fullrow)}>
-                  <Autocomplete
-                    list={countries.data.countries}
-                    handleChange={value =>
-                      this.handleAutoComplete("country", value)
+      <Mutation
+        mutation={UPDATE_USER_PROFILE_MUTATION}
+        variables={variables}
+        refetchQueries={[
+          {
+            query: CURRENT_USER_QUERY
+          }
+        ]}
+      >
+        {(updateUserProfile, { data, error, loading }) => {
+          console.log(data);
+          console.log(error);
+          console.log(loading);
+          return (
+            <div className={classNames(classes.root)}>
+              <form
+                method="POST"
+                onSubmit={async e => {
+                  e.preventDefault();
+                  if (isValid) {
+                    try {
+                      await updateUserProfile();
+                    } catch (e) {
+                      console.error(e);
+                      return;
                     }
-                    placeholder="Select a country..."
-                    label="Country"
-                  />
-                </div>
-              </div>
-              <div
-                className={classNames(
-                  classes.team,
-                  classes.fullrow,
-                  "flex row jc-start ai-end"
-                )}
-              >
-                <Autocomplete
-                  list={teams.data.teams}
-                  handleChange={value =>
-                    this.handleAutoComplete("favoriteTeam", value)
+                    console.log("Success!");
                   }
-                  placeholder="Select a Team..."
-                  label="Favourite Team"
-                />
-              </div>
+                }}
+              >
+                <Title title={"Edit Profile"}>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    className={classes.button}
+                    disabled={!isValid || !hasChanged}
+                    color="primary"
+                  >
+                    <Save />
+                    <span className={classes.btntext}>Save Changes</span>
+                  </Button>
+                </Title>
+                <div
+                  className={classNames(classes.toprow, "flex row jc-start")}
+                >
+                  <div className={classNames(classes.photo)}>Photo</div>
+                  <div
+                    className={classNames(
+                      classes.names,
+                      classes.fullrow,
+                      "flex column jc-sb ai-center"
+                    )}
+                  >
+                    <div
+                      className={classNames(
+                        classes.public,
+                        classes.fullrow,
+                        "flex row jc-sb ai-start"
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          classes.displayname,
+                          classes.spaceright
+                        )}
+                      >
+                        <ApolloConsumer>
+                          {client => (
+                            <TextField
+                              error={!!displayName.error}
+                              id="displayName"
+                              type="text"
+                              label="Display Name"
+                              value={displayName.value}
+                              placeholder="Please enter a Display Name"
+                              className={classes.textfield}
+                              margin="normal"
+                              variant="outlined"
+                              helperText={this.fetchError("displayName")}
+                              onBlur={this.handleBlur}
+                              onChange={event => {
+                                this.handleDisplayNameChange({
+                                  event,
+                                  client
+                                });
+                              }}
+                            />
+                          )}
+                        </ApolloConsumer>
+                      </div>
+                      <div className={classNames(classes.isprivate)}>
+                        <FormControlLabel
+                          control={
+                            <Switch
+                              checked={isPrivate.value}
+                              onChange={this.handlePrivacyChange}
+                              color="primary"
+                            />
+                          }
+                          label="Make Profile Public"
+                        />
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(
+                        classes.name,
+                        classes.fullrow,
+                        "flex row jc-start ai-end"
+                      )}
+                    >
+                      <TextField
+                        error={!!name.error}
+                        id="name"
+                        type="text"
+                        label="Name"
+                        placeholder="Please enter your Name"
+                        className={classes.textfield}
+                        value={name.value}
+                        margin="normal"
+                        variant="outlined"
+                        helperText={this.fetchError("name")}
+                        onBlur={this.handleBlur}
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                    <div
+                      className={classNames(
+                        classes.fullrow,
+                        `flex row jc-start ai-end`
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          classes.country,
+                          classes.fullrow,
+                          classes.paddingright,
+                          "flex row jc-start ai-end"
+                        )}
+                      >
+                        <div className={classNames(classes.fullrow)}>
+                          <Autocomplete
+                            initialValue={country.value}
+                            list={countries.data.countries}
+                            handleChange={value =>
+                              this.handleAutoComplete("country", value)
+                            }
+                            placeholder="Select a country..."
+                            label="Country"
+                          />
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          classes.team,
+                          classes.fullrow,
+                          "flex row jc-start ai-end"
+                        )}
+                      >
+                        <Autocomplete
+                          initialValue={favoriteTeam.value}
+                          list={teams.data.teams}
+                          handleChange={value =>
+                            this.handleAutoComplete("favoriteTeam", value)
+                          }
+                          placeholder="Select a Team..."
+                          label="Favourite Team"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <Divider />
             </div>
-          </div>
-        </div>
-        <Divider />
-      </div>
+          );
+        }}
+      </Mutation>
     );
   }
 }

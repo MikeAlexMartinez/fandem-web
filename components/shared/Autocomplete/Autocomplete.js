@@ -10,7 +10,14 @@ import itemToString from "./itemToString";
 
 class Autocomplete extends Component {
   render() {
-    const { classes, list, placeholder, label, handleChange } = this.props;
+    const {
+      classes,
+      list,
+      placeholder,
+      label,
+      handleChange,
+      initialValue
+    } = this.props;
     return (
       <Downshift
         id={`downshift-${label}`}
@@ -19,6 +26,7 @@ class Autocomplete extends Component {
           handleChange(selectedItem);
         }}
         itemToString={itemToString}
+        initialSelectedItem={initialValue}
       >
         {({
           getInputProps,
