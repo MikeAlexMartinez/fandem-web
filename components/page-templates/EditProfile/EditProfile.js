@@ -29,7 +29,6 @@ const EditProfile = props => (
       <Navigation>
         <Composed>
           {composedResponse => {
-            console.log(composedResponse);
             if (composedHasError(composedResponse)) {
               return (
                 <ErrorMessage message={"Error Loading Profile Information"} />

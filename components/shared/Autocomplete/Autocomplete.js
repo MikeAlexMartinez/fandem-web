@@ -21,10 +21,7 @@ class Autocomplete extends Component {
     return (
       <Downshift
         id={`downshift-${label}`}
-        onChange={selectedItem => {
-          console.log(selectedItem);
-          handleChange(selectedItem);
-        }}
+        onChange={selectedItem => handleChange(selectedItem)}
         itemToString={itemToString}
         initialSelectedItem={initialValue}
       >

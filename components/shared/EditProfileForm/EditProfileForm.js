@@ -9,7 +9,8 @@ import {
   TextField,
   FormControlLabel,
   Switch,
-  Button
+  Button,
+  Snackbar
 } from "@material-ui/core";
 import { Save } from "@material-ui/icons";
 
@@ -28,6 +29,8 @@ import {
 import { UPDATE_USER_PROFILE_MUTATION } from "../../../db/mutations/account.mutations";
 
 import styles from "./EditProfileForm.styles";
+
+const mounted = false;
 
 class EditProfileForm extends Component {
   constructor(props) {
@@ -217,6 +220,7 @@ class EditProfileForm extends Component {
   };
 
   handleDisplayNameChange = async ({ event, client }) => {
+    console.log("test");
     const { id } = event.target;
     const updatedField = this.handleChange(event, true);
     if (updatedField.startValue !== updatedField.value && updatedField.valid) {
@@ -262,7 +266,6 @@ class EditProfileForm extends Component {
   };
 
   showSuccess = () => {
-    console.log("YOLO");
     this.setState(prevState => ({
       ...prevState,
       snackSuccess: {
@@ -271,16 +274,6 @@ class EditProfileForm extends Component {
       }
     }));
   };
-
-  // hideSuccess = () => {
-  //   this.setState(prevState => ({
-  //     ...prevState,
-  //     success: {
-  //       ...prevState.success,
-  //       visible: false
-  //     }
-  //   }));
-  // };
 
   showError = () => {
     if (!this.state.snackError.visible) {
@@ -293,16 +286,6 @@ class EditProfileForm extends Component {
       }));
     }
   };
-
-  // hideError = () => {
-  //   this.setState(prevState => ({
-  //     ...prevState,
-  //     error: {
-  //       ...prevState.error,
-  //       visible: false
-  //     }
-  //   }));
-  // }
 
   updateStartValues = updatedFields => {
     this.setState(prevState => ({
@@ -349,7 +332,6 @@ class EditProfileForm extends Component {
     } = this.state;
 
     const variables = {
-      id: user.data.currentUser.id,
       displayName: displayName.value,
       isPrivate: isPrivate.value,
       name: name.value,
@@ -357,20 +339,10 @@ class EditProfileForm extends Component {
       countryId: country.value.id
     };
     return (
-      <Mutation
-        mutation={UPDATE_USER_PROFILE_MUTATION}
-        variables={variables}
-        refetchQueries={[
-          {
-            query: CURRENT_USER_QUERY
-          }
-        ]}
-      >
+      <Mutation mutation={UPDATE_USER_PROFILE_MUTATION} variables={variables}>
         {(updateUserProfile, { data, error, loading }) => {
           return (
             <div className={classNames(classes.root)}>
-              {snackError.visible && <CustomSnackBar {...snackError} />}
-              {snackSuccess.visible && <CustomSnackBar {...snackSuccess} />}
               <form
                 method="POST"
                 onSubmit={async e => {
@@ -386,10 +358,7 @@ class EditProfileForm extends Component {
                     this.updateStartValues(
                       updatedFields.data.updateUserProfile
                     );
-                    console.log("Success!");
-                    setTimeout(() => {
-                      this.showSuccess();
-                    });
+                    this.showSuccess();
                   }
                 }}
               >

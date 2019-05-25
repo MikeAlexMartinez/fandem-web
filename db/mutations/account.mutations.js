@@ -73,7 +73,6 @@ const SUBMIT_EMAIL_TOKEN_MUTATION = gql`
 
 const UPDATE_USER_PROFILE_MUTATION = gql`
   mutation UPDATE_USER_PROFILE_MUTATION(
-    $id: ID!
     $displayName: String!
     $isPrivate: Boolean!
     $name: String
@@ -81,14 +80,12 @@ const UPDATE_USER_PROFILE_MUTATION = gql`
     $countryId: ID
   ) {
     updateUserProfile(
-      id: $id
       displayName: $displayName
       isPrivate: $isPrivate
       name: $name
       favoriteTeamId: $favoriteTeamId
       countryId: $countryId
     ) {
-      id
       displayName
       isPrivate
       name
