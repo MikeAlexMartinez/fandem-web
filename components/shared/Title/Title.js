@@ -17,7 +17,11 @@ const Title = ({ title, classes, children }) => (
         <Typography variant="h3">{title}</Typography>
       </div>
       {children && (
-        <div className={className(classes.controls)}>{children}</div>
+        <div
+          className={className(classes.controls, "flex row jc-end ai-center")}
+        >
+          {children}
+        </div>
       )}
     </div>
     <Divider />

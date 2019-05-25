@@ -1,5 +1,4 @@
 export default function(theme) {
-  console.log(theme);
   return {
     root: {
       width: "100%",

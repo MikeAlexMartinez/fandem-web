@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Mutation, ApolloConsumer } from "react-apollo";
 import {
-  Typography,
+  CircularProgress,
   withStyles,
   Divider,
   TextField,
@@ -15,6 +15,7 @@ import { Save } from "@material-ui/icons";
 
 import Title from "../Title/Title";
 import Autocomplete from "../Autocomplete/Autocomplete";
+import CustomSnackBar from "../CustomSnackBar/CustomSnackBar";
 
 import validateDisplayName from "../../../utils/validators/display-name";
 import validateForm from "../../../utils/validators/form";
@@ -33,6 +34,16 @@ class EditProfileForm extends Component {
     super(props);
     const { user } = props;
     this.state = {
+      snackSuccess: {
+        visible: false,
+        message: "Profile updated Successfully",
+        variant: "success"
+      },
+      snackError: {
+        visible: false,
+        message: "Error Editing Profile - Please try again",
+        variant: "error"
+      },
       form: {
         fields: {
           name: {
@@ -250,9 +261,86 @@ class EditProfileForm extends Component {
     }
   };
 
+  showSuccess = () => {
+    console.log("YOLO");
+    this.setState(prevState => ({
+      ...prevState,
+      snackSuccess: {
+        ...prevState.snackSuccess,
+        visible: true
+      }
+    }));
+  };
+
+  // hideSuccess = () => {
+  //   this.setState(prevState => ({
+  //     ...prevState,
+  //     success: {
+  //       ...prevState.success,
+  //       visible: false
+  //     }
+  //   }));
+  // };
+
+  showError = () => {
+    if (!this.state.snackError.visible) {
+      this.setState(prevState => ({
+        ...prevState,
+        snackError: {
+          ...prevState.snackError,
+          visible: true
+        }
+      }));
+    }
+  };
+
+  // hideError = () => {
+  //   this.setState(prevState => ({
+  //     ...prevState,
+  //     error: {
+  //       ...prevState.error,
+  //       visible: false
+  //     }
+  //   }));
+  // }
+
+  updateStartValues = updatedFields => {
+    this.setState(prevState => ({
+      ...prevState,
+      form: {
+        ...prevState.form,
+        hasChanged: false,
+        fields: {
+          name: {
+            ...prevState.form.fields.name,
+            startValue: updatedFields.name
+          },
+          displayName: {
+            ...prevState.form.fields.displayName,
+            startValue: updatedFields.displayName
+          },
+          isPrivate: {
+            ...prevState.form.fields.isPrivate,
+            startValue: updatedFields.isPrivate
+          },
+          country: {
+            ...prevState.form.fields.country,
+            startValue: updatedFields.country
+          },
+          favoriteTeam: {
+            ...prevState.form.fields.favoriteTeam,
+            startValue: updatedFields.favoriteTeam
+          }
+        }
+      }
+    }));
+  };
+
   render() {
     const { classes, user, countries, teams } = this.props;
     const {
+      snackError,
+      snackSuccess,
       form: {
         isValid,
         hasChanged,
@@ -268,8 +356,6 @@ class EditProfileForm extends Component {
       favoriteTeamId: favoriteTeam.value.id,
       countryId: country.value.id
     };
-    console.log(country);
-    console.log(favoriteTeam);
     return (
       <Mutation
         mutation={UPDATE_USER_PROFILE_MUTATION}
@@ -281,27 +367,39 @@ class EditProfileForm extends Component {
         ]}
       >
         {(updateUserProfile, { data, error, loading }) => {
-          console.log(data);
-          console.log(error);
-          console.log(loading);
           return (
             <div className={classNames(classes.root)}>
+              {snackError.visible && <CustomSnackBar {...snackError} />}
+              {snackSuccess.visible && <CustomSnackBar {...snackSuccess} />}
               <form
                 method="POST"
                 onSubmit={async e => {
                   e.preventDefault();
+                  let updatedFields;
                   if (isValid) {
                     try {
-                      await updateUserProfile();
+                      updatedFields = await updateUserProfile();
                     } catch (e) {
                       console.error(e);
                       return;
                     }
+                    this.updateStartValues(
+                      updatedFields.data.updateUserProfile
+                    );
                     console.log("Success!");
+                    setTimeout(() => {
+                      this.showSuccess();
+                    });
                   }
                 }}
               >
                 <Title title={"Edit Profile"}>
+                  {loading && (
+                    <CircularProgress
+                      size={32}
+                      className={classNames(classes.spaceright)}
+                    />
+                  )}
                   <Button
                     type="submit"
                     variant="contained"
