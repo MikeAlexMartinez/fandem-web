@@ -77,8 +77,8 @@ const UPDATE_USER_PROFILE_MUTATION = gql`
     $displayName: String!
     $isPrivate: Boolean!
     $name: String
-    $favoriteTeam: Team
-    $country: Country
+    $favoriteTeam: ID
+    $country: ID
   ) {
     updateUserProfile(
       id: $id
@@ -89,6 +89,11 @@ const UPDATE_USER_PROFILE_MUTATION = gql`
       country: $country
     ) {
       id
+      displayName
+      isPrivate
+      name
+      favoriteTeam
+      country
     }
   }
 `;

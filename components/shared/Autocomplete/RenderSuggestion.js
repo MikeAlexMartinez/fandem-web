@@ -3,9 +3,12 @@ import PropTypes from "prop-types";
 
 import { MenuItem } from "@material-ui/core";
 
+import itemToString from "./itemToString";
+
 const RenderSuggestion = ({
   listItem,
   index,
+  labelProps,
   itemProps,
   highlightedIndex,
   selectedItem
@@ -15,6 +18,7 @@ const RenderSuggestion = ({
 
   return (
     <MenuItem
+      {...labelProps}
       {...itemProps}
       key={listItem.id}
       selected={isHighlighted}
@@ -23,7 +27,7 @@ const RenderSuggestion = ({
         fontWeight: isSelected ? 500 : 400
       }}
     >
-      {listItem.label}
+      {itemToString(listItem)}
     </MenuItem>
   );
 };

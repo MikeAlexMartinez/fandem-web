@@ -6,15 +6,25 @@ import getSuggestions from "./getSuggestions";
 import renderInput from "./RenderInput";
 import renderSuggestion from "./RenderSuggestion";
 
+import itemToString from "./itemToString";
+
 class Autocomplete extends Component {
   render() {
     const { classes, list, placeholder, label, handleChange } = this.props;
     return (
-      <Downshift onChange={selectedItem => handleChange(selectedItem)}>
+      <Downshift
+        id={`downshift-${label}`}
+        onChange={selectedItem => {
+          console.log(selectedItem);
+          handleChange(selectedItem);
+        }}
+        itemToString={itemToString}
+      >
         {({
           getInputProps,
           getItemProps,
           getMenuProps,
+          getLabelProps,
           highlightedIndex,
           inputValue,
           isOpen,
@@ -38,7 +48,11 @@ class Autocomplete extends Component {
                         renderSuggestion({
                           listItem,
                           index,
-                          itemProps: getItemProps({ item: listItem.label }),
+                          labelProps: getLabelProps(),
+                          itemProps: getItemProps({
+                            item: listItem,
+                            index: listItem.id
+                          }),
                           highlightedIndex,
                           selectedItem
                         })
