@@ -149,7 +149,6 @@ class EditProfileForm extends Component {
     let error = "";
     if (field.validator) {
       error = field.validator(value);
-      console.log(error);
     }
     if (error === "" && field.formValidator) {
       error = field.formValidator(formFields, value);
@@ -185,7 +184,6 @@ class EditProfileForm extends Component {
     let error = "";
     if (field.validator) {
       error = field.validator(value);
-      console.log(error);
     }
     if (error === "" && field.formValidator) {
       error = field.formValidator(formFields, value);
@@ -220,7 +218,6 @@ class EditProfileForm extends Component {
   };
 
   handleDisplayNameChange = async ({ event, client }) => {
-    console.log("test");
     const { id } = event.target;
     const updatedField = this.handleChange(event, true);
     if (updatedField.startValue !== updatedField.value && updatedField.valid) {
@@ -335,8 +332,8 @@ class EditProfileForm extends Component {
       displayName: displayName.value,
       isPrivate: isPrivate.value,
       name: name.value,
-      favoriteTeamId: favoriteTeam.value.id,
-      countryId: country.value.id
+      favoriteTeamId: favoriteTeam.value && favoriteTeam.value.id,
+      countryId: country.value && country.value.id
     };
     return (
       <Mutation mutation={UPDATE_USER_PROFILE_MUTATION} variables={variables}>

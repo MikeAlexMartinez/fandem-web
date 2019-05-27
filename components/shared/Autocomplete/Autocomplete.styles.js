@@ -1,31 +1,38 @@
 export default function styles(theme) {
   return {
     root: {
-      flexGrow: 1,
-      height: 250
+      flexGrow: 1
     },
-    container: {
-      flexGrow: 1,
-      position: "relative"
+    input: {
+      display: "flex",
+      padding: 0
     },
+    valueContainer: {
+      display: "flex",
+      flexWrap: "wrap",
+      flex: 1,
+      opacity: 1,
+      alignItems: "center",
+      overflow: "hidden",
+      padding: theme.spacing.unit * 2
+    },
+    noOptionsMessage: {
+      padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`
+    },
+    singleValue: {
+      fontSize: 16
+    },
+    // placeholder: {
+    //   position: "absolute",
+    //   paddingLeft: 2,
+    //   fontSize: 16
+    // },
     paper: {
       position: "absolute",
       zIndex: 1,
       marginTop: theme.spacing.unit,
       left: 0,
-      right: 0,
-      maxHeight: "300px",
-      "overflow-y": "scroll"
-    },
-    chip: {
-      margin: `${theme.spacing.unit / 2}px ${theme.spacing.unit / 4}px`
-    },
-    inputRoot: {
-      flexWrap: "wrap"
-    },
-    inputInput: {
-      width: "auto",
-      flexGrow: 1
+      right: 0
     },
     divider: {
       height: theme.spacing.unit * 2

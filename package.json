@@ -39,6 +39,7 @@
     "react-apollo": "^2.2.1",
     "react-dom": "^16.8.6",
     "react-jss": "^8.6.1",
+    "react-select": "^3.0.3",
     "react-stripe-checkout": "^2.6.3",
     "react-transition-group": "^2.5.0"
   },

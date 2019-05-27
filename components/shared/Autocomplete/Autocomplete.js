@@ -1,76 +1,76 @@
-import React, { Component } from "react";
-import Downshift from "downshift";
-import { Paper, withStyles } from "@material-ui/core";
+/* eslint-disable react/prop-types, react/jsx-handler-names */
+
+import React from "react";
+import PropTypes from "prop-types";
+import Select from "react-select";
+import { withStyles } from "@material-ui/core/styles";
+import { emphasize } from "@material-ui/core/styles/colorManipulator";
+
+import Menu from "./Menu";
+import ValueContainer from "./ValueContainer";
+import SingleValue from "./SingleValue";
+import Placeholder from "./Placeholder";
+import Option from "./Option";
+import Control from "./Control";
+import NoOptionsMessage from "./NoOptionsMessage";
+
 import styles from "./Autocomplete.styles";
-import getSuggestions from "./getSuggestions";
-import renderInput from "./RenderInput";
-import renderSuggestion from "./RenderSuggestion";
 
-import itemToString from "./itemToString";
+const components = {
+  Control,
+  Menu,
+  NoOptionsMessage,
+  Option,
+  Placeholder,
+  SingleValue,
+  ValueContainer
+};
 
-class Autocomplete extends Component {
+class Autocomplete extends React.Component {
+  state = {
+    single: null
+  };
+
+  handleChange = name => value => {
+    this.setState({
+      [name]: value
+    });
+  };
+
   render() {
-    const {
-      classes,
-      list,
-      placeholder,
-      label,
-      handleChange,
-      initialValue
-    } = this.props;
+    const { classes, theme, placeholder, list, label } = this.props;
+
+    const selectStyles = {
+      input: base => ({
+        ...base,
+        color: theme.palette.text.primary,
+        "& input": {
+          font: "inherit"
+        }
+      })
+    };
+
     return (
-      <Downshift
-        id={`downshift-${label}`}
-        onChange={selectedItem => handleChange(selectedItem)}
-        itemToString={itemToString}
-        initialSelectedItem={initialValue}
-      >
-        {({
-          getInputProps,
-          getItemProps,
-          getMenuProps,
-          getLabelProps,
-          highlightedIndex,
-          inputValue,
-          isOpen,
-          selectedItem
-        }) => {
-          return (
-            <div className={classes.container}>
-              {renderInput({
-                fullWidth: true,
-                classes,
-                InputProps: getInputProps({
-                  placeholder,
-                  label
-                })
-              })}
-              <div {...getMenuProps()}>
-                {isOpen && (
-                  <Paper className={classes.paper} square>
-                    {getSuggestions({ inputValue, list }).map(
-                      (listItem, index) =>
-                        renderSuggestion({
-                          listItem,
-                          index,
-                          labelProps: getLabelProps(),
-                          itemProps: getItemProps({
-                            item: listItem,
-                            index: listItem.id
-                          }),
-                          highlightedIndex,
-                          selectedItem
-                        })
-                    )}
-                  </Paper>
-                )}
-              </div>
-            </div>
-          );
-        }}
-      </Downshift>
+      <div className={classes.root}>
+        <Select
+          classes={classes}
+          styles={selectStyles}
+          options={list}
+          components={components}
+          value={this.state.single}
+          onChange={this.handleChange("single")}
+          label={label}
+          placeholder={""}
+          isClearable
+        />
+      </div>
     );
   }
 }
 
-export default withStyles(styles)(Autocomplete);
+Autocomplete.propTypes = {
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired
+};
+
+export default withStyles(styles, { withTheme: true })(Autocomplete);

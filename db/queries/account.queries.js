@@ -75,10 +75,10 @@ const CURRENT_USER_QUERY = gql`
 
 const COUNTRIES_QUERY = gql`
   query COUNTRIES_QUERY {
-    countries {
+    countries(orderBy: name_ASC) {
       id
       label: name
-      name
+      value: name
     }
   }
 `;
