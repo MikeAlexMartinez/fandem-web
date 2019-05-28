@@ -9,28 +9,21 @@ import {
   TextField,
   FormControlLabel,
   Switch,
-  Button,
-  Snackbar
+  Button
 } from "@material-ui/core";
 import { Save } from "@material-ui/icons";
 
 import Title from "../Title/Title";
 import Autocomplete from "../Autocomplete/Autocomplete";
-import CustomSnackBar from "../CustomSnackBar/CustomSnackBar";
 
 import validateDisplayName from "../../../utils/validators/display-name";
 import validateForm from "../../../utils/validators/form";
 import hasFormChanged from "../../../utils/validators/has-changed";
 
-import {
-  DISPLAY_NAME_EXISTS_QUERY,
-  CURRENT_USER_QUERY
-} from "../../../db/queries/account.queries";
+import { DISPLAY_NAME_EXISTS_QUERY } from "../../../db/queries/account.queries";
 import { UPDATE_USER_PROFILE_MUTATION } from "../../../db/mutations/account.mutations";
 
 import styles from "./EditProfileForm.styles";
-
-const mounted = false;
 
 class EditProfileForm extends Component {
   constructor(props) {
@@ -143,7 +136,7 @@ class EditProfileForm extends Component {
     });
   };
 
-  handleAutoComplete = (id, value) => {
+  handleAutoComplete = id => value => {
     const formFields = this.state.form.fields;
     const field = formFields[id];
     let error = "";
@@ -478,10 +471,8 @@ class EditProfileForm extends Component {
                           <Autocomplete
                             initialValue={country.value}
                             list={countries.data.countries}
-                            handleChange={value =>
-                              this.handleAutoComplete("country", value)
-                            }
-                            placeholder="Select a country..."
+                            handleChange={this.handleAutoComplete("country")}
+                            placeholder="Select a Country..."
                             label="Country"
                           />
                         </div>
@@ -496,9 +487,7 @@ class EditProfileForm extends Component {
                         <Autocomplete
                           initialValue={favoriteTeam.value}
                           list={teams.data.teams}
-                          handleChange={value =>
-                            this.handleAutoComplete("favoriteTeam", value)
-                          }
+                          handleChange={this.handleAutoComplete("favoriteTeam")}
                           placeholder="Select a Team..."
                           label="Favourite Team"
                         />

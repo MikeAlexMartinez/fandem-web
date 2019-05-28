@@ -26,51 +26,48 @@ const components = {
   ValueContainer
 };
 
-class Autocomplete extends React.Component {
-  state = {
-    single: null
+const Autocomplete = props => {
+  const {
+    classes,
+    theme,
+    placeholder,
+    list,
+    label,
+    handleChange,
+    initialValue
+  } = props;
+
+  const selectStyles = {
+    input: base => ({
+      ...base,
+      color: theme.palette.text.primary,
+      "& input": {
+        font: "inherit"
+      }
+    })
   };
 
-  handleChange = name => value => {
-    this.setState({
-      [name]: value
-    });
-  };
-
-  render() {
-    const { classes, theme, placeholder, list, label } = this.props;
-
-    const selectStyles = {
-      input: base => ({
-        ...base,
-        color: theme.palette.text.primary,
-        "& input": {
-          font: "inherit"
-        }
-      })
-    };
-
-    return (
-      <div className={classes.root}>
-        <Select
-          classes={classes}
-          styles={selectStyles}
-          options={list}
-          components={components}
-          value={this.state.single}
-          onChange={this.handleChange("single")}
-          label={label}
-          placeholder={""}
-          isClearable
-        />
-      </div>
-    );
-  }
-}
+  return (
+    <div className={classes.root}>
+      <Select
+        classes={classes}
+        styles={selectStyles}
+        options={list}
+        components={components}
+        value={initialValue}
+        onChange={value => handleChange(value)}
+        label={label}
+        placeholder={placeholder}
+        isClearable
+      />
+    </div>
+  );
+};
 
 Autocomplete.propTypes = {
   classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired
+  theme: PropTypes.object.isRequired,
+  placeholder: PropTypes.string.isRequired
 };
 
 export default withStyles(styles, { withTheme: true })(Autocomplete);

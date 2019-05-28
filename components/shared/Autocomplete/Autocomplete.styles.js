@@ -22,11 +22,11 @@ export default function styles(theme) {
     singleValue: {
       fontSize: 16
     },
-    // placeholder: {
-    //   position: "absolute",
-    //   paddingLeft: 2,
-    //   fontSize: 16
-    // },
+    placeholder: {
+      position: "absolute",
+      paddingLeft: 2,
+      fontSize: 16
+    },
     paper: {
       position: "absolute",
       zIndex: 1,

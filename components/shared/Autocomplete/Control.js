@@ -9,7 +9,6 @@ function Control(props) {
     <TextField
       fullWidth
       variant="outlined"
-      focused={true}
       label={props.selectProps.label}
       InputProps={{
         inputComponent: InputComponent,
@@ -20,6 +19,10 @@ function Control(props) {
           ...props.innerProps
         }
       }}
+      InputLabelProps={{
+        shrink: true
+      }}
+      placeholder={props.placeholder}
       {...props.selectProps.TextFieldProps}
     />
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import { withStyles } from "@material-ui/core";
+import { withStyles, CircularProgress } from "@material-ui/core";
 import { adopt } from "react-adopt";
 
 import Page from "../../shared/Page/Page";

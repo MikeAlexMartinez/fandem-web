@@ -32,13 +32,13 @@ const CURRENT_USER_QUERY = gql`
       favoriteTeam {
         id
         label: name
-        name
+        value: name
         shortName
       }
       country {
         id
         label: name
-        name
+        value: name
       }
       ...ProfilePicture
       displayName

@@ -5,7 +5,7 @@ const PREM_TEAMS_QUERY = gql`
     teams {
       id
       label: name
-      name
+      value: name
     }
   }
 `;

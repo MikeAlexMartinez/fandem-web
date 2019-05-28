@@ -91,13 +91,15 @@ const UPDATE_USER_PROFILE_MUTATION = gql`
       name
       favoriteTeam {
         id
-        label: name
         name
+        value: name
+        label: name
       }
       country {
         id
-        label: name
         name
+        value: name
+        label: name
       }
     }
   }
