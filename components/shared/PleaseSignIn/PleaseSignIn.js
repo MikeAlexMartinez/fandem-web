@@ -1,13 +1,11 @@
 import { Query } from "react-apollo";
-import { withStyles, CircularProgress } from "@material-ui/core";
+import { CircularProgress } from "@material-ui/core";
 
 import { CURRENT_USER_QUERY } from "../../../db/queries/account.queries";
 
 import Page from "../Page/Page";
 import Background from "../Background/Background";
 import SignInForm from "../SignInForm/SignInForm";
-
-import styles from "./PleaseSignIn.styles";
 
 const PleaseSignIn = props => (
   <Query query={CURRENT_USER_QUERY}>
@@ -32,8 +30,7 @@ const PleaseSignIn = props => (
             </Background>
           </Page>
         );
-      }
-      if (!data || !data.currentUser) {
+      } else if (!data || !data.currentUser) {
         return (
           <Page>
             <Background>
@@ -53,4 +50,4 @@ const PleaseSignIn = props => (
   </Query>
 );
 
-export default withStyles(styles)(PleaseSignIn);
+export default PleaseSignIn;
