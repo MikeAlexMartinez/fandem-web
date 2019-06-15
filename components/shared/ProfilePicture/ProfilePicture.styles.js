@@ -8,15 +8,16 @@ export default function(theme) {
       overflow: "hidden"
     },
     imageContainer: {
-      maxHeight: "175px",
-      overflow: "hidden"
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "175px",
+      overflow: "hidden",
+      objectFit: "cover"
     },
     photo: {
-      margin: "auto",
-      width: "100%",
-      objectFit: "cover",
-      "line-height": "200px",
-      textAlign: "center"
+      height: "175px",
+      width: "auto"
     }
   };
 }

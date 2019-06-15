@@ -14,6 +14,7 @@ import {
 import { CLOUDINARY_ENDPOINT } from "../../../config";
 
 import { ADD_PROFILE_PICTURE } from "../../../db/mutations/account.mutations";
+import { CURRENT_USER_QUERY } from "../../../db/queries/account.queries";
 
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
@@ -83,7 +84,11 @@ class AddPicture extends React.Component {
     const { image, errorUploading, uploading } = this.state;
     const variables = { image };
     return (
-      <Mutation mutation={ADD_PROFILE_PICTURE} variables={variables}>
+      <Mutation
+        mutation={ADD_PROFILE_PICTURE}
+        variables={variables}
+        refetchQueries={[{ query: CURRENT_USER_QUERY }]}
+      >
         {(addProfilePicture, { loading, error }) => (
           <Dialog
             open={open}

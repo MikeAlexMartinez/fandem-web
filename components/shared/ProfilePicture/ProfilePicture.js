@@ -8,12 +8,7 @@ const ProfilePicture = ({ classes, profilePicture }) => (
   <div
     className={classNames(classes.container, `flex column jc-sb ai-stretch`)}
   >
-    <div
-      className={classNames(
-        classes.imageContainer,
-        `flex row jc-center ai-center`
-      )}
-    >
+    <div className={classNames(classes.imageContainer)}>
       {!profilePicture.image && (
         <img
           src="/static/images/male-profile-image.png"
