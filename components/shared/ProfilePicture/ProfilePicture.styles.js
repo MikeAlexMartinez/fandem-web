@@ -8,16 +8,13 @@ export default function(theme) {
       overflow: "hidden"
     },
     imageContainer: {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
       height: "175px",
-      overflow: "hidden",
-      objectFit: "cover"
+      width: "190px"
     },
     photo: {
       height: "175px",
-      width: "auto"
+      width: "100%",
+      objectFit: "cover"
     }
   };
 }

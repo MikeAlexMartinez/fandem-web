@@ -5,9 +5,7 @@ import classNames from "classnames";
 import ProfilePictureControls from "../ProfilePictureControls";
 
 const ProfilePicture = ({ classes, profilePicture }) => (
-  <div
-    className={classNames(classes.container, `flex column jc-sb ai-stretch`)}
-  >
+  <div className={classNames(classes.container, `flex column jc-sb`)}>
     <div className={classNames(classes.imageContainer)}>
       {!profilePicture.image && (
         <img
