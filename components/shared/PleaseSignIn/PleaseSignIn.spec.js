@@ -13,7 +13,9 @@ const notSignedInMocks = [
       query: CURRENT_USER_QUERY
     },
     result: {
-      data: {}
+      data: {
+        currentUser: null
+      }
     }
   }
 ];
@@ -50,8 +52,6 @@ describe("<PleaseSignIn />", () => {
     await wait(500);
     wrapper.update();
 
-    console.log(wrapper.debug());
-
     const Child = wrapper.find("Hey");
     expect(Child.exists()).toBe(true);
   });
@@ -78,5 +78,8 @@ describe("<PleaseSignIn />", () => {
 
     const SignInForm = wrapper.find("SignInForm");
     expect(SignInForm.exists()).toBe(true);
+    expect(SignInForm.text()).toContain(
+      "You must be signed in to view this page..."
+    );
   });
 });

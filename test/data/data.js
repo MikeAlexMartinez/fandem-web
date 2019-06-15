@@ -11,21 +11,25 @@ const fakeUser = () => ({
   email: casual.email,
   userRoles: [
     {
+      __typename: "UserRole",
       name: "USER"
     }
   ],
   followers: {
+    __typename: "UserFollower",
     followers: []
   },
   country: null,
   profilePicture: [],
   influencers: {
+    __typename: "UserInfluencer",
     influencers: []
   },
   countryCode: null,
   isPrivate: false,
   subscriptions: [
     {
+      __typename: "Subscription",
       name: "FREE"
     }
   ],
