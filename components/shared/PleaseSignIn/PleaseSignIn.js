@@ -9,7 +9,7 @@ import SignInForm from "../SignInForm/SignInForm";
 
 const PleaseSignIn = props => (
   <Query query={CURRENT_USER_QUERY}>
-    {({ data, loading }) => {
+    {({ data, loading, error }) => {
       if (loading) {
         return (
           <Page>
@@ -30,7 +30,8 @@ const PleaseSignIn = props => (
             </Background>
           </Page>
         );
-      } else if (!data || !data.currentUser) {
+      }
+      if (!data || !data.currentUser) {
         return (
           <Page>
             <Background>

@@ -13,9 +13,7 @@ const notSignedInMocks = [
       query: CURRENT_USER_QUERY
     },
     result: {
-      data: {
-        currentUser: null
-      }
+      data: {}
     }
   }
 ];
@@ -33,18 +31,6 @@ const signedInMocks = [
   }
 ];
 
-const loadingMocks = [
-  {
-    request: {
-      query: CURRENT_USER_QUERY
-    },
-    result: {
-      data: null,
-      loading: true
-    }
-  }
-];
-
 const props = {
   classes: {
     root: "mock"
@@ -52,22 +38,45 @@ const props = {
 };
 
 describe("<PleaseSignIn />", () => {
-  it("renders the circular progress when loading", async () => {});
+  it("renders the child component when the user is signed in", async () => {
+    const Hey = () => <h1>Hey!</h1>;
+    const wrapper = mount(
+      <MockedProvider mocks={signedInMocks}>
+        <PleaseSignIn {...props}>
+          <Hey />
+        </PleaseSignIn>
+      </MockedProvider>
+    );
+    await wait(500);
+    wrapper.update();
 
-  it("renders the child component when the user is signed in", async () => {});
+    console.log(wrapper.debug());
+
+    const Child = wrapper.find("Hey");
+    expect(Child.exists()).toBe(true);
+  });
+
+  it("renders the circular progress when loading", async () => {
+    const wrapper = mount(
+      <MockedProvider mocks={notSignedInMocks}>
+        <PleaseSignIn {...props} />
+      </MockedProvider>
+    );
+
+    const Progress = wrapper.find("CircularProgress");
+    expect(Progress.exists()).toBe(true);
+  });
 
   it("renders SignInForm when no user is signed in", async () => {
     const wrapper = mount(
-      <MockedProvider mocks={loadingMocks}>
+      <MockedProvider mocks={notSignedInMocks}>
         <PleaseSignIn {...props} />
       </MockedProvider>
     );
     await wait();
     wrapper.update();
 
-    console.log(wrapper.debug());
-
-    const Progress = wrapper.find("SignInForm");
-    expect(Progress.exists()).toBe(true);
+    const SignInForm = wrapper.find("SignInForm");
+    expect(SignInForm.exists()).toBe(true);
   });
 });

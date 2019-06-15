@@ -3,7 +3,7 @@ import { withStyles, CircularProgress } from "@material-ui/core";
 import { adopt } from "react-adopt";
 
 import Page from "../../shared/Page/Page";
-import PleaseSignIn from "../../shared/PleaseSignIn/PleaseSignIn";
+import PleaseSignIn from "../../shared/PleaseSignIn";
 import Navigation from "../../shared/Navigation/Navigation";
 import CurrentUser from "../../shared/CurrentUser/CurrentUser";
 import PremTeams from "../../shared/PremTeams/PremTeams";

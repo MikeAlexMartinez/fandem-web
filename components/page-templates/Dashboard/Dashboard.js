@@ -2,7 +2,7 @@ import { withStyles } from "@material-ui/core";
 import Navigation from "../../shared/Navigation/Navigation";
 
 import Page from "../../shared/Page/Page";
-import PleaseSignIn from "../../shared/PleaseSignIn/PleaseSignIn";
+import PleaseSignIn from "../../shared/PleaseSignIn";
 
 import styles from "./Dashboard.styles";
 
