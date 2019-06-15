@@ -15,6 +15,7 @@ import { Save } from "@material-ui/icons";
 
 import Title from "../Title/Title";
 import Autocomplete from "../Autocomplete/Autocomplete";
+import ProfilePicture from "../ProfilePicture";
 
 import validateDisplayName from "../../../utils/validators/display-name";
 import validateForm from "../../../utils/validators/form";
@@ -311,6 +312,14 @@ class EditProfileForm extends Component {
 
   render() {
     const { classes, user, countries, teams } = this.props;
+    console.log(user.data.currentUser);
+    const profilePictures = user.data.currentUser.profilePicture;
+    const profilePicture = (profilePictures &&
+      profilePictures.length > 0 &&
+      profilePictures[0].photo) || {
+        id: null,
+        image: null
+      };
     const {
       snackError,
       snackSuccess,
@@ -373,7 +382,7 @@ class EditProfileForm extends Component {
                 <div
                   className={classNames(classes.toprow, "flex row jc-start")}
                 >
-                  <div className={classNames(classes.photo)}>Photo</div>
+                  <ProfilePicture profilePicture={profilePicture} />
                   <div
                     className={classNames(
                       classes.names,

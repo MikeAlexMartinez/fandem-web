@@ -105,6 +105,19 @@ const UPDATE_USER_PROFILE_MUTATION = gql`
   }
 `;
 
+const ADD_PROFILE_PICTURE = gql`
+  mutation ADD_PROFILE_PICTURE($image: String!) {
+    addProfilePicture(image: $image) {
+      id
+      isProfile
+      photo {
+        id
+        image
+      }
+    }
+  }
+`;
+
 export {
   CREATE_USER_MUTATION,
   SIGN_IN_MUTATION,
@@ -112,5 +125,6 @@ export {
   RESET_PASSWORD_MUTATION,
   REQUEST_EMAIL_VALIDATION_MUTATION,
   SUBMIT_EMAIL_TOKEN_MUTATION,
-  UPDATE_USER_PROFILE_MUTATION
+  UPDATE_USER_PROFILE_MUTATION,
+  ADD_PROFILE_PICTURE
 };

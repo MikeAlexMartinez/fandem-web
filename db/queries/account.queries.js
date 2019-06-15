@@ -16,7 +16,11 @@ const PROFILE_PICTURE_FRAGMENT = gql`
   fragment ProfilePicture on User {
     profilePicture: photos(where: { isProfile: true }) {
       id
-      image
+      photo {
+        id
+        image
+      }
+      isProfile
     }
   }
 `;

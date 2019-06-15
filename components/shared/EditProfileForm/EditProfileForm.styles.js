@@ -15,15 +15,6 @@ export default function(theme) {
     toprow: {
       margin: theme.spacing.unit * 2
     },
-    photo: {
-      height: "calc(84px + 84px + 56px)",
-      minWidth: "200px",
-      borderRadius: "10px",
-      marginRight: theme.spacing.unit * 2,
-      backgroundColor: theme.palette.grey["400"],
-      "line-height": "200px",
-      textAlign: "center"
-    },
     fullrow: {
       width: "100%"
     },
