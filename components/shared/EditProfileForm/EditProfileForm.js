@@ -312,14 +312,13 @@ class EditProfileForm extends Component {
 
   render() {
     const { classes, user, countries, teams } = this.props;
-    console.log(user.data.currentUser);
     const profilePictures = user.data.currentUser.profilePicture;
     const profilePicture = (profilePictures &&
       profilePictures.length > 0 &&
       profilePictures[0].photo) || {
-        id: null,
-        image: null
-      };
+      id: null,
+      image: null
+    };
     const {
       snackError,
       snackSuccess,

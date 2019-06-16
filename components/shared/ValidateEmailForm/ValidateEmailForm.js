@@ -142,7 +142,6 @@ class ValidateEmailForm extends Component {
     return (
       <Mutation mutation={SUBMIT_EMAIL_TOKEN_MUTATION} variables={variables}>
         {(validateEmail, { data, error, loading }) => {
-          console.log(data);
           return (
             <form
               method="POST"
