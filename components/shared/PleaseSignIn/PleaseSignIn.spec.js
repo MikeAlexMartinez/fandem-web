@@ -1,8 +1,8 @@
 import { mount } from "enzyme";
 import { MockedProvider } from "react-apollo/test-utils";
 
-import { fakeUser } from "../../../test/data/data";
-import wait from "../../../test/utils/wait";
+import { fakeUser } from "../../../__test__/data/data";
+import wait from "../../../__test__/utils/wait";
 
 import PleaseSignIn from "./PleaseSignIn";
 import { CURRENT_USER_QUERY } from "../../../db/queries/account.queries";

@@ -16,6 +16,8 @@ import {
   Settings
 } from "@material-ui/icons";
 
+import DrawerProfile from "../DrawerProfile";
+
 import styles from "./DrawerContents.style";
 
 const DrawerContents = ({ classes, theme, toggleDrawer }) => (
@@ -34,7 +36,7 @@ const DrawerContents = ({ classes, theme, toggleDrawer }) => (
         </IconButton>
       </div>
       {/* Profile */}
-      <div className={classes.userProfile}>User Profile</div>
+      <DrawerProfile />
 
       {/* Contests */}
       <div>

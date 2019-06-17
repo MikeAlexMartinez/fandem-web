@@ -5,7 +5,7 @@ import { adopt } from "react-adopt";
 import Page from "../../shared/Page/Page";
 import PleaseSignIn from "../../shared/PleaseSignIn";
 import Navigation from "../../shared/Navigation/Navigation";
-import CurrentUser from "../../shared/CurrentUser/CurrentUser";
+import CurrentUser from "../../shared/CurrentUser";
 import PremTeams from "../../shared/PremTeams/PremTeams";
 import Countries from "../../shared/Countries/Countries";
 import EditProfileForm from "../../shared/EditProfileForm/EditProfileForm";
@@ -46,6 +46,8 @@ const EditProfile = props => (
               );
             }
             const { currentUser, countries, premTeams } = composedResponse;
+            console.log(countries);
+            console.log(premTeams);
             return (
               <EditProfileForm
                 user={currentUser}

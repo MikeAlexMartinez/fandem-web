@@ -6,7 +6,7 @@ import PleaseSignIn from "../../shared/PleaseSignIn";
 import Navigation from "../../shared/Navigation/Navigation";
 
 import styles from "./UserProfile.styles";
-import CurrentUser from "../../shared/CurrentUser/CurrentUser";
+import CurrentUser from "../../shared/CurrentUser";
 
 const UserProfile = props => (
   <Page>
