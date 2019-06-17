@@ -46,8 +46,6 @@ const EditProfile = props => (
               );
             }
             const { currentUser, countries, premTeams } = composedResponse;
-            console.log(countries);
-            console.log(premTeams);
             return (
               <EditProfileForm
                 user={currentUser}

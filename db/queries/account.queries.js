@@ -20,7 +20,6 @@ const PROFILE_PICTURE_FRAGMENT = gql`
         id
         image
       }
-      isProfile
     }
   }
 `;

@@ -5,7 +5,13 @@ import { MockedProvider } from "react-apollo/test-utils";
 import DrawerProfile from "./DrawerProfile";
 
 const classes = {
-  userProfile: {}
+  userProfile: {},
+  imgContainer: {},
+  photo: {},
+  spinnerContainer: {},
+  greeting: {},
+  greetingText: {},
+  actions: {}
 };
 
 describe("<DrawerProfile />", () => {

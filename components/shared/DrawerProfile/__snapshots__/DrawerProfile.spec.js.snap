@@ -4,6 +4,12 @@ exports[`<DrawerProfile /> renders and matches snapshot 1`] = `
 <DrawerProfile
   classes={
     Object {
+      "actions": Object {},
+      "greeting": Object {},
+      "greetingText": Object {},
+      "imgContainer": Object {},
+      "photo": Object {},
+      "spinnerContainer": Object {},
       "userProfile": Object {},
     }
   }
@@ -557,17 +563,6 @@ exports[`<DrawerProfile /> renders and matches snapshot 1`] = `
                             ],
                           },
                         },
-                        Object {
-                          "alias": undefined,
-                          "arguments": Array [],
-                          "directives": Array [],
-                          "kind": "Field",
-                          "name": Object {
-                            "kind": "Name",
-                            "value": "isProfile",
-                          },
-                          "selectionSet": undefined,
-                        },
                       ],
                     },
                   },
@@ -584,18 +579,67 @@ exports[`<DrawerProfile /> renders and matches snapshot 1`] = `
           ],
           "kind": "Document",
           "loc": Object {
-            "end": 965,
+            "end": 949,
             "start": 0,
           },
         }
       }
     >
       <div
-        className=""
+        className="flex row jc-center ai-center"
       >
-        <div>
-          User Profile
-        </div>
+        <WithStyles(CircularProgress)
+          size={80}
+        >
+          <CircularProgress
+            classes={
+              Object {
+                "circle": "MuiCircularProgress-circle-7",
+                "circleDisableShrink": "MuiCircularProgress-circleDisableShrink-10",
+                "circleIndeterminate": "MuiCircularProgress-circleIndeterminate-9",
+                "circleStatic": "MuiCircularProgress-circleStatic-8",
+                "colorPrimary": "MuiCircularProgress-colorPrimary-4",
+                "colorSecondary": "MuiCircularProgress-colorSecondary-5",
+                "indeterminate": "MuiCircularProgress-indeterminate-3",
+                "root": "MuiCircularProgress-root-1",
+                "static": "MuiCircularProgress-static-2",
+                "svg": "MuiCircularProgress-svg-6",
+              }
+            }
+            color="primary"
+            disableShrink={false}
+            size={80}
+            thickness={3.6}
+            value={0}
+            variant="indeterminate"
+          >
+            <div
+              className="MuiCircularProgress-root-1 MuiCircularProgress-colorPrimary-4 MuiCircularProgress-indeterminate-3"
+              role="progressbar"
+              style={
+                Object {
+                  "height": 80,
+                  "width": 80,
+                }
+              }
+            >
+              <svg
+                className="MuiCircularProgress-svg-6"
+                viewBox="22 22 44 44"
+              >
+                <circle
+                  className="MuiCircularProgress-circle-7 MuiCircularProgress-circleIndeterminate-9"
+                  cx={44}
+                  cy={44}
+                  fill="none"
+                  r={20.2}
+                  strokeWidth={3.6}
+                  style={Object {}}
+                />
+              </svg>
+            </div>
+          </CircularProgress>
+        </WithStyles(CircularProgress)>
       </div>
     </Query>
   </CurrentUser>
