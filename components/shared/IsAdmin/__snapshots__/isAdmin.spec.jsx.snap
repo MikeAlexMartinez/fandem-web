@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<IsAdmin /> renders and matches the snapshot 1`] = `
-<div>
-  Must be admin
-</div>
+<CurrentUser>
+  <Component />
+</CurrentUser>
 `;

@@ -3,12 +3,13 @@ import Navigation from '../../shared/Navigation';
 
 import Page from '../../shared/Page/Page';
 import PleaseSignIn from '../../shared/PleaseSignIn';
+import IsAdmin from '../../shared/IsAdmin';
 
 const Admin = () => (
   <Page>
     <PleaseSignIn>
       <Navigation>
-        <div>This is The Admin!</div>
+        <IsAdmin>You are an admin!</IsAdmin>
       </Navigation>
     </PleaseSignIn>
   </Page>

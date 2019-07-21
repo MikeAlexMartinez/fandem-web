@@ -4,9 +4,9 @@ exports[`<Admin /> renders and matches the snapshot 1`] = `
 <WithStyles(Page)>
   <WithStyles(PleaseSignIn)>
     <WithStyles(Navigation)>
-      <div>
-        This is The Admin!
-      </div>
+      <WithStyles(IsAdmin)>
+        You are an admin!
+      </WithStyles(IsAdmin)>
     </WithStyles(Navigation)>
   </WithStyles(PleaseSignIn)>
 </WithStyles(Page)>

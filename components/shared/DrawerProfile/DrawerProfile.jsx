@@ -1,13 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-import Link from "next/link";
-import { Typography, CircularProgress, Fab } from "@material-ui/core";
-import { Edit } from "@material-ui/icons";
+import Link from 'next/link';
+import { Typography, CircularProgress, Fab } from '@material-ui/core';
+import { Edit } from '@material-ui/icons';
 
-import CurrentUser from "../CurrentUser";
-import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import CurrentUser from '../CurrentUser';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 const DrawerProfile = ({ classes }) => (
   <CurrentUser>
@@ -21,7 +21,7 @@ const DrawerProfile = ({ classes }) => (
           <div
             className={classNames(
               classes.spinnerContainer,
-              `flex row jc-center ai-center`
+              'flex row jc-center ai-center',
             )}
           >
             <CircularProgress size={80} />
@@ -29,29 +29,30 @@ const DrawerProfile = ({ classes }) => (
         );
       }
 
-      const profilePicture =
-        currentUser &&
-        currentUser.profilePicture &&
-        currentUser.profilePicture.length === 1 &&
-        currentUser.profilePicture[0].photo;
+      const profilePicture = currentUser
+        && currentUser.profilePicture
+        && currentUser.profilePicture.length === 1
+        && currentUser.profilePicture[0].photo;
       return (
         <div
           className={classNames(
             classes.userProfile,
-            `flex column jc-start ai-stretch`
+            'flex column jc-start ai-stretch',
           )}
         >
           {/* picture, edit button & notifs */}
-          <div className={classNames(`flex row jc-sb ai-start`)}>
+          <div className={classNames('flex row jc-sb ai-start')}>
             <div className={classNames(classes.imgContainer)}>
               {!profilePicture.image && (
                 <img
+                  alt="profile placeholder"
                   src="/static/images/male-profile-image.png"
                   className={classNames(classes.photo)}
                 />
               )}
               {profilePicture.image && (
                 <img
+                  alt="profile"
                   src={profilePicture.image}
                   className={classNames(classes.photo)}
                 />
@@ -61,7 +62,7 @@ const DrawerProfile = ({ classes }) => (
             <div
               className={classNames(
                 classes.actions,
-                `flex column jc-start ai-end`
+                'flex column jc-start ai-end',
               )}
             >
               <Fab>
@@ -75,14 +76,16 @@ const DrawerProfile = ({ classes }) => (
           <div
             className={classNames(
               classes.greeting,
-              `flex row jc-center ai-center`
+              'flex row jc-center ai-center',
             )}
           >
             <Typography
               variant="subtitle2"
               className={classNames(classes.greetingText)}
             >
-              Hello {currentUser.name}
+              Hello
+              {' '}
+              {currentUser.name}
             </Typography>
           </div>
         </div>
@@ -92,7 +95,7 @@ const DrawerProfile = ({ classes }) => (
 );
 
 DrawerProfile.propTypes = {
-  classes: PropTypes.object
+  classes: PropTypes.object,
 };
 
 export default DrawerProfile;

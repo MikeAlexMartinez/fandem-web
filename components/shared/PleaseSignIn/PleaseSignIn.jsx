@@ -1,15 +1,17 @@
-import { Query } from "react-apollo";
-import { CircularProgress } from "@material-ui/core";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Query } from 'react-apollo';
+import { CircularProgress } from '@material-ui/core';
 
-import { CURRENT_USER_QUERY } from "../../../db/queries/account.queries";
+import { CURRENT_USER_QUERY } from '../../../db/queries/account.queries';
 
-import Page from "../Page/Page";
-import Background from "../Background/Background";
-import SignInForm from "../SignInForm/SignInForm";
+import Page from '../Page/Page';
+import Background from '../Background/Background';
+import SignInForm from '../SignInForm/SignInForm';
 
 const PleaseSignIn = props => (
   <Query query={CURRENT_USER_QUERY}>
-    {({ data, loading, error }) => {
+    {({ data, loading }) => {
       if (loading) {
         return (
           <Page>
@@ -21,8 +23,8 @@ const PleaseSignIn = props => (
               >
                 <CircularProgress
                   style={{
-                    height: "200px",
-                    width: "200px"
+                    height: '200px',
+                    width: '200px',
                   }}
                   color="secondary"
                 />
@@ -50,5 +52,9 @@ const PleaseSignIn = props => (
     }}
   </Query>
 );
+
+PleaseSignIn.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
 export default PleaseSignIn;

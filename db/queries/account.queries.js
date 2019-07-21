@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 const DISPLAY_NAME_EXISTS_QUERY = gql`
   query DISPLAY_NAME_EXISTS_QUERY($displayName: String!) {
@@ -90,5 +90,5 @@ export {
   DISPLAY_NAME_EXISTS_QUERY,
   EMAIL_EXISTS_QUERY,
   CURRENT_USER_QUERY,
-  COUNTRIES_QUERY
+  COUNTRIES_QUERY,
 };
