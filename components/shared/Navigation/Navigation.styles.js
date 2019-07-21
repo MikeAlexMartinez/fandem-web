@@ -1,4 +1,4 @@
-export default function(theme) {
+export default function (theme) {
   const drawerWidth = 300;
 
   return {

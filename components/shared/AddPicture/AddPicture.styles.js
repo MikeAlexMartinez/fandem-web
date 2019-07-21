@@ -1,21 +1,21 @@
-export default function(theme) {
+export default function (theme) {
   const paddingSize = theme.spacing.unit * 3;
   return {
     container: {
-      minHeight: "250px"
+      minHeight: '250px',
     },
     image: {
       margin: `${theme.spacing.unit}px auto`,
-      maxHeight: "180px"
+      maxHeight: '180px',
     },
     input: {
-      display: "none"
+      display: 'none',
     },
     actions: {
-      padding: `0 ${paddingSize}px ${paddingSize}px ${paddingSize}px`
+      padding: `0 ${paddingSize}px ${paddingSize}px ${paddingSize}px`,
     },
     actionRoot: {
-      margin: 0
-    }
+      margin: 0,
+    },
   };
 }

@@ -1,10 +1,11 @@
+import React from 'react';
 import { shallow } from 'enzyme';
 import toJSON from 'enzyme-to-json';
-import AdminComponent from './Admin';
+import IsAdminComponent from './IsAdmin';
 
-describe('<Admin />', () => {
+describe('<IsAdmin />', () => {
   it('renders and matches the snapshot', () => {
-    const wrapper = shallow(<AdminComponent />);
+    const wrapper = shallow(<IsAdminComponent />);
     expect(toJSON(wrapper)).toMatchSnapshot();
   });
 });

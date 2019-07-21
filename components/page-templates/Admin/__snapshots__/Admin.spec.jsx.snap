@@ -3,9 +3,11 @@
 exports[`<Admin /> renders and matches the snapshot 1`] = `
 <WithStyles(Page)>
   <WithStyles(PleaseSignIn)>
-    <Navigation>
-      This is The Admin!
-    </Navigation>
+    <WithStyles(Navigation)>
+      <div>
+        This is The Admin!
+      </div>
+    </WithStyles(Navigation)>
   </WithStyles(PleaseSignIn)>
 </WithStyles(Page)>
 `;

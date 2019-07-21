@@ -1,5 +1,5 @@
 import { withStyles } from "@material-ui/core";
-import Navigation from "../../shared/Navigation/Navigation";
+import Navigation from "../../shared/Navigation";
 
 import Page from "../../shared/Page/Page";
 import PleaseSignIn from "../../shared/PleaseSignIn";

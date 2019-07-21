@@ -4,7 +4,7 @@ import { adopt } from "react-adopt";
 
 import Page from "../../shared/Page/Page";
 import PleaseSignIn from "../../shared/PleaseSignIn";
-import Navigation from "../../shared/Navigation/Navigation";
+import Navigation from "../../shared/Navigation";
 import CurrentUser from "../../shared/CurrentUser";
 import PremTeams from "../../shared/PremTeams/PremTeams";
 import Countries from "../../shared/Countries/Countries";

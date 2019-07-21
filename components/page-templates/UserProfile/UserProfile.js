@@ -3,7 +3,7 @@ import { withStyles } from "@material-ui/core";
 
 import Page from "../../shared/Page/Page";
 import PleaseSignIn from "../../shared/PleaseSignIn";
-import Navigation from "../../shared/Navigation/Navigation";
+import Navigation from "../../shared/Navigation";
 
 import styles from "./UserProfile.styles";
 import CurrentUser from "../../shared/CurrentUser";
