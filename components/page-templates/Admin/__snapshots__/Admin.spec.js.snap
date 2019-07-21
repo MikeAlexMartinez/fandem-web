@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Admin /> renders and matches the snapshot 1`] = `
+<WithStyles(Page)>
+  <WithStyles(PleaseSignIn)>
+    <Navigation>
+      This is The Admin!
+    </Navigation>
+  </WithStyles(PleaseSignIn)>
+</WithStyles(Page)>
+`;

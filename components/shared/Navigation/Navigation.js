@@ -1,22 +1,25 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
-  withStyles,
   Typography,
   AppBar,
   Toolbar,
   IconButton,
-  Drawer
-} from "@material-ui/core";
-import { Menu } from "@material-ui/icons";
-import classNames from "classnames";
+  Drawer,
+} from '@material-ui/core';
+import { Menu } from '@material-ui/icons';
+import classNames from 'classnames';
 
-import styles from "./Navigation.styles";
-
-import DrawerContents from "../DrawerContents/DrawerContents";
+import DrawerContents from '../DrawerContents/DrawerContents';
 
 class Navigation extends Component {
+  static propTypes = {
+    classes: PropTypes.object.isRequired,
+    container: PropTypes.func,
+  };
+
   state = {
-    open: false
+    open: false,
   };
 
   handleDrawerToggle = () => {
@@ -24,14 +27,14 @@ class Navigation extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, children, container } = this.props;
     const { open } = this.state;
     return (
       <div className={classes.root}>
         <AppBar
           position="fixed"
           className={classNames(classes.appBar, {
-            [classes.appBarShift]: open
+            [classes.appBarShift]: open,
           })}
         >
           <Toolbar disableGutters={!open}>
@@ -40,7 +43,7 @@ class Navigation extends Component {
               aria-label="Open drawer"
               onClick={this.handleDrawerToggle}
               className={classNames(classes.menuButton, {
-                [classes.hide]: open
+                [classes.hide]: open,
               })}
             >
               <Menu />
@@ -51,26 +54,26 @@ class Navigation extends Component {
           </Toolbar>
         </AppBar>
         <Drawer
-          container={this.props.container}
+          container={container}
           variant="persistent"
-          anchor={classes.theme.direction === "rtl" ? "right" : "left"}
+          anchor={classes.theme.direction === 'rtl' ? 'right' : 'left'}
           open={open}
           classes={{
-            paper: classes.drawerPaper
+            paper: classes.drawerPaper,
           }}
         >
           <DrawerContents toggleDrawer={this.handleDrawerToggle} />
         </Drawer>
         <main
           className={classNames(classes.content, {
-            [classes.contentShift]: open
+            [classes.contentShift]: open,
           })}
         >
-          {this.props.children}
+          {children}
         </main>
       </div>
     );
   }
 }
 
-export default withStyles(styles, { withTheme: true })(Navigation);
+export default Navigation;

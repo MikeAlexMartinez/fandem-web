@@ -4,67 +4,67 @@ export default function(theme) {
   return {
     theme,
     root: {
-      display: "flex"
+      display: 'flex',
     },
     appBar: {
-      transition: theme.transitions.create(["margin", "width"], {
+      transition: theme.transitions.create(['margin', 'width'], {
         easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen
-      })
+        duration: theme.transitions.duration.leavingScreen,
+      }),
     },
     appBarShift: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
-      transition: theme.transitions.create(["margin", "width"], {
+      transition: theme.transitions.create(['margin', 'width'], {
         easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen
-      })
+        duration: theme.transitions.duration.enteringScreen,
+      }),
     },
     menuButton: {
       marginLeft: 12,
-      marginRight: 20
+      marginRight: 20,
     },
     hide: {
-      display: "none"
+      display: 'none',
     },
     drawer: {
       width: drawerWidth,
-      flexShrink: 0
+      flexShrink: 0,
     },
     drawerPaper: {
-      width: drawerWidth
+      width: drawerWidth,
     },
     drawerHeader: {
-      display: "flex",
-      alignItems: "center",
-      padding: "0 8px",
+      display: 'flex',
+      alignItems: 'center',
+      padding: '0 8px',
       ...theme.mixins.toolbar,
-      justifyContent: "flex-end"
+      justifyContent: 'flex-end',
     },
     content: {
       flexGrow: 1,
       padding: theme.spacing.unit * 3,
-      transition: theme.transitions.create("margin", {
+      transition: theme.transitions.create('margin', {
         easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen
+        duration: theme.transitions.duration.leavingScreen,
       }),
       marginLeft: 0,
-      "@media (orientation: landscape)": {
-        marginTop: "48px"
+      '@media (orientation: landscape)': {
+        marginTop: '48px',
       },
-      [theme.breakpoints.up("sm")]: {
-        marginTop: "64px"
+      [theme.breakpoints.up('sm')]: {
+        marginTop: '64px',
       },
-      [theme.breakpoints.down("xs")]: {
-        marginTop: "54px"
-      }
+      [theme.breakpoints.down('xs')]: {
+        marginTop: '54px',
+      },
     },
     contentShift: {
-      transition: theme.transitions.create("margin", {
+      transition: theme.transitions.create('margin', {
         easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen
+        duration: theme.transitions.duration.enteringScreen,
       }),
-      marginLeft: drawerWidth
-    }
+      marginLeft: drawerWidth,
+    },
   };
 }
