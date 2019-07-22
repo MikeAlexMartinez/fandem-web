@@ -4,12 +4,15 @@ import Navigation from '../../shared/Navigation';
 import Page from '../../shared/Page/Page';
 import PleaseSignIn from '../../shared/PleaseSignIn';
 import IsAdmin from '../../shared/IsAdmin';
+import UsersGeneralInfo from '../../shared/UsersGeneralInfo';
 
 const Admin = () => (
   <Page>
     <PleaseSignIn>
       <Navigation>
-        <IsAdmin>You are an admin!</IsAdmin>
+        <IsAdmin>
+          <UsersGeneralInfo />
+        </IsAdmin>
       </Navigation>
     </PleaseSignIn>
   </Page>

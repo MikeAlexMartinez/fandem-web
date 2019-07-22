@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Title /> renders and matches the snapshot 1`] = `
+<div
+  className="test"
+>
+  <div
+    className="test flex row jc-sb ai-center"
+  >
+    <div
+      className="test"
+    >
+      <WithStyles(Typography)
+        variant="h3"
+      >
+        Test Title
+      </WithStyles(Typography)>
+    </div>
+    <div
+      className="test flex row jc-end ai-center"
+    >
+      <div>
+        Children
+      </div>
+    </div>
+  </div>
+  <WithStyles(Divider) />
+</div>
+`;

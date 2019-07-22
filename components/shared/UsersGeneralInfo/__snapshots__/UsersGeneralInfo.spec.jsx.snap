@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UsersGeneralInfo /> renders and matches the snapshot 1`] = `
+<div>
+  <WithStyles(Title)
+    title="Fandem Users"
+  />
+  <div>
+    Fandem Users high level information
+  </div>
+</div>
+`;
