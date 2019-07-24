@@ -6,7 +6,7 @@ exports[`<Admin /> renders and matches the snapshot 1`] = `
     <WithStyles(Navigation)>
       <WithStyles(IsAdmin)>
         <WithStyles(UsersGeneralInfo) />
-        <WithStyles(GameplayInfo) />
+        <WithStyles(WithStyles(GameplayInfo)) />
       </WithStyles(IsAdmin)>
     </WithStyles(Navigation)>
   </WithStyles(PleaseSignIn)>

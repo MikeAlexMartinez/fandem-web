@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GameweekAccordion /> renders and matches the snapshot 1`] = `
+<GameweekAccordion
+  classes={
+    Object {
+      "heading": "GameweekAccordion-heading-2",
+      "root": "GameweekAccordion-root-1",
+      "secondaryHeading": "GameweekAccordion-secondaryHeading-3",
+    }
+  }
+  gameweeks={
+    Array [
+      Object {
+        "__typename": "Gameweek",
+        "deadlineTime": "2019-08-09T18:00:00.000Z",
+        "fixtures": Array [
+          Object {
+            "__typename": "Fixture",
+            "finished": false,
+            "fixtureId": 1,
+            "fplCode": 1059702,
+            "id": "cjycw2ups0i3s0787mh7ya6x6",
+            "kickoffTime": "2019-08-09T19:00:00.000Z",
+            "minutes": 0,
+            "teamA": Object {
+              "__typename": "AwayTeamFixture",
+              "awayTeam": Object {
+                "__typename": "Team",
+                "name": "Norwich",
+              },
+            },
+            "teamAScore": null,
+            "teamH": Object {
+              "__typename": "HomeTeamFixture",
+              "homeTeam": Object {
+                "__typename": "Team",
+                "name": "Liverpool",
+              },
+            },
+            "teamHScore": null,
+          },
+          Object {
+            "__typename": "Fixture",
+            "finished": false,
+            "fixtureId": 8,
+            "fplCode": 1059709,
+            "id": "cjycw2upt0i3t0787b32wik42",
+            "kickoffTime": "2019-08-10T11:30:00.000Z",
+            "minutes": 0,
+            "teamA": Object {
+              "__typename": "AwayTeamFixture",
+              "awayTeam": Object {
+                "__typename": "Team",
+                "name": "Man City",
+              },
+            },
+            "teamAScore": null,
+            "teamH": Object {
+              "__typename": "HomeTeamFixture",
+              "homeTeam": Object {
+                "__typename": "Team",
+                "name": "West Ham",
+              },
+            },
+            "teamHScore": null,
+          },
+          Object {
+            "__typename": "Fixture",
+            "finished": false,
+            "fixtureId": 2,
+            "fplCode": 1059703,
+            "id": "cjycw2upu0i3u0787n9fpb3nx",
+            "kickoffTime": "2019-08-10T14:00:00.000Z",
+            "minutes": 0,
+            "teamA": Object {
+              "__typename": "AwayTeamFixture",
+              "awayTeam": Object {
+                "__typename": "Team",
+                "name": "Sheffield Utd",
+              },
+            },
+            "teamAScore": null,
+            "teamH": Object {
+              "__typename": "HomeTeamFixture",
+              "homeTeam": Object {
+                "__typename": "Team",
+                "name": "Bournemouth",
+              },
+            },
+            "teamHScore": null,
+          },
+          Object {
+            "__typename": "Fixture",
+            "finished": false,
+            "fixtureId": 3,
+            "fplCode": 1059704,
+            "id": "cjycw2upu0i3v0787r7k4u2jo",
+            "kickoffTime": "2019-08-10T14:00:00.000Z",
+            "minutes": 0,
+            "teamA": Object {
+              "__typename": "AwayTeamFixture",
+              "awayTeam": Object {
+                "__typename": "Team",
+                "name": "Southampton",
+              },
+            },
+            "teamAScore": null,
+            "teamH": Object {
+              "__typename": "HomeTeamFixture",
+              "homeTeam": Object {
+                "__typename": "Team",
+                "name": "Burnley",
+              },
+            },
+            "teamHScore": null,
+          },
+        ],
+        "fplEventId": 1,
+        "id": "cjycw2b3w0fzg0787mmcwrghl",
+        "isCurrent": false,
+        "isNext": true,
+        "isPrevious": false,
+        "name": "Gameweek 1",
+      },
+    ]
+  }
+  openGameweek={1}
+  toggleGameweek={[Function]}
+/>
+`;

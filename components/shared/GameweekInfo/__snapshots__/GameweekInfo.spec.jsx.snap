@@ -8,5 +8,6 @@ exports[`<GameweekInfo /> renders and matches the snapshot 1`] = `
     }
   }
   title="test title"
+  toggleGameweek={[Function]}
 />
 `;

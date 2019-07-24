@@ -1,12 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<GameplayInfo /> renders and matches the snapshot 1`] = `
-<div>
-  <WithStyles(Title)
-    title="Gameplay Information"
-  />
-  <GameData>
-    <Component />
-  </GameData>
-</div>
+<GameplayInfo
+  classes={
+    Object {
+      "loading": "GameplayInfo-loading-1",
+    }
+  }
+/>
 `;

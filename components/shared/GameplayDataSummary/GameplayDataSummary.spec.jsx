@@ -5,7 +5,11 @@ import GameplayDataSummaryComponent from './index';
 
 describe('<GameplayDataSummary />', () => {
   it('renders and matches the snapshot', () => {
-    const wrapper = shallow(<GameplayDataSummaryComponent />);
+    const wrapper = shallow(
+      <GameplayDataSummaryComponent
+        toggleGameweek={() => {}}
+      />,
+    );
     expect(toJSON(wrapper)).toMatchSnapshot();
   });
 });

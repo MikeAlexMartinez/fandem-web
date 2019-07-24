@@ -8,5 +8,6 @@ exports[`<GameplayDataSummary /> renders and matches the snapshot 1`] = `
       "seasonInfoContainer": "GameplayDataSummary-seasonInfoContainer-1",
     }
   }
+  toggleGameweek={[Function]}
 />
 `;
