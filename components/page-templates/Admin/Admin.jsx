@@ -5,6 +5,7 @@ import Page from '../../shared/Page/Page';
 import PleaseSignIn from '../../shared/PleaseSignIn';
 import IsAdmin from '../../shared/IsAdmin';
 import UsersGeneralInfo from '../../shared/UsersGeneralInfo';
+import GameplayInfo from '../../shared/GameplayInfo';
 
 const Admin = () => (
   <Page>
@@ -12,6 +13,7 @@ const Admin = () => (
       <Navigation>
         <IsAdmin>
           <UsersGeneralInfo />
+          <GameplayInfo />
         </IsAdmin>
       </Navigation>
     </PleaseSignIn>

@@ -1,4 +1,4 @@
-export default function (theme) {
+export default function styles(theme) {
   return {
     spinnerContainer: {
       height: '250px',
@@ -18,7 +18,6 @@ export default function (theme) {
     photo: {
       height: '180px',
       width: '100%',
-      objectFit: 'cover',
     },
     greeting: {
       height: '70px',

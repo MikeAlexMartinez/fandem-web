@@ -1,86 +1,89 @@
-const globalStyles = theme => ({
-  "@global": {
+const globalStyles = () => ({
+  '@global': {
     a: {
-      textDecoration: "none",
-      color: "inherit"
+      textDecoration: 'none',
+      color: 'inherit',
     },
-    ".text-center": {
-      "text-align": "center"
+    '.text-center': {
+      'text-align': 'center',
     },
-    ".hover-link": {
-      position: "relative",
-      "&:before": {
+    '.hover-link': {
+      position: 'relative',
+      '&:before': {
         content: "''",
-        position: "absolute",
-        width: "100%",
-        height: "2px",
-        backgroundColor: "#1f1693",
-        bottom: "-4px",
+        position: 'absolute',
+        width: '100%',
+        height: '2px',
+        backgroundColor: '#1f1693',
+        bottom: '-4px',
         left: 0,
-        visibility: "hidden",
-        transform: "scaleX(0)",
-        transition: "all 0.12s ease-in-out 0s"
+        visibility: 'hidden',
+        transform: 'scaleX(0)',
+        transition: 'all 0.12s ease-in-out 0s',
       },
-      "&:hover": {
-        color: "#1f1693",
-        "&:before": {
-          visibility: "visible",
-          transform: "scaleX(1)"
-        }
-      }
+      '&:hover': {
+        color: '#1f1693',
+        '&:before': {
+          visibility: 'visible',
+          transform: 'scaleX(1)',
+        },
+      },
     },
-    ".flex": {
-      display: "flex",
-      "&.column": {
-        "flex-direction": "column"
+    '.flex': {
+      display: 'flex',
+      '&.column': {
+        'flex-direction': 'column',
       },
-      "&.row": {
-        "flex-direction": "row"
+      '&.row': {
+        'flex-direction': 'row',
       },
-      "&.jc-start": {
-        "justify-content": "flex-start"
+      '&.jc-start': {
+        'justify-content': 'flex-start',
       },
-      "&.jc-sb": {
-        "justify-content": "space-between"
+      '&.jc-sb': {
+        'justify-content': 'space-between',
       },
-      "&.jc-end": {
-        "justify-content": "flex-end"
+      '&.jc-end': {
+        'justify-content': 'flex-end',
       },
-      "&.jc-sa": {
-        "justify-content": "space-around"
+      '&.jc-sa': {
+        'justify-content': 'space-around',
       },
-      "&.jc-center": {
-        "justify-content": "center"
+      '&.jc-center': {
+        'justify-content': 'center',
       },
-      "&.ai-start": {
-        "align-items": "flex-start"
+      '&.jc-evenly': {
+        'justify-content': 'space-evenly',
       },
-      "&.ai-sb": {
-        "align-items": "space-between"
+      '&.ai-start': {
+        'align-items': 'flex-start',
       },
-      "&.ai-end": {
-        "align-items": "flex-end"
+      '&.ai-sb': {
+        'align-items': 'space-between',
       },
-      "&.ai-sa": {
-        "align-items": "space-around"
+      '&.ai-end': {
+        'align-items': 'flex-end',
       },
-      "&.ai-center": {
-        "align-items": "center"
+      '&.ai-sa': {
+        'align-items': 'space-around',
       },
-      "&.ai-stretch": {
-        "align-items": "stretch"
-      }
+      '&.ai-center': {
+        'align-items': 'center',
+      },
+      '&.ai-stretch': {
+        'align-items': 'stretch',
+      },
     },
     fieldset: {
-      border: "none",
-      "margin-inline-start": "0",
-      "margin-inline-end": "0",
-      "padding-block-start": "0",
-      "padding-inline-start": "0",
-      "padding-inline-end": "0",
-      "padding-block-end": "0"
-    }
-  }
+      border: 'none',
+      'margin-inline-start': '0',
+      'margin-inline-end': '0',
+      'padding-block-start': '0',
+      'padding-inline-start': '0',
+      'padding-inline-end': '0',
+      'padding-block-end': '0',
+    },
+  },
 });
 
 export default globalStyles;

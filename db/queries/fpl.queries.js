@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 const GAME_DATA_QUERY = gql`
   query GAME_DATA_QUERY {
-    seasons {
+    gameplayData {
       id
       label
       competition
@@ -11,6 +11,7 @@ const GAME_DATA_QUERY = gql`
       }) {
         id
         fplEventId
+        deadlineTime
         name
       }
       nextGameweek: events(where: {
@@ -18,6 +19,7 @@ const GAME_DATA_QUERY = gql`
       }) {
         id
         fplEventId
+        deadlineTime
         name
       }
       events {

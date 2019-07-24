@@ -16,7 +16,9 @@ const successMock = [
       query: GAME_DATA_QUERY,
     },
     result: {
-      data: fakeGameData(seasonId),
+      data: {
+        gameplayData: fakeGameData(seasonId),
+      },
     },
   },
 ];

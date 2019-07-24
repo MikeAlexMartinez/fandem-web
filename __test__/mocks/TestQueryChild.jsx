@@ -8,12 +8,15 @@ export default function testSeasonChild({ data, error, loading }) {
   if (error) {
     return <div className="error">Error!</div>;
   }
-  const { seasons } = data;
-  return (
-    <div>
-      {seasons && seasons.map(
-        season => <div key={season.id} id={season.id}>{season.competition}</div>,
-      )}
-    </div>
-  );
+  if (data && data.gameplayData) {
+    const { gameplayData } = data;
+    return (
+      <div>
+        {gameplayData && gameplayData.map(
+          season => <div key={season.id} id={season.id}>{season.competition}</div>,
+        )}
+      </div>
+    );
+  }
+  return <div className="no-data">No Data found</div>;
 }

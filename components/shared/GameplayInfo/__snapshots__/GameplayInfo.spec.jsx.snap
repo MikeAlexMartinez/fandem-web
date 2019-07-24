@@ -2,6 +2,11 @@
 
 exports[`<GameplayInfo /> renders and matches the snapshot 1`] = `
 <div>
-  GameplayInfo
+  <WithStyles(Title)
+    title="Gameplay Information"
+  />
+  <GameData>
+    <Component />
+  </GameData>
 </div>
 `;

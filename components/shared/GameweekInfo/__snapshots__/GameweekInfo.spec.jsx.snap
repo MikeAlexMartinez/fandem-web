@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GameweekInfo /> renders and matches the snapshot 1`] = `
+<GameweekInfo
+  classes={
+    Object {
+      "example": "GameweekInfo-example-1",
+    }
+  }
+  title="test title"
+/>
+`;

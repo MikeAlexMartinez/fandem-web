@@ -11,7 +11,7 @@ import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 const DrawerProfile = ({ classes }) => (
   <CurrentUser>
-    {({ data: { currentUser }, loading, error }) => {
+    {({ data, loading, error }) => {
       if (error) {
         return <ErrorMessage message="Error retrieving user information" />;
       }
@@ -29,67 +29,72 @@ const DrawerProfile = ({ classes }) => (
         );
       }
 
-      const profilePicture = currentUser
-        && currentUser.profilePicture
-        && currentUser.profilePicture.length === 1
-        && currentUser.profilePicture[0].photo;
-      return (
-        <div
-          className={classNames(
-            classes.userProfile,
-            'flex column jc-start ai-stretch',
-          )}
-        >
-          {/* picture, edit button & notifs */}
-          <div className={classNames('flex row jc-sb ai-start')}>
-            <div className={classNames(classes.imgContainer)}>
-              {!profilePicture.image && (
-                <img
-                  alt="profile placeholder"
-                  src="/static/images/male-profile-image.png"
-                  className={classNames(classes.photo)}
-                />
-              )}
-              {profilePicture.image && (
-                <img
-                  alt="profile"
-                  src={profilePicture.image}
-                  className={classNames(classes.photo)}
-                />
-              )}
-            </div>
-            {/* Actions */}
-            <div
-              className={classNames(
-                classes.actions,
-                'flex column jc-start ai-end',
-              )}
-            >
-              <Fab>
-                <Link href="/editprofile">
-                  <Edit />
-                </Link>
-              </Fab>
-            </div>
-          </div>
-          {/* greeting */}
+      if (data && data.currentUser) {
+        const { currentUser } = data;
+        const profilePicture = currentUser
+          && currentUser.profilePicture
+          && currentUser.profilePicture.length === 1
+          && currentUser.profilePicture[0].photo;
+        return (
           <div
             className={classNames(
-              classes.greeting,
-              'flex row jc-center ai-center',
+              classes.userProfile,
+              'flex column jc-start ai-stretch',
             )}
           >
-            <Typography
-              variant="subtitle2"
-              className={classNames(classes.greetingText)}
+            {/* picture, edit button & notifs */}
+            <div className={classNames('flex row jc-sb ai-start')}>
+              <div className={classNames(classes.imgContainer)}>
+                {(!profilePicture || !profilePicture.image) && (
+                  <img
+                    alt="profile placeholder"
+                    src="/static/images/male-profile-image.png"
+                    className={classNames(classes.photo)}
+                  />
+                )}
+                {profilePicture && profilePicture.image && (
+                  <img
+                    alt="profile"
+                    src={profilePicture.image}
+                    className={classNames(classes.photo)}
+                  />
+                )}
+              </div>
+              {/* Actions */}
+              <div
+                className={classNames(
+                  classes.actions,
+                  'flex column jc-start ai-end',
+                )}
+              >
+                <Fab>
+                  <Link href="/editprofile">
+                    <Edit />
+                  </Link>
+                </Fab>
+              </div>
+            </div>
+            {/* greeting */}
+            <div
+              className={classNames(
+                classes.greeting,
+                'flex row jc-center ai-center',
+              )}
             >
-              Hello
-              {' '}
-              {currentUser.name}
-            </Typography>
+              <Typography
+                variant="subtitle2"
+                className={classNames(classes.greetingText)}
+              >
+                Hello
+                {' '}
+                {currentUser.name}
+              </Typography>
+            </div>
           </div>
-        </div>
-      );
+        );
+      }
+
+      return <ErrorMessage message="No Current User Retrieved" />;
     }}
   </CurrentUser>
 );

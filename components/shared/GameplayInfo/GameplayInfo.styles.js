@@ -1,7 +1,7 @@
-export default function gameplayInfoStyles() {
+export default function gameplayInfoStyles(theme) {
   return {
-    example: {
-      height: '100px',
+    loading: {
+      padding: theme.spacing * 2,
     },
   };
 }
