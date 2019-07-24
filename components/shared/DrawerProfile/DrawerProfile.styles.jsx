@@ -18,6 +18,7 @@ export default function styles(theme) {
     photo: {
       height: '180px',
       width: '100%',
+      objectFit: 'cover',
     },
     greeting: {
       height: '70px',
