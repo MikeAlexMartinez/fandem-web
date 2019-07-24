@@ -1,12 +1,14 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 
-export default function testSeasonChild({ data: { seasons }, error, loading }) {
+export default function testSeasonChild({ data, error, loading }) {
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="loading">Loading...</div>;
   }
   if (error) {
-    return <div>Error!</div>;
+    return <div className="error">Error!</div>;
   }
+  const { seasons } = data;
   return (
     <div>
       {seasons && seasons.map(
