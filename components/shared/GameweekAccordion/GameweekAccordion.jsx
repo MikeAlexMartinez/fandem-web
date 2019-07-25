@@ -11,8 +11,10 @@ import isWithinInterval from 'date-fns/isWithinInterval';
 
 import { gameweekDetailPropType } from '../../general-prop-types';
 
-import styles from './GameweekAccordion.styles';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import FixtureGrid from '../FixtureGrid';
+
+import styles from './GameweekAccordion.styles';
 
 const isWithinOneDay = (deadlineTime) => {
   const deadline = new Date(deadlineTime);
@@ -52,9 +54,7 @@ const GameweekAccordion = ({
           </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          {gameweek.fixtures.map(fixture => (
-            <Typography key={fixture.id}>{`Fixture Id: ${fixture.fixtureId}`}</Typography>
-          ))}
+          <FixtureGrid fixtures={gameweek.fixtures} />
         </ExpansionPanelDetails>
       </ExpansionPanel>
     ))) || (

@@ -1,4 +1,4 @@
-export default function () {
+export default function adminFixtureStyles() {
   return {
     container: {
       height: '100px',

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AdminFixture /> renders and matches the snapshot 1`] = `
+<AdminFixture
+  classes={
+    Object {
+      "container": "AdminFixture-container-1",
+    }
+  }
+/>
+`;

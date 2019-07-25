@@ -1,10 +1,16 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import { withStyles } from '@material-ui/core';
 
-const Template = () => <div>Template</div>;
+import styles from './Template.styles';
 
-// Template.propTypes = {
+const Template = ({ classes }) => (
+  <div className={classnames(classes.container)}>Template</div>
+);
 
-// };
+Template.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
-export default Template;
+export default withStyles(styles)(Template);
