@@ -42,7 +42,8 @@
     "react-jss": "^8.6.1",
     "react-select": "^3.0.3",
     "react-stripe-checkout": "^2.6.3",
-    "react-transition-group": "^2.5.0"
+    "react-transition-group": "^2.5.0",
+    "styled-jsx": "^3.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",

@@ -1,17 +1,17 @@
-import React from "react";
-import App, { Container } from "next/app";
-import Head from "next/head";
-import { MuiThemeProvider } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import JssProvider from "react-jss/lib/JssProvider";
-import getPageContext from "../utils/get-page-context";
-import { ApolloProvider } from "react-apollo";
-import withApollo from "../lib/with-apollo";
+import React from 'react';
+import App, { Container } from 'next/app';
+import Head from 'next/head';
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import JssProvider from 'react-jss/lib/JssProvider';
+import { ApolloProvider } from 'react-apollo';
+import getPageContext from '../utils/get-page-context';
+import withApollo from '../lib/with-apollo';
 
 // import { ApolloProvider } from 'react-apollo';
 // import withApollo from '../lib/with-apollo';
 
-//comment
+// comment
 class MyApp extends App {
   // Special Next.js only lifecycle method which runs
   // before Component renders and exposes on props
@@ -33,7 +33,7 @@ class MyApp extends App {
 
   componentDidMount() {
     // remove the server-side injected CSS.
-    const jssStyles = document.querySelector("#jss-server-side");
+    const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles && jssStyles.parentNode) {
       jssStyles.parentNode.removeChild(jssStyles);
     }
@@ -58,7 +58,8 @@ class MyApp extends App {
               theme={this.pageContext.theme}
               sheetsManager={this.pageContext.sheetsManager}
             >
-              {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+              {/* CssBaseline kickstart an elegant, consistent,
+                * and simple baseline to build upon. */}
               <CssBaseline />
               {/* Pass pageContext to the _document though the renderPage enhancer
                   to render collected styles on server-side. */}

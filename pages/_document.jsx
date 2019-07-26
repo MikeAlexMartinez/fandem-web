@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Document, { Head, Main, NextScript } from "next/document";
-import flush from "styled-jsx/server";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Document, { Head, Main, NextScript } from 'next/document';
+import flush from 'styled-jsx/server';
 
 export default class MyDocument extends Document {
   static getInitialProps(ctx) {
@@ -29,14 +29,15 @@ export default class MyDocument extends Document {
 
     // Render app and page and get the context of the page with collected side effects.
     let pageContext;
-    const page = ctx.renderPage(Component => {
-      const WrappedComponent = props => {
+    const page = ctx.renderPage((Component) => {
+      const WrappedComponent = (props) => {
+        // eslint-disable-next-line prefer-destructuring
         pageContext = props.pageContext;
         return <Component {...props} />;
       };
 
       WrappedComponent.propTypes = {
-        pageContext: PropTypes.object.isRequired
+        pageContext: PropTypes.object.isRequired,
       };
 
       return WrappedComponent;
@@ -61,7 +62,7 @@ export default class MyDocument extends Document {
           />
           {flush() || null}
         </React.Fragment>
-      )
+      ),
     };
   }
 
