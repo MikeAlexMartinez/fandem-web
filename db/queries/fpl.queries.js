@@ -6,6 +6,14 @@ const GAME_DATA_QUERY = gql`
       id
       label
       competition
+      previousGameweek: events(where: {
+        isPrevious: true
+      }) {
+        id
+        fplEventId
+        deadlineTime
+        name
+      }
       currentGameweek: events(where: {
         isCurrent: true
       }) {

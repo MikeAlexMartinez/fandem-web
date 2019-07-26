@@ -10,7 +10,7 @@ import {
 import { Menu } from '@material-ui/icons';
 import classNames from 'classnames';
 
-import DrawerContents from '../DrawerContents/DrawerContents';
+import DrawerContents from '../DrawerContents';
 
 class Navigation extends Component {
   static propTypes = {

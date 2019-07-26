@@ -42,6 +42,32 @@ const fakeFavoriteTeam = () => ({
   shortName: 'TOT',
 });
 
+const fakeFixture = () => ({
+  __typename: 'Fixture',
+  kickoffTime: '2019-08-09T19:00:00.000Z',
+  finished: false,
+  teamH: {
+    __typename: 'HomeTeamFixture',
+    homeTeam: {
+      __typename: 'Team',
+      name: 'Liverpool',
+    },
+  },
+  teamA: {
+    __typename: 'AwayTeamFixture',
+    awayTeam: {
+      __typename: 'Team',
+      name: 'Norwich',
+    },
+  },
+  fplCode: 1059702,
+  teamHScore: null,
+  minutes: 0,
+  teamAScore: null,
+  id: 'cjycw2ups0i3s0787mh7ya6x6',
+  fixtureId: 1,
+});
+
 const fakeGameweekData = gameweekId => ({
   __typename: 'Gameweek',
   id: gameweekId,
@@ -53,10 +79,11 @@ const fakeGameweekData = gameweekId => ({
 const fakeGameData = testSeasonId => [
   {
     __typename: 'Season',
-    currentGameweek: [],
     label: '2019/20',
     id: testSeasonId,
     competition: 'Premier League',
+    previousGameweek: [],
+    currentGameweek: [],
     nextGameweek: [
       {
         __typename: 'Gameweek',
@@ -184,5 +211,7 @@ const fakeGameData = testSeasonId => [
 ];
 
 export {
-  fakeUser, fakeFavoriteTeam, fakeGameData, fakeGameweekData,
+  fakeUser, fakeFavoriteTeam,
+  fakeGameData, fakeGameweekData,
+  fakeFixture,
 };

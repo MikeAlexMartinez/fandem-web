@@ -1,24 +1,25 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 import {
   List,
   ListItem,
   withStyles,
   ListItemIcon,
   ListItemText,
-  IconButton
-} from "@material-ui/core";
+  IconButton,
+} from '@material-ui/core';
 import {
   ChevronLeft,
   ChevronRight,
   Help,
   ExitToAppRounded,
   BallotOutlined,
-  Settings
-} from "@material-ui/icons";
+  Settings,
+} from '@material-ui/icons';
 
-import DrawerProfile from "../DrawerProfile";
+import DrawerProfile from '../DrawerProfile';
 
-import styles from "./DrawerContents.style";
+import styles from './DrawerContents.style';
 
 const DrawerContents = ({ classes, theme, toggleDrawer }) => (
   // Profile
@@ -32,7 +33,7 @@ const DrawerContents = ({ classes, theme, toggleDrawer }) => (
       {/* Toolbar header */}
       <div className={classes.drawerHeader}>
         <IconButton onClick={() => toggleDrawer()}>
-          {theme.direction === "ltr" ? <ChevronLeft /> : <ChevronRight />}
+          {theme.direction === 'ltr' ? <ChevronLeft /> : <ChevronRight />}
         </IconButton>
       </div>
       {/* Profile */}
@@ -44,7 +45,7 @@ const DrawerContents = ({ classes, theme, toggleDrawer }) => (
           <ListItemIcon>
             <BallotOutlined />
           </ListItemIcon>
-          <ListItemText primary={`Contests`} />
+          <ListItemText primary="Contests" />
         </ListItem>
       </div>
     </div>
@@ -57,7 +58,7 @@ const DrawerContents = ({ classes, theme, toggleDrawer }) => (
           <ListItemIcon>
             <Settings />
           </ListItemIcon>
-          <ListItemText primary={`Settings`} />
+          <ListItemText primary="Settings" />
         </ListItem>
 
         {/* Help */}
@@ -65,7 +66,7 @@ const DrawerContents = ({ classes, theme, toggleDrawer }) => (
           <ListItemIcon>
             <Help />
           </ListItemIcon>
-          <ListItemText primary={`Help`} />
+          <ListItemText primary="Help" />
         </ListItem>
 
         {/* Logout */}
@@ -73,11 +74,17 @@ const DrawerContents = ({ classes, theme, toggleDrawer }) => (
           <ListItemIcon>
             <ExitToAppRounded />
           </ListItemIcon>
-          <ListItemText primary={`Logout`} />
+          <ListItemText primary="Logout" />
         </ListItem>
       </List>
     </div>
   </div>
 );
+
+DrawerContents.propTypes = {
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
+  toggleDrawer: PropTypes.func.isRequired,
+};
 
 export default withStyles(styles, { withTheme: true })(DrawerContents);

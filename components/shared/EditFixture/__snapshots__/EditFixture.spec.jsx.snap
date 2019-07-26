@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<EditFixture /> renders and matches the snapshot 1`] = `
+<EditFixture
+  classes={
+    Object {
+      "actionRoot": "EditFixture-actionRoot-5",
+      "actions": "EditFixture-actions-4",
+      "container": "EditFixture-container-1",
+      "image": "EditFixture-image-2",
+      "input": "EditFixture-input-3",
+    }
+  }
+  fixture={
+    Object {
+      "__typename": "Fixture",
+      "finished": false,
+      "fixtureId": 1,
+      "fplCode": 1059702,
+      "id": "cjycw2ups0i3s0787mh7ya6x6",
+      "kickoffTime": "2019-08-09T19:00:00.000Z",
+      "minutes": 0,
+      "teamA": Object {
+        "__typename": "AwayTeamFixture",
+        "awayTeam": Object {
+          "__typename": "Team",
+          "name": "Norwich",
+        },
+      },
+      "teamAScore": null,
+      "teamH": Object {
+        "__typename": "HomeTeamFixture",
+        "homeTeam": Object {
+          "__typename": "Team",
+          "name": "Liverpool",
+        },
+      },
+      "teamHScore": null,
+    }
+  }
+  handleClose={[Function]}
+  open={true}
+/>
+`;

@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Fixture /> renders and matches the snapshot 1`] = `
+<Fixture
+  classes={
+    Object {
+      "controls": "Fixture-controls-4",
+      "fixture": "Fixture-fixture-7",
+      "fixtureCentre": "Fixture-fixtureCentre-3",
+      "fixtureInfoGrid": "Fixture-fixtureInfoGrid-2",
+      "grow": "Fixture-grow-1",
+      "kickoffTime": "Fixture-kickoffTime-6",
+      "teamScore": "Fixture-teamScore-5",
+    }
+  }
+  fixture={
+    Object {
+      "__typename": "Fixture",
+      "finished": false,
+      "fixtureId": 1,
+      "fplCode": 1059702,
+      "id": "cjycw2ups0i3s0787mh7ya6x6",
+      "kickoffTime": "2019-08-09T19:00:00.000Z",
+      "minutes": 0,
+      "teamA": Object {
+        "__typename": "AwayTeamFixture",
+        "awayTeam": Object {
+          "__typename": "Team",
+          "name": "Norwich",
+        },
+      },
+      "teamAScore": null,
+      "teamH": Object {
+        "__typename": "HomeTeamFixture",
+        "homeTeam": Object {
+          "__typename": "Team",
+          "name": "Liverpool",
+        },
+      },
+      "teamHScore": null,
+    }
+  }
+/>
+`;
