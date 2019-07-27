@@ -38,6 +38,7 @@
     "react": "^16.8.6",
     "react-adopt": "^0.6.0",
     "react-apollo": "^2.2.1",
+    "react-datepicker": "^2.8.0",
     "react-dom": "^16.8.6",
     "react-jss": "^8.6.1",
     "react-select": "^3.0.3",

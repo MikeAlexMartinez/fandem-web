@@ -4,18 +4,23 @@ exports[`<Fixture /> renders and matches the snapshot 1`] = `
 <Fixture
   classes={
     Object {
-      "controls": "Fixture-controls-4",
-      "fixture": "Fixture-fixture-7",
-      "fixtureCentre": "Fixture-fixtureCentre-3",
+      "controls": "Fixture-controls-5",
+      "fixture": "Fixture-fixture-8",
+      "fixtureCentre": "Fixture-fixtureCentre-4",
       "fixtureInfoGrid": "Fixture-fixtureInfoGrid-2",
+      "fixtureScoreGrid": "Fixture-fixtureScoreGrid-3",
       "grow": "Fixture-grow-1",
-      "kickoffTime": "Fixture-kickoffTime-6",
-      "teamScore": "Fixture-teamScore-5",
+      "kickoffTime": "Fixture-kickoffTime-7",
+      "teamScore": "Fixture-teamScore-6",
     }
   }
   fixture={
     Object {
       "__typename": "Fixture",
+      "event": Object {
+        "id": "cjyjtpb940075079888jpdt4y",
+        "name": "Gameweek 1",
+      },
       "finished": false,
       "fixtureId": 1,
       "fplCode": 1059702,

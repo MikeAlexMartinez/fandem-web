@@ -10,11 +10,16 @@ export const gameweekPropType = PropTypes.shape({
 export const fixturePropType = PropTypes.shape({
   kickoffTime: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  fplCode: PropTypes.number.isRequired,
   fixtureId: PropTypes.number.isRequired,
   finished: PropTypes.bool.isRequired,
   teamHScore: PropTypes.number,
   teamAScore: PropTypes.number,
   minutes: PropTypes.number.isRequired,
+  event: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }),
   teamH: PropTypes.shape({
     homeTeam: PropTypes.shape({
       name: PropTypes.string.isRequired,

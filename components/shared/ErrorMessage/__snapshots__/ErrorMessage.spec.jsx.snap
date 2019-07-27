@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ErrorMessage /> renders and matches the snapshot 1`] = `
+<ErrorMessage
+  classes={
+    Object {
+      "columnItem": "ErrorMessage-columnItem-2",
+      "container": "ErrorMessage-container-1",
+      "icon": "ErrorMessage-icon-3",
+    }
+  }
+  message="Test Message"
+/>
+`;

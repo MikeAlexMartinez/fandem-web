@@ -1,6 +1,6 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
-const PREM_TEAMS_QUERY = gql`
+export const PREM_TEAMS_QUERY = gql`
   query PREM_TEAMS_QUERY {
     teams(orderBy: name_ASC) {
       id
@@ -11,4 +11,4 @@ const PREM_TEAMS_QUERY = gql`
   }
 `;
 
-export { PREM_TEAMS_QUERY };
+export const extra = 'extra';

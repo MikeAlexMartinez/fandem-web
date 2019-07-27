@@ -20,7 +20,7 @@ class Fixture extends Component {
   };
 
   state = {
-    editFixture: null,
+    editFixture: false,
   };
 
   openDialog = (fixture) => {
@@ -56,21 +56,23 @@ class Fixture extends Component {
     return (
       <div className={classnames(classes.fixture, 'flex row jc-end ai-stretch')}>
         <div className={classnames(classes.grow, classes.fixtureInfoGrid)}>
-          <div className={classnames('flex row jc-end')}>
+          <div className={classnames('flex row jc-end', status === fixtureStatus.NOT_STARTED ? 'ai-start' : 'ai-center')}>
             <Typography noWrap variant="h5">{homeName}</Typography>
           </div>
           {(!(status === fixtureStatus.NOT_STARTED) && (
-            <div>
-              <div className={classnames(classes.teamScore)}>
-                {teamHScore}
+            <div className={classnames(classes.fixtureScoreGrid, 'flex jc-center ai-center')}>
+              <div className={classnames(classes.teamScore, 'flex jc-center ai-center')}>
+                <Typography variant="h5">{teamHScore}</Typography>
               </div>
-              {((status === fixtureStatus.FINISHED) && (
-                <CheckCircleOutline color="primary" />
-              )) || (
-                <RemoveCircleOutline color="secondary" />
-              )}
-              <div className={classnames(classes.teamScore)}>
-                {teamAScore}
+              <div className={classnames('flex jc-center ai-center')}>
+                {((status === fixtureStatus.FINISHED) && (
+                  <CheckCircleOutline color="primary" />
+                )) || (
+                  <RemoveCircleOutline color="secondary" />
+                )}
+              </div>
+              <div className={classnames(classes.teamScore, 'flex jc-center ai-center')}>
+                <Typography variant="h5">{teamAScore}</Typography>
               </div>
             </div>
           )) || (
@@ -83,7 +85,7 @@ class Fixture extends Component {
               </div>
             </div>
           )}
-          <div className={classnames('flex row jc-start')}>
+          <div className={classnames('flex row jc-start', status === fixtureStatus.NOT_STARTED ? 'ai-start' : 'ai-center')}>
             <Typography noWrap variant="h5">{awayName}</Typography>
           </div>
         </div>

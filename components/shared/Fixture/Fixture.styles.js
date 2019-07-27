@@ -7,15 +7,20 @@ export default function fixtureStyles(theme) {
       display: 'grid',
       gridTemplateColumns: '1fr 135px 1fr',
     },
+    fixtureScoreGrid: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(3, 1fr)',
+    },
     fixtureCentre: {
-      margin: '0 0.2rem',
+      margin: '0 0.2em',
     },
     controls: {
-      padding: '0 0.2rem',
+      padding: '0 0.2em',
     },
     teamScore: {
-      backgroundColor: theme.palette.grey[400],
-      border: `2px solid ${theme.palette.secondary.main}`,
+      margin: '0 0.4em 0 0.2em',
+      backgroundColor: theme.palette.grey[100],
+      boxShadow: `2px 2px 0 0 ${theme.palette.secondary.main}`,
     },
     kickoffTime: {
       textShadow: 'none',
@@ -30,6 +35,7 @@ export default function fixtureStyles(theme) {
       borderBottom: `2px solid ${theme.palette.primary.main}`,
       borderRight: `2px solid ${theme.palette.primary.main}`,
       boxShadow: `2px 2px 0 0 ${theme.palette.secondary.main}`,
+      transform: 'translate3d(0, 0, 0)',
       transition: 'box-shadow 0.3s ease, transform 0.3s ease',
       '&:hover': {
         transform: 'translate3d(-4px, -4px, 0)',

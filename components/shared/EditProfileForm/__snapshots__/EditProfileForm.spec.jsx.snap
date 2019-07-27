@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<EditProfileForm /> renders and matches the snapshot 1`] = `
+<EditProfileForm
+  classes={
+    Object {
+      "btntext": "EditProfileForm-btntext-14",
+      "button": "EditProfileForm-button-13",
+      "country": "EditProfileForm-country-10",
+      "displayname": "EditProfileForm-displayname-9",
+      "fullrow": "EditProfileForm-fullrow-3",
+      "isprivate": "EditProfileForm-isprivate-8",
+      "name": "EditProfileForm-name-7",
+      "names": "EditProfileForm-names-6",
+      "paddingright": "EditProfileForm-paddingright-5",
+      "root": "EditProfileForm-root-1",
+      "spaceright": "EditProfileForm-spaceright-4",
+      "team": "EditProfileForm-team-11",
+      "textfield": "EditProfileForm-textfield-12",
+      "toprow": "EditProfileForm-toprow-2",
+    }
+  }
+  countries={
+    Object {
+      "data": Object {
+        "countries": Array [
+          Object {
+            "__typename": "Country",
+            "id": "cjyjtpsk404fj0798klai91zk",
+            "label": "Afghanistan",
+            "value": "Afghanistan",
+          },
+          Object {
+            "__typename": "Country",
+            "id": "cjyjtpsk404fk0798i5iljjc0",
+            "label": "Albania",
+            "value": "Albania",
+          },
+          Object {
+            "__typename": "Country",
+            "id": "cjyjtpsk404fl0798klop5sb9",
+            "label": "Algeria",
+            "value": "Algeria",
+          },
+        ],
+      },
+    }
+  }
+  teams={
+    Object {
+      "data": Object {
+        "teams": Array [
+          Object {
+            "__typename": "Team",
+            "id": "cjyjtpb1w002u07980vtksadu",
+            "label": "Arsenal",
+            "name": "Arsenal",
+            "value": "Arsenal",
+          },
+          Object {
+            "__typename": "Team",
+            "id": "cjyjtpb1x002v07982uaa5rwj",
+            "label": "Aston Villa",
+            "name": "Aston Villa",
+            "value": "Aston Villa",
+          },
+          Object {
+            "__typename": "Team",
+            "id": "cjyjtpb1x002w0798cau9prxo",
+            "label": "Bournemouth",
+            "name": "Bournemouth",
+            "value": "Bournemouth",
+          },
+        ],
+      },
+    }
+  }
+  user={
+    Object {
+      "__typename": "User",
+      "country": null,
+      "countryCode": null,
+      "displayName": "reprehenderit",
+      "email": "Leonor.Emard@Bechtelar.name",
+      "emailValidated": false,
+      "favoriteTeam": null,
+      "followers": Object {
+        "__typename": "UserFollower",
+        "followers": Array [],
+      },
+      "id": "3a430a73-c9e9-4bcc-b46a-41618965ffea",
+      "influencers": Object {
+        "__typename": "UserInfluencer",
+        "influencers": Array [],
+      },
+      "isPrivate": false,
+      "name": "Toby Littel",
+      "phoneNumber": "903-235-6211",
+      "profilePicture": Array [],
+      "subscriptions": Array [
+        Object {
+          "__typename": "Subscription",
+          "name": "FREE",
+        },
+      ],
+      "userRoles": Array [
+        Object {
+          "__typename": "UserRole",
+          "name": "USER",
+        },
+      ],
+    }
+  }
+/>
+`;

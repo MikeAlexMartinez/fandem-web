@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-const GAME_DATA_QUERY = gql`
+export const GAME_DATA_QUERY = gql`
   query GAME_DATA_QUERY {
     gameplayData {
       id
@@ -44,6 +44,10 @@ const GAME_DATA_QUERY = gql`
           fixtureId
           kickoffTime
           teamAScore
+          event {
+            id
+            name
+          }
           teamA {
             awayTeam {
               name
@@ -63,7 +67,7 @@ const GAME_DATA_QUERY = gql`
   }
 `;
 
-const USER_INFO_QUERY = gql`
+export const USER_INFO_QUERY = gql`
   query USER_INFO_QUERY {
     users {
       name
@@ -78,7 +82,13 @@ const USER_INFO_QUERY = gql`
   }
 `;
 
-export {
-  GAME_DATA_QUERY,
-  USER_INFO_QUERY,
-};
+export const UNSELECTED_GAMEWEEKS_QUERY = gql`
+  query UNSELECTED_GAMEWEEKS_QUERY($gameweekId: Id!) {
+    unselectedGameweeks(where: {
+      id_not: $gameweekId
+    }) {
+      id
+      name
+    }
+  }
+`;

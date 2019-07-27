@@ -2,7 +2,7 @@ const casual = require('casual');
 
 casual.seed(777);
 
-const fakeUser = () => ({
+export const fakeUser = () => ({
   __typename: 'User',
   id: casual.uuid,
   displayName: casual.word,
@@ -37,12 +37,12 @@ const fakeUser = () => ({
   favoriteTeam: null,
 });
 
-const fakeFavoriteTeam = () => ({
+export const fakeFavoriteTeam = () => ({
   name: 'Spurs',
   shortName: 'TOT',
 });
 
-const fakeFixture = () => ({
+export const fakeFixture = () => ({
   __typename: 'Fixture',
   kickoffTime: '2019-08-09T19:00:00.000Z',
   finished: false,
@@ -60,6 +60,10 @@ const fakeFixture = () => ({
       name: 'Norwich',
     },
   },
+  event: {
+    id: 'cjyjtpb940075079888jpdt4y',
+    name: 'Gameweek 1',
+  },
   fplCode: 1059702,
   teamHScore: null,
   minutes: 0,
@@ -68,7 +72,7 @@ const fakeFixture = () => ({
   fixtureId: 1,
 });
 
-const fakeGameweekData = gameweekId => ({
+export const fakeGameweekData = gameweekId => ({
   __typename: 'Gameweek',
   id: gameweekId,
   deadlineTime: '2019-08-09T18:00:00.000Z',
@@ -76,7 +80,7 @@ const fakeGameweekData = gameweekId => ({
   name: 'Gameweek 1',
 });
 
-const fakeGameData = testSeasonId => [
+export const fakeGameData = testSeasonId => [
   {
     __typename: 'Season',
     label: '2019/20',
@@ -122,6 +126,10 @@ const fakeGameData = testSeasonId => [
                 name: 'Norwich',
               },
             },
+            event: {
+              id: 'cjyjtpb940075079888jpdt4y',
+              name: 'Gameweek 1',
+            },
             fplCode: 1059702,
             teamHScore: null,
             minutes: 0,
@@ -146,6 +154,10 @@ const fakeGameData = testSeasonId => [
                 __typename: 'Team',
                 name: 'Man City',
               },
+            },
+            event: {
+              id: 'cjyjtpb940075079888jpdt4y',
+              name: 'Gameweek 1',
             },
             fplCode: 1059709,
             teamHScore: null,
@@ -172,6 +184,10 @@ const fakeGameData = testSeasonId => [
                 name: 'Sheffield Utd',
               },
             },
+            event: {
+              id: 'cjyjtpb940075079888jpdt4y',
+              name: 'Gameweek 1',
+            },
             fplCode: 1059703,
             teamHScore: null,
             minutes: 0,
@@ -197,6 +213,10 @@ const fakeGameData = testSeasonId => [
                 name: 'Southampton',
               },
             },
+            event: {
+              id: 'cjyjtpb940075079888jpdt4y',
+              name: 'Gameweek 1',
+            },
             fplCode: 1059704,
             teamHScore: null,
             minutes: 0,
@@ -210,8 +230,65 @@ const fakeGameData = testSeasonId => [
   },
 ];
 
-export {
-  fakeUser, fakeFavoriteTeam,
-  fakeGameData, fakeGameweekData,
-  fakeFixture,
-};
+export const fakeTeams = () => [
+  {
+    __typename: 'Team',
+    id: 'cjyjtpb1w002u07980vtksadu',
+    name: 'Arsenal',
+    label: 'Arsenal',
+    value: 'Arsenal',
+  },
+  {
+    __typename: 'Team',
+    id: 'cjyjtpb1x002v07982uaa5rwj',
+    name: 'Aston Villa',
+    label: 'Aston Villa',
+    value: 'Aston Villa',
+  },
+  {
+    __typename: 'Team',
+    id: 'cjyjtpb1x002w0798cau9prxo',
+    name: 'Bournemouth',
+    label: 'Bournemouth',
+    value: 'Bournemouth',
+  },
+];
+
+export const fakeCountries = () => [
+  {
+    __typename: 'Country',
+    id: 'cjyjtpsk404fj0798klai91zk',
+    label: 'Afghanistan',
+    value: 'Afghanistan',
+  },
+  {
+    __typename: 'Country',
+    id: 'cjyjtpsk404fk0798i5iljjc0',
+    label: 'Albania',
+    value: 'Albania',
+  },
+  {
+    __typename: 'Country',
+    id: 'cjyjtpsk404fl0798klop5sb9',
+    label: 'Algeria',
+    value: 'Algeria',
+  },
+];
+
+export const fakeGameweeks = () => [
+  {
+    __typename: 'Gameweek',
+    id: 'cjyjtpb950076079801ghh65q',
+    name: 'Gameweek 2',
+  },
+  {
+    __typename: 'Gameweek',
+    id: 'cjyjtpb9600770798k1v2u9od',
+    name: 'Gameweek 3',
+  },
+  {
+    __typename: 'Gameweek',
+    id: 'cjyjtpb96007807982f0dn250',
+    name: 'Gameweek 4',
+  },
+];

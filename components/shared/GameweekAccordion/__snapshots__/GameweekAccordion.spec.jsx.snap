@@ -19,6 +19,10 @@ exports[`<GameweekAccordion /> renders and matches the snapshot 1`] = `
         "fixtures": Array [
           Object {
             "__typename": "Fixture",
+            "event": Object {
+              "id": "cjyjtpb940075079888jpdt4y",
+              "name": "Gameweek 1",
+            },
             "finished": false,
             "fixtureId": 1,
             "fplCode": 1059702,
@@ -44,6 +48,10 @@ exports[`<GameweekAccordion /> renders and matches the snapshot 1`] = `
           },
           Object {
             "__typename": "Fixture",
+            "event": Object {
+              "id": "cjyjtpb940075079888jpdt4y",
+              "name": "Gameweek 1",
+            },
             "finished": false,
             "fixtureId": 8,
             "fplCode": 1059709,
@@ -69,6 +77,10 @@ exports[`<GameweekAccordion /> renders and matches the snapshot 1`] = `
           },
           Object {
             "__typename": "Fixture",
+            "event": Object {
+              "id": "cjyjtpb940075079888jpdt4y",
+              "name": "Gameweek 1",
+            },
             "finished": false,
             "fixtureId": 2,
             "fplCode": 1059703,
@@ -94,6 +106,10 @@ exports[`<GameweekAccordion /> renders and matches the snapshot 1`] = `
           },
           Object {
             "__typename": "Fixture",
+            "event": Object {
+              "id": "cjyjtpb940075079888jpdt4y",
+              "name": "Gameweek 1",
+            },
             "finished": false,
             "fixtureId": 3,
             "fplCode": 1059704,

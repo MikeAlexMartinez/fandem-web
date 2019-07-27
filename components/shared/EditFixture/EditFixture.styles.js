@@ -4,10 +4,6 @@ export default function editFixtureStyles(theme) {
     container: {
       minHeight: '250px',
     },
-    image: {
-      margin: `${theme.spacing.unit}px auto`,
-      maxHeight: '180px',
-    },
     input: {
       display: 'none',
     },

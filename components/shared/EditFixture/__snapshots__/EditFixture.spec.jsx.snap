@@ -4,16 +4,19 @@ exports[`<EditFixture /> renders and matches the snapshot 1`] = `
 <EditFixture
   classes={
     Object {
-      "actionRoot": "EditFixture-actionRoot-5",
-      "actions": "EditFixture-actions-4",
+      "actionRoot": "EditFixture-actionRoot-4",
+      "actions": "EditFixture-actions-3",
       "container": "EditFixture-container-1",
-      "image": "EditFixture-image-2",
-      "input": "EditFixture-input-3",
+      "input": "EditFixture-input-2",
     }
   }
   fixture={
     Object {
       "__typename": "Fixture",
+      "event": Object {
+        "id": "cjyjtpb940075079888jpdt4y",
+        "name": "Gameweek 1",
+      },
       "finished": false,
       "fixtureId": 1,
       "fplCode": 1059702,
