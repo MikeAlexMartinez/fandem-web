@@ -86,7 +86,7 @@ class SignInForm extends Component {
     const { form } = this.state;
     const field = form.fields[id];
     const { error, errorMessages } = field;
-    return error && Object.hasOwnProperty.apply(errorMessages, error)
+    return error && Object.hasOwnProperty.bind(errorMessages, error)
       ? errorMessages[error]
       : ' ';
   };

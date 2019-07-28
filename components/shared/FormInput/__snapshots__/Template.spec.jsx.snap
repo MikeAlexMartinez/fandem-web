@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Template /> renders and matches the snapshot 1`] = `
+<Template
+  classes={
+    Object {
+      "container": "Template-container-1",
+    }
+  }
+/>
+`;

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FormInput /> renders and matches the snapshot 1`] = `
+<input
+  errors={null}
+  hasChanged={false}
+  isValid={true}
+  onBlur={[Function]}
+  onChange={[Function]}
+  originalValue="test value"
+  touched={false}
+  value="test value"
+/>
+`;
