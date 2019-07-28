@@ -6,7 +6,7 @@ import {
   withStyles, Dialog, DialogContent,
   DialogActions, Button, DialogTitle,
   LinearProgress, Typography,
-  TextField,
+  TextField, Switch,
 } from '@material-ui/core';
 
 import { GAME_DATA_QUERY } from '../../../db/queries/fpl.queries';
@@ -15,6 +15,7 @@ import { UPDATE_FIXTURE_MUTATION } from '../../../db/mutations/fpl.mutations';
 import { fixturePropType } from '../../general-prop-types';
 
 import ErrorMessage from '../ErrorMessage';
+import FormInput from '../FormInput';
 
 import styles from './EditFixture.styles';
 
@@ -22,25 +23,36 @@ class EditFixture extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fixture: props.fixture,
+      form: {},
     };
   }
 
-  handleChange = (e) => {
-    const { fixture } = this.state;
-    const { id, value } = e.target;
+  captureChange = key => (value) => {
+    const { form } = this.state;
     this.setState(prevState => ({
       ...prevState,
-      fixture: {
-        ...fixture,
-        [id]: value,
+      form: {
+        ...form,
+        [key]: value,
+      },
+    }));
+  }
+
+  toggleCheckbox = key => (evt) => {
+    const { target } = evt;
+    this.setState(prevState => ({
+      ...prevState,
+      form: {
+        [key]: target.checked,
       },
     }));
   }
 
   render() {
-    const { classes, open, handleClose } = this.props;
-    const { fixture } = this.state;
+    const {
+      classes, open, handleClose, fixture,
+    } = this.props;
+    const { form } = this.state;
     const {
       fplCode,
       teamHScore,
@@ -64,6 +76,9 @@ class EditFixture extends Component {
       minutes,
       eventId,
     };
+    const hasFinished = form && (typeof form.finished === 'boolean')
+      ? form.finished
+      : !!(finished);
     return (
       <Mutation
         mutation={UPDATE_FIXTURE_MUTATION}
@@ -87,26 +102,110 @@ class EditFixture extends Component {
               <DialogContent>
                 <div className={classnames('flex column jc-start ai-stretch')}>
                   {/* Home Team - Score */}
-                  <div className={classnames('flex row jc-sb ai-center')}>
+                  <div className={classnames(classes.formRow, 'flex row jc-sb ai-center')}>
                     <Typography variant="h5">{homeTeamName}</Typography>
-                    <TextField
-                      id="teamHScore"
-                      type="number"
-                      value={teamHScore}
-                      margin="normal"
-                      variant="outlined"
-                      // helperText={this.fetchError('name')}
-                      // onBlur={this.handleBlur}
-                      onChange={this.handleChange}
-                    />
+                    <FormInput value={`${(teamHScore || 0)}`} outputValue={this.captureChange('teamHScore')}>
+                      {({
+                        // isValid, hasChanged,
+                        touched, errors, value,
+                      }, {
+                        onChange, onBlur,
+                      }) => (
+                        <div className={classnames('flex row jc-end')}>
+                          <div className={classnames(classes.thinInput)}>
+                            <TextField
+                              id="teamHScore"
+                              type="text"
+                              value={value}
+                              variant="outlined"
+                              InputProps={{
+                                classes: {
+                                  input: classes.inputOverride,
+                                },
+                              }}
+                              helperText={touched && errors}
+                              onBlur={onBlur}
+                              onChange={onChange}
+                            />
+                          </div>
+                        </div>
+                      )}
+                    </FormInput>
                   </div>
                   {/* Away Team - Score */}
-                  <div className={classnames('flex row jc-sb ai-center')}>
+                  <div className={classnames(classes.formRow, 'flex row jc-sb ai-center')}>
                     <Typography variant="h5">{awayTeamName}</Typography>
+                    <FormInput value={`${(teamAScore || 0)}`} outputValue={this.captureChange('teamAScore')}>
+                      {({
+                        // isValid, hasChanged,
+                        touched, errors, value,
+                      }, {
+                        onChange, onBlur,
+                      }) => (
+                        <div className={classnames('flex row jc-end')}>
+                          <div className={classnames(classes.thinInput)}>
+                            <TextField
+                              id="teamAScore"
+                              type="text"
+                              value={value}
+                              variant="outlined"
+                              InputProps={{
+                                classes: {
+                                  input: classes.inputOverride,
+                                },
+                              }}
+                              error={touched && errors}
+                              helperText={touched && errors}
+                              onBlur={onBlur}
+                              onChange={onChange}
+                            />
+                          </div>
+                        </div>
+                      )}
+                    </FormInput>
                   </div>
                   {/* Minutes */}
+                  <div className={classnames(classes.formRow, 'flex row jc-sb ai-center')}>
+                    <Typography variant="h5">Minutes</Typography>
+                    <FormInput value={`${(minutes || 0)}`} outputValue={this.captureChange('minutes')}>
+                      {({
+                        // isValid, hasChanged,
+                        touched, errors, value,
+                      }, {
+                        onChange, onBlur,
+                      }) => (
+                        <div className={classnames('flex row jc-end')}>
+                          <div className={classnames(classes.thinInput)}>
+                            <TextField
+                              id="minutes"
+                              type="text"
+                              InputProps={{
+                                classes: {
+                                  input: classes.inputOverride,
+                                },
+                              }}
+                              value={value}
+                              variant="outlined"
+                              error={touched && errors}
+                              helperText={touched && errors}
+                              onBlur={onBlur}
+                              onChange={onChange}
+                            />
+                          </div>
+                        </div>
+                      )}
+                    </FormInput>
+                  </div>
                   {/* kickoffTime */}
                   {/* finished */}
+                  <div className={classnames(classes.formRow, 'flex row jc-end ai-center')}>
+                    <Typography variant="h5">Finished</Typography>
+                    <Switch
+                      checked={hasFinished}
+                      onChange={this.toggleCheckbox('finished')}
+                      color="primary"
+                    />
+                  </div>
                   {/* gameweek */}
                 </div>
               </DialogContent>

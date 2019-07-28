@@ -5,7 +5,7 @@ class FormInput extends Component {
   static propTypes = {
     value: PropTypes.string,
     validator: PropTypes.func,
-    children: PropTypes.func.isRequired,
+    outputValue: PropTypes.func,
   };
 
   static defaultProps = {
@@ -36,20 +36,22 @@ class FormInput extends Component {
 
   onChange = (evt) => {
     const { originalValue } = this.state;
-    const { validator } = this.props;
+    const { validator, outputValue } = this.props;
     const newValue = evt.target.value;
     const hasChanged = newValue !== originalValue;
     const errors = validator
       ? validator(newValue)
       : null;
     const isValid = !(errors);
-    this.setState({
+    const newState = {
       isValid,
       value: newValue,
       touched: true,
       hasChanged,
       errors,
-    });
+    };
+    this.setState(newState);
+    outputValue(newState);
   }
 
   render() {
@@ -58,6 +60,7 @@ class FormInput extends Component {
       onChange: this.onChange,
       onBlur: this.onBlur,
     };
+    // @ts-ignore
     return children(this.state, functionality);
   }
 }
