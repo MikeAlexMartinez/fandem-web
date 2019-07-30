@@ -1,17 +1,15 @@
 import React from 'react';
 import App, { Container } from 'next/app';
 import Head from 'next/head';
-import { MuiThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import JssProvider from 'react-jss/lib/JssProvider';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import DateFnsUtils from '@date-io/date-fns';
 import { ApolloProvider } from 'react-apollo';
 import getPageContext from '../utils/get-page-context';
 import withApollo from '../lib/with-apollo';
 
-// import { ApolloProvider } from 'react-apollo';
-// import withApollo from '../lib/with-apollo';
 
-// comment
 class MyApp extends App {
   // Special Next.js only lifecycle method which runs
   // before Component renders and exposes on props
@@ -47,25 +45,21 @@ class MyApp extends App {
           <Head>
             <title>fandem.1-0</title>
           </Head>
-          {/* Wrap every page in Jss and Theme providers */}
-          <JssProvider
-            registry={this.pageContext.sheetsRegistry}
-            generateClassName={this.pageContext.generateClassName}
+          {/* MuiThemeProvider makes the theme available down the React
+              tree thanks to React context. */}
+          <ThemeProvider
+            theme={this.pageContext.theme}
+            sheetsManager={this.pageContext.sheetsManager}
           >
-            {/* MuiThemeProvider makes the theme available down the React
-                tree thanks to React context. */}
-            <MuiThemeProvider
-              theme={this.pageContext.theme}
-              sheetsManager={this.pageContext.sheetsManager}
-            >
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
               {/* CssBaseline kickstart an elegant, consistent,
                 * and simple baseline to build upon. */}
               <CssBaseline />
               {/* Pass pageContext to the _document though the renderPage enhancer
                   to render collected styles on server-side. */}
               <Component pageContext={this.pageContext} {...pageProps} />
-            </MuiThemeProvider>
-          </JssProvider>
+            </MuiPickersUtilsProvider>
+          </ThemeProvider>
         </ApolloProvider>
       </Container>
     );

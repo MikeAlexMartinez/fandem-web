@@ -12,6 +12,16 @@ export default function editFixtureStyles(theme) {
     },
     thinInput: {
       width: '50px',
+      marginRight: '0.2em',
+    },
+    kickoffContainer: {
+      display: 'flex',
+      flexWrap: 'wrap',
+    },
+    kickoffTime: {
+      marginLeft: theme.spacing.unit,
+      marginRight: theme.spacing.unit,
+      width: 200,
     },
     inputOverride: {
       'text-align': 'center',

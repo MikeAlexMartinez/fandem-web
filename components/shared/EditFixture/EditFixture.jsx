@@ -8,7 +8,7 @@ import {
   LinearProgress, Typography,
   TextField, Switch,
 } from '@material-ui/core';
-
+import { DateTimePicker } from '@material-ui/pickers';
 import { GAME_DATA_QUERY } from '../../../db/queries/fpl.queries';
 import { UPDATE_FIXTURE_MUTATION } from '../../../db/mutations/fpl.mutations';
 
@@ -29,6 +29,7 @@ class EditFixture extends Component {
 
   captureChange = key => (value) => {
     const { form } = this.state;
+    console.log(value);
     this.setState(prevState => ({
       ...prevState,
       form: {
@@ -197,14 +198,36 @@ class EditFixture extends Component {
                     </FormInput>
                   </div>
                   {/* kickoffTime */}
+                  <div className={classnames(classes.formRow, 'flex row jc-center ai-center')}>
+                    <div className={classnames(classes.kickoffContainer)}>
+                      <DateTimePicker
+                        label="DateTimePicker"
+                        inputVariant="outlined"
+                        value={kickoffTime}
+                        onChange={this.captureChange('kickoffTime')}
+                      />
+                      {/* <TextField
+                        id="datetime-local"
+                        label="Kickoff Time"
+                        type="datetime-local"
+                        defaultValue={kickoffTime}
+                        className={classes.kickoffTime}
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                      /> */}
+                    </div>
+                  </div>
                   {/* finished */}
                   <div className={classnames(classes.formRow, 'flex row jc-end ai-center')}>
                     <Typography variant="h5">Finished</Typography>
-                    <Switch
-                      checked={hasFinished}
-                      onChange={this.toggleCheckbox('finished')}
-                      color="primary"
-                    />
+                    <div className={classnames(classnames.toggleRow, 'flex row jc-end')}>
+                      <Switch
+                        checked={hasFinished}
+                        onChange={this.toggleCheckbox('finished')}
+                        color="primary"
+                      />
+                    </div>
                   </div>
                   {/* gameweek */}
                 </div>
