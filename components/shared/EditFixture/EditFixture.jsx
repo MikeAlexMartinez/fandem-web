@@ -200,12 +200,12 @@ class EditFixture extends Component {
                   {/* kickoffTime */}
                   <div className={classnames(classes.formRow, 'flex row jc-center ai-center')}>
                     <div className={classnames(classes.kickoffContainer)}>
-                      <DateTimePicker
+                      {/* <DateTimePicker
                         label="DateTimePicker"
                         inputVariant="outlined"
                         value={kickoffTime}
                         onChange={this.captureChange('kickoffTime')}
-                      />
+                      /> */}
                       {/* <TextField
                         id="datetime-local"
                         label="Kickoff Time"
