@@ -1,13 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJSON from 'enzyme-to-json';
-import WithTheme from '../../../__test__/mocks/WithTheme';import UserProfileComponent from './UserProfile';
+import WithTheme from '../../../__test__/mocks/WithTheme';
+import UserProfileComponent from './UserProfile';
 
-describe('<UserProfileComponent  />', () => {
+describe('<UserProfileComponent />', () => {
   it('renders and matches the snapshot', () => {
     const wrapper = shallow(
       <WithTheme>
-        <UserProfileComponent  />
+        <UserProfileComponent />
       </WithTheme>,
     );
     expect(toJSON(wrapper)).toMatchSnapshot();

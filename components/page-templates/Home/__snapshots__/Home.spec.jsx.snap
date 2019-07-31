@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<HomeComponent  /> renders and matches the snapshot 1`] = `
+exports[`<HomeComponent /> renders and matches the snapshot 1`] = `
 <ThemeProvider
   theme={
     Object {

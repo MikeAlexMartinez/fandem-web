@@ -270,6 +270,8 @@ exports[`<IsAdminComponent  /> renders and matches the snapshot 1`] = `
     }
   }
 >
-  <WithStyles(IsAdmin) />
+  <WithStyles(IsAdmin)>
+    <Component />
+  </WithStyles(IsAdmin)>
 </ThemeProvider>
 `;

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<UsersGeneralInfoComponent  /> renders and matches the snapshot 1`] = `
+exports[`<UsersGeneralInfoComponent /> renders and matches the snapshot 1`] = `
 <ThemeProvider
   theme={
     Object {

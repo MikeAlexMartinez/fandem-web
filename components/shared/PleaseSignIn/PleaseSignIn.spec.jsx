@@ -72,9 +72,7 @@ describe('<PleaseSignIn />', () => {
         </WithTheme>
       </MockedProvider>,
     );
-
-    wrapper.debug();
-    const Progress = wrapper.find('CircularProgress');
+    const Progress = wrapper.find('.MuiCircularProgress-root');
     expect(Progress.exists()).toBe(true);
   });
 

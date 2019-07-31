@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BackgroundComponent  /> renders and matches the snapshot 1`] = `
+exports[`<BackgroundComponent /> renders and matches the snapshot 1`] = `
 <ThemeProvider
   theme={
     Object {
@@ -270,6 +270,10 @@ exports[`<BackgroundComponent  /> renders and matches the snapshot 1`] = `
     }
   }
 >
-  <WithStyles(Background) />
+  <WithStyles(Background)>
+    <div>
+      Test!
+    </div>
+  </WithStyles(Background)>
 </ThemeProvider>
 `;
