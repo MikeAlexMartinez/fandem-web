@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Dashboard from '../components/page-templates/Dashboard/Dashboard';
+import Dashboard from '../components/page-templates/Dashboard';
 
 const DashboardPage = ({ query: { emailToken } }) => (
   <div>

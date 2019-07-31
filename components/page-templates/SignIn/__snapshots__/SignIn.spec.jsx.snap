@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SignIn /> renders and matches the snapshot 1`] = `
+<SignIn
+  classes={
+    Object {
+      "root": "SignIn-root-1",
+    }
+  }
+/>
+`;

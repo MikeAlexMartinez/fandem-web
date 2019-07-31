@@ -588,33 +588,28 @@ exports[`<DrawerProfile /> renders and matches snapshot 1`] = `
       <div
         className="flex row jc-center ai-center"
       >
-        <WithStyles(CircularProgress)
+        <WithStyles(ForwardRef(CircularProgress))
           size={80}
         >
-          <CircularProgress
+          <ForwardRef(CircularProgress)
             classes={
               Object {
-                "circle": "MuiCircularProgress-circle-7",
-                "circleDisableShrink": "MuiCircularProgress-circleDisableShrink-10",
-                "circleIndeterminate": "MuiCircularProgress-circleIndeterminate-9",
-                "circleStatic": "MuiCircularProgress-circleStatic-8",
-                "colorPrimary": "MuiCircularProgress-colorPrimary-4",
-                "colorSecondary": "MuiCircularProgress-colorSecondary-5",
-                "indeterminate": "MuiCircularProgress-indeterminate-3",
-                "root": "MuiCircularProgress-root-1",
-                "static": "MuiCircularProgress-static-2",
-                "svg": "MuiCircularProgress-svg-6",
+                "circle": "MuiCircularProgress-circle",
+                "circleDisableShrink": "MuiCircularProgress-circleDisableShrink",
+                "circleIndeterminate": "MuiCircularProgress-circleIndeterminate",
+                "circleStatic": "MuiCircularProgress-circleStatic",
+                "colorPrimary": "MuiCircularProgress-colorPrimary",
+                "colorSecondary": "MuiCircularProgress-colorSecondary",
+                "indeterminate": "MuiCircularProgress-indeterminate",
+                "root": "MuiCircularProgress-root",
+                "static": "MuiCircularProgress-static",
+                "svg": "MuiCircularProgress-svg",
               }
             }
-            color="primary"
-            disableShrink={false}
             size={80}
-            thickness={3.6}
-            value={0}
-            variant="indeterminate"
           >
             <div
-              className="MuiCircularProgress-root-1 MuiCircularProgress-colorPrimary-4 MuiCircularProgress-indeterminate-3"
+              className="MuiCircularProgress-root MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
               role="progressbar"
               style={
                 Object {
@@ -624,11 +619,11 @@ exports[`<DrawerProfile /> renders and matches snapshot 1`] = `
               }
             >
               <svg
-                className="MuiCircularProgress-svg-6"
+                className="MuiCircularProgress-svg"
                 viewBox="22 22 44 44"
               >
                 <circle
-                  className="MuiCircularProgress-circle-7 MuiCircularProgress-circleIndeterminate-9"
+                  className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
                   cx={44}
                   cy={44}
                   fill="none"
@@ -638,8 +633,8 @@ exports[`<DrawerProfile /> renders and matches snapshot 1`] = `
                 />
               </svg>
             </div>
-          </CircularProgress>
-        </WithStyles(CircularProgress)>
+          </ForwardRef(CircularProgress)>
+        </WithStyles(ForwardRef(CircularProgress))>
       </div>
     </Query>
   </CurrentUser>

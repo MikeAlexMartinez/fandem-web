@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ViewProfile /> renders and matches the snapshot 1`] = `
+<ViewProfile
+  classes={Object {}}
+/>
+`;

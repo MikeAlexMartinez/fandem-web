@@ -1,5 +1,3 @@
-export default function(theme) {
-  return {
-    container: {}
-  };
+export default function () {
+  return {};
 }

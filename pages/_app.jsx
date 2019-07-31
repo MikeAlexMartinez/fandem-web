@@ -8,7 +8,7 @@ import DateFnsUtils from '@date-io/date-fns';
 import { ApolloProvider } from 'react-apollo';
 import getPageContext from '../utils/get-page-context';
 import withApollo from '../lib/with-apollo';
-
+import muiTheme from '../styles/mui-theme';
 
 class MyApp extends App {
   // Special Next.js only lifecycle method which runs
@@ -24,8 +24,8 @@ class MyApp extends App {
     return { pageProps };
   }
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.pageContext = getPageContext();
   }
 
@@ -48,8 +48,7 @@ class MyApp extends App {
           {/* MuiThemeProvider makes the theme available down the React
               tree thanks to React context. */}
           <ThemeProvider
-            theme={this.pageContext.theme}
-            sheetsManager={this.pageContext.sheetsManager}
+            theme={muiTheme}
           >
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
               {/* CssBaseline kickstart an elegant, consistent,

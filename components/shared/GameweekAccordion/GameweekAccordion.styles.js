@@ -2,13 +2,13 @@ export default function (theme) {
   return {
     root: {
       width: '100%',
-      padding: theme.spacing.unit * 2,
+      padding: theme.spacing(2),
     },
     marginRight: {
-      marginRight: theme.spacing.unit,
+      marginRight: theme.spacing(1),
     },
     paddingLeft: {
-      paddingLeft: theme.spacing.unit,
+      paddingLeft: theme.spacing(1),
     },
     heading: {
       fontSize: theme.typography.pxToRem(15),

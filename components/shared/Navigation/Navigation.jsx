@@ -7,10 +7,13 @@ import {
   IconButton,
   Drawer,
 } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles';
 import { Menu } from '@material-ui/icons';
 import classNames from 'classnames';
 
 import DrawerContents from '../DrawerContents';
+
+import styles from './Navigation.styles';
 
 class Navigation extends Component {
   static propTypes = {
@@ -76,4 +79,4 @@ class Navigation extends Component {
   }
 }
 
-export default Navigation;
+export default withStyles(styles, { withTheme: true })(Navigation);

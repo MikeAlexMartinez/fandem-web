@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import {
-  withStyles, ExpansionPanel, ExpansionPanelSummary, Typography,
-  ExpansionPanelDetails,
+  ExpansionPanel, ExpansionPanelSummary, Typography, ExpansionPanelDetails,
 } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles';
 import { ExpandMore, CheckCircle, Alarm } from '@material-ui/icons';
 import addDays from 'date-fns/addDays';
 import isWithinInterval from 'date-fns/isWithinInterval';

@@ -1,20 +1,20 @@
-export default function(theme) {
+export default function (theme) {
   return {
     button: {
-      margin: theme.spacing.unit
+      margin: theme.spacing(1),
     },
     root: {
-      flexGrow: 1
+      flexGrow: 1,
     },
     header: {
-      marginTop: "100px",
-      marginBottom: "50px"
+      marginTop: '100px',
+      marginBottom: '50px',
     },
     leftmargin: {
-      marginLeft: "100px"
+      marginLeft: '100px',
     },
     topmargin: {
-      marginTop: "50px"
-    }
+      marginTop: '50px',
+    },
   };
 }

@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import {
   List,
   ListItem,
-  withStyles,
   ListItemIcon,
   ListItemText,
   IconButton,
 } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles';
 import {
   ChevronLeft,
   ChevronRight,

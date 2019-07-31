@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
-  withStyles,
   Paper,
   Typography,
   Divider,
@@ -9,6 +8,7 @@ import {
   Button,
   LinearProgress,
 } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles';
 import Link from 'next/link';
 import Router from 'next/router';
 import { Mutation } from 'react-apollo';

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LargeButton /> renders and matches the snapshot 1`] = `
+<LargeButton
+  classes={
+    Object {
+      "largeButton": "LargeButton-largeButton-1",
+    }
+  }
+  handler={[Function]}
+  text="Test Prop 1"
+  type="Test Prop 2"
+  variant="Test Prop 3"
+/>
+`;

@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Card, Typography, CardContent, withStyles,
+  Card, Typography, CardContent,
 } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles';
 import format from 'date-fns/format';
 import { gameweekPropType } from '../../general-prop-types';
 

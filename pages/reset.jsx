@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Reset from '../components/page-templates/Reset/Reset';
+import Reset from '../components/page-templates/Reset';
 
 const ResetPage = ({ query: { resetToken } }) => (
   <div>

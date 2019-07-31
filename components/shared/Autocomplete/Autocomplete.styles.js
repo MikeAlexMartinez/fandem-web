@@ -1,41 +1,41 @@
-export default function styles(theme) {
+export default function autocompleteStyles(theme) {
   return {
     root: {
-      flexGrow: 1
+      flexGrow: 1,
     },
     input: {
-      display: "flex",
-      padding: 0
+      display: 'flex',
+      padding: 0,
     },
     valueContainer: {
-      display: "flex",
-      flexWrap: "wrap",
+      display: 'flex',
+      'flex-wrap': 'wrap',
       flex: 1,
       opacity: 1,
-      alignItems: "center",
-      overflow: "hidden",
-      padding: theme.spacing.unit * 2
+      alignItems: 'center',
+      overflow: 'hidden',
+      padding: theme.spacing(2),
     },
     noOptionsMessage: {
-      padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`
+      padding: `${theme.spacing(1)}px ${theme.spacing(2)}px`,
     },
     singleValue: {
-      fontSize: 16
+      fontSize: 16,
     },
     placeholder: {
-      position: "absolute",
+      position: 'absolute',
       paddingLeft: 2,
-      fontSize: 16
+      fontSize: 16,
     },
     paper: {
-      position: "absolute",
+      position: 'absolute',
       zIndex: 1,
-      marginTop: theme.spacing.unit,
+      marginTop: theme.spacing(1),
       left: 0,
-      right: 0
+      right: 0,
     },
     divider: {
-      height: theme.spacing.unit * 2
-    }
+      height: theme.spacing(2),
+    },
   };
 }

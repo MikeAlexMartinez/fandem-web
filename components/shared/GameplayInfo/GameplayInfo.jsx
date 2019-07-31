@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { CircularProgress, withStyles } from '@material-ui/core';
+import { CircularProgress } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles';
 
 import Title from '../Title';
 import GameData from '../GameData';

@@ -10,11 +10,11 @@ exports[`<Title /> renders and matches the snapshot 1`] = `
     <div
       className="test"
     >
-      <WithStyles(Typography)
+      <WithStyles(ForwardRef(Typography))
         variant="h3"
       >
         Test Title
-      </WithStyles(Typography)>
+      </WithStyles(ForwardRef(Typography))>
     </div>
     <div
       className="test flex row jc-end ai-center"
@@ -24,6 +24,6 @@ exports[`<Title /> renders and matches the snapshot 1`] = `
       </div>
     </div>
   </div>
-  <WithStyles(Divider) />
+  <WithStyles(ForwardRef(Divider)) />
 </div>
 `;

@@ -4,11 +4,13 @@ exports[`<EditFixture /> renders and matches the snapshot 1`] = `
 <EditFixture
   classes={
     Object {
-      "actionRoot": "EditFixture-actionRoot-6",
-      "actions": "EditFixture-actions-5",
+      "actionRoot": "EditFixture-actionRoot-8",
+      "actions": "EditFixture-actions-7",
       "container": "EditFixture-container-1",
       "formRow": "EditFixture-formRow-2",
-      "inputOverride": "EditFixture-inputOverride-4",
+      "inputOverride": "EditFixture-inputOverride-6",
+      "kickoffContainer": "EditFixture-kickoffContainer-4",
+      "kickoffTime": "EditFixture-kickoffTime-5",
       "thinInput": "EditFixture-thinInput-3",
     }
   }

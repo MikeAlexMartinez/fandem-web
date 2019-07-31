@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Mutation } from 'react-apollo';
 import {
-  withStyles, Dialog, DialogContent,
+  Dialog, DialogContent,
   DialogActions, Button, DialogTitle,
   LinearProgress, Typography,
   TextField, Switch,
 } from '@material-ui/core';
-import { DateTimePicker } from '@material-ui/pickers';
+import { withStyles } from '@material-ui/styles';
+// import { DateTimePicker } from '@material-ui/pickers';
 import { GAME_DATA_QUERY } from '../../../db/queries/fpl.queries';
 import { UPDATE_FIXTURE_MUTATION } from '../../../db/mutations/fpl.mutations';
 
@@ -221,7 +222,7 @@ class EditFixture extends Component {
                   {/* finished */}
                   <div className={classnames(classes.formRow, 'flex row jc-end ai-center')}>
                     <Typography variant="h5">Finished</Typography>
-                    <div className={classnames(classnames.toggleRow, 'flex row jc-end')}>
+                    <div className={classnames(classes.toggleRow, 'flex row jc-end')}>
                       <Switch
                         checked={hasFinished}
                         onChange={this.toggleCheckbox('finished')}

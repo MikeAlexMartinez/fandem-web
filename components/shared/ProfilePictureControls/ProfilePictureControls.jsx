@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { IconButton, withStyles } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles';
 import { ViewModule, AddCircle, Delete } from '@material-ui/icons';
 
 import styles from './ProfilePictureControls.styles';

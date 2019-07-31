@@ -1,14 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Admin /> renders and matches the snapshot 1`] = `
-<WithStyles(Page)>
-  <WithStyles(PleaseSignIn)>
-    <WithStyles(Navigation)>
-      <WithStyles(IsAdmin)>
-        <WithStyles(UsersGeneralInfo) />
-        <WithStyles(WithStyles(GameplayInfo)) />
-      </WithStyles(IsAdmin)>
-    </WithStyles(Navigation)>
-  </WithStyles(PleaseSignIn)>
-</WithStyles(Page)>
+<Admin
+  classes={
+    Object {
+      "root": "Admin-root-1",
+    }
+  }
+/>
 `;

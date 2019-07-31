@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DeletePicture /> renders and matches the snapshot 1`] = `
+<DeletePicture
+  classes={
+    Object {
+      "container": "DeletePicture-container-1",
+    }
+  }
+/>
+`;

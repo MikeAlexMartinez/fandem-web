@@ -1,5 +1,5 @@
 import React from 'react';
-import Forgot from '../components/page-templates/Forgot/Forgot';
+import Forgot from '../components/page-templates/Forgot';
 
 const ForgotPage = () => (
   <div>

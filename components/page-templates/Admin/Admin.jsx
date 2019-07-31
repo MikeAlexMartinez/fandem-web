@@ -1,14 +1,17 @@
 import React from 'react';
-import Navigation from '../../shared/Navigation';
+import { withStyles } from '@material-ui/styles';
 
-import Page from '../../shared/Page/Page';
+import Navigation from '../../shared/Navigation';
+import GlobalStyles from '../../shared/GlobalStyles';
 import PleaseSignIn from '../../shared/PleaseSignIn';
 import IsAdmin from '../../shared/IsAdmin';
 import UsersGeneralInfo from '../../shared/UsersGeneralInfo';
 import GameplayInfo from '../../shared/GameplayInfo';
 
+import styles from './Admin.styles';
+
 const Admin = () => (
-  <Page>
+  <GlobalStyles>
     <PleaseSignIn>
       <Navigation>
         <IsAdmin>
@@ -17,7 +20,7 @@ const Admin = () => (
         </IsAdmin>
       </Navigation>
     </PleaseSignIn>
-  </Page>
+  </GlobalStyles>
 );
 
-export default Admin;
+export default withStyles(styles)(Admin);

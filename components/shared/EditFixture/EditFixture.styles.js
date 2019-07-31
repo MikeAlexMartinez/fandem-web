@@ -1,5 +1,5 @@
 export default function editFixtureStyles(theme) {
-  const paddingSize = theme.spacing.unit * 3;
+  const paddingSize = theme.spacing(3);
   return {
     container: {
       minHeight: '250px',
@@ -16,11 +16,11 @@ export default function editFixtureStyles(theme) {
     },
     kickoffContainer: {
       display: 'flex',
-      flexWrap: 'wrap',
+      'flex-wrap': 'wrap',
     },
     kickoffTime: {
-      marginLeft: theme.spacing.unit,
-      marginRight: theme.spacing.unit,
+      marginLeft: theme.spacing(1),
+      marginRight: theme.spacing(1),
       width: 200,
     },
     inputOverride: {

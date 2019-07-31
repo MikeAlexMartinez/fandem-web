@@ -1,8 +1,11 @@
 import React from 'react';
+import { withStyles } from '@material-ui/styles';
 
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import CurrentUser from '../CurrentUser';
 import isAdmin from '../../../utils/is-admin';
+
+import styles from './IsAdmin.styles';
 
 const IsAdmin = ({ children }) => (
   <CurrentUser>
@@ -21,4 +24,4 @@ const IsAdmin = ({ children }) => (
   </CurrentUser>
 );
 
-export default IsAdmin;
+export default withStyles(styles)(IsAdmin);

@@ -2,11 +2,7 @@
 
 exports[`<GameweekInfo /> renders and matches the snapshot 1`] = `
 <GameweekInfo
-  classes={
-    Object {
-      "example": "GameweekInfo-example-1",
-    }
-  }
+  classes={Object {}}
   title="test title"
   toggleGameweek={[Function]}
 />

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { withStyles, IconButton, Typography } from '@material-ui/core';
+import { IconButton, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles';
 import { Edit, CheckCircleOutline, RemoveCircleOutline } from '@material-ui/icons';
 import format from 'date-fns/format';
 
@@ -96,12 +97,13 @@ class Fixture extends Component {
             <Edit />
           </IconButton>
         </div>
-        <EditFixture
-          open={editFixture}
-          handleClose={this.closeDialog}
-          fixture={fixture}
-          title="Update Fixture"
-        />
+        {editFixture && (
+          <EditFixture
+            open={editFixture}
+            handleClose={this.closeDialog}
+            fixture={fixture}
+          />
+        )}
       </div>
     );
   }

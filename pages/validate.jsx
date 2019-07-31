@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Validate from '../components/page-templates/Validate/Validate';
+import Validate from '../components/page-templates/Validate';
 
 const ValidatePage = ({ query: { emailValidationToken } }) => (
   <div>

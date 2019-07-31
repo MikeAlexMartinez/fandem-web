@@ -1,5 +1,5 @@
 import React from 'react';
-import SignUp from '../components/page-templates/SignUp/SignUp';
+import SignUp from '../components/page-templates/SignUp';
 
 const SignUpPage = () => (
   <div>

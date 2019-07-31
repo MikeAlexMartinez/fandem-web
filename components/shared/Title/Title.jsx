@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import className from 'classnames';
 import { Typography, Divider } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles';
+
+import styles from './Title.styles';
 
 const Title = ({ title, classes, children }) => (
   <div className={className(classes.root)}>
@@ -27,4 +30,4 @@ Title.propTypes = {
   children: PropTypes.any,
 };
 
-export default Title;
+export default withStyles(styles)(Title);

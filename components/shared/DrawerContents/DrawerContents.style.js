@@ -1,19 +1,19 @@
-export default function(theme) {
+export default function (theme) {
   return {
     drawerContainer: {
-      height: "100%",
-      flexGrow: 1
+      height: '100%',
+      flexGrow: 1,
     },
     drawerHeader: {
-      display: "flex",
-      alignItems: "center",
-      padding: "0 8px",
+      display: 'flex',
+      alignItems: 'center',
+      padding: '0 8px',
       ...theme.mixins.toolbar,
-      justifyContent: "flex-end"
+      justifyContent: 'flex-end',
     },
     userProfile: {
-      height: "250px",
-      backgroundColor: theme.palette.secondary.light
-    }
+      height: '250px',
+      backgroundColor: theme.palette.secondary.light,
+    },
   };
 }

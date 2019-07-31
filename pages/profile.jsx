@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import UserProfile from '../components/page-templates/UserProfile/UserProfile';
+import UserProfile from '../components/page-templates/UserProfile';
 
 const ProfilePage = ({ query: { displayName } }) => (
   <div>

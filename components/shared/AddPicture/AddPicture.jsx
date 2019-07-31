@@ -11,6 +11,7 @@ import {
   Button,
   LinearProgress,
 } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles';
 
 import { CLOUDINARY_ENDPOINT } from '../../../config';
 
@@ -18,6 +19,8 @@ import { ADD_PROFILE_PICTURE } from '../../../db/mutations/account.mutations';
 import { CURRENT_USER_QUERY } from '../../../db/queries/account.queries';
 
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
+
+import styles from './AddPicture.styles';
 
 class AddPicture extends React.Component {
   static propTypes = {
@@ -175,4 +178,4 @@ class AddPicture extends React.Component {
   }
 }
 
-export default AddPicture;
+export default withStyles(styles)(AddPicture);

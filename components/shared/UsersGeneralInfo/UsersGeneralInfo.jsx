@@ -1,5 +1,9 @@
 import React from 'react';
+import { withStyles } from '@material-ui/styles';
+
 import Title from '../Title';
+
+import styles from './UsersGeneralInfo.styles';
 
 const UsersGeneralInfo = () => (
   <div>
@@ -8,4 +12,4 @@ const UsersGeneralInfo = () => (
   </div>
 );
 
-export default UsersGeneralInfo;
+export default withStyles(styles)(UsersGeneralInfo);

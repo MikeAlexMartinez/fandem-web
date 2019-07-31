@@ -4,10 +4,13 @@ import classNames from 'classnames';
 
 import Link from 'next/link';
 import { Typography, CircularProgress, Fab } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles';
 import { Edit } from '@material-ui/icons';
 
 import CurrentUser from '../CurrentUser';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
+
+import styles from './DrawerProfile.styles';
 
 const DrawerProfile = ({ classes }) => (
   <CurrentUser>
@@ -103,4 +106,4 @@ DrawerProfile.propTypes = {
   classes: PropTypes.object,
 };
 
-export default DrawerProfile;
+export default withStyles(styles)(DrawerProfile);

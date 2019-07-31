@@ -4,13 +4,13 @@ import classNames from 'classnames';
 import { Mutation, ApolloConsumer } from 'react-apollo';
 import {
   CircularProgress,
-  withStyles,
   Divider,
   TextField,
   FormControlLabel,
   Switch,
   Button,
 } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles';
 import { Save } from '@material-ui/icons';
 
 import Title from '../Title';
