@@ -1,11 +1,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJSON from 'enzyme-to-json';
-import BackgroundComponent from './Background';
+import WithTheme from '../../../__test__/mocks/WithTheme';import BackgroundComponent from './Background';
 
-describe('<Background />', () => {
+describe('<BackgroundComponent  />', () => {
   it('renders and matches the snapshot', () => {
-    const wrapper = shallow(<BackgroundComponent />);
+    const wrapper = shallow(
+      <WithTheme>
+        <BackgroundComponent  />
+      </WithTheme>,
+    );
     expect(toJSON(wrapper)).toMatchSnapshot();
   });
 });

@@ -1,11 +1,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJSON from 'enzyme-to-json';
-import ProfilePictureControlsComponent from './ProfilePictureControls';
+import WithTheme from '../../../__test__/mocks/WithTheme';import ProfilePictureControlsComponent from './ProfilePictureControls';
 
-describe('<ProfilePictureControls />', () => {
+describe('<ProfilePictureControlsComponent  />', () => {
   it('renders and matches the snapshot', () => {
-    const wrapper = shallow(<ProfilePictureControlsComponent />);
+    const wrapper = shallow(
+      <WithTheme>
+        <ProfilePictureControlsComponent  />
+      </WithTheme>,
+    );
     expect(toJSON(wrapper)).toMatchSnapshot();
   });
 });

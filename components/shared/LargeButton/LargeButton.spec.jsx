@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJSON from 'enzyme-to-json';
-import LargeButtonComponent from './LargeButton';
+import WithTheme from '../../../__test__/mocks/WithTheme';import LargeButtonComponent from './LargeButton';
 
 describe('<LargeButton />', () => {
   it('renders and matches the snapshot', () => {

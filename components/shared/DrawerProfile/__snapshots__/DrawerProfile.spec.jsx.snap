@@ -4,13 +4,13 @@ exports[`<DrawerProfile /> renders and matches snapshot 1`] = `
 <DrawerProfile
   classes={
     Object {
-      "actions": Object {},
-      "greeting": Object {},
-      "greetingText": Object {},
-      "imgContainer": Object {},
-      "photo": Object {},
-      "spinnerContainer": Object {},
-      "userProfile": Object {},
+      "actions": "DrawerProfile-actions-7",
+      "greeting": "DrawerProfile-greeting-5",
+      "greetingText": "DrawerProfile-greetingText-6",
+      "imgContainer": "DrawerProfile-imgContainer-3",
+      "photo": "DrawerProfile-photo-4",
+      "spinnerContainer": "DrawerProfile-spinnerContainer-1",
+      "userProfile": "DrawerProfile-userProfile-2",
     }
   }
 >
@@ -586,7 +586,7 @@ exports[`<DrawerProfile /> renders and matches snapshot 1`] = `
       }
     >
       <div
-        className="flex row jc-center ai-center"
+        className="DrawerProfile-spinnerContainer-1 flex row jc-center ai-center"
       >
         <WithStyles(ForwardRef(CircularProgress))
           size={80}

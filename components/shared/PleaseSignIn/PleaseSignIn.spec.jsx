@@ -2,10 +2,12 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { MockedProvider } from 'react-apollo/test-utils';
 
-import { fakeUser } from '../../../__test__/data/data';
 import wait from '../../../__test__/utils/wait';
+import WithTheme from '../../../__test__/mocks/WithTheme';
+import { fakeUser } from '../../../__test__/data/data';
 
 import PleaseSignIn from './PleaseSignIn';
+
 import { CURRENT_USER_QUERY } from '../../../db/queries/account.queries';
 
 const notSignedInMocks = [
@@ -40,14 +42,17 @@ const props = {
   },
 };
 
+const Hey = () => <h1>Hey!</h1>;
+
 describe('<PleaseSignIn />', () => {
   it('renders the child component when the user is signed in', async () => {
-    const Hey = () => <h1>Hey!</h1>;
     const wrapper = mount(
       <MockedProvider mocks={signedInMocks}>
-        <PleaseSignIn {...props}>
-          <Hey />
-        </PleaseSignIn>
+        <WithTheme>
+          <PleaseSignIn {...props}>
+            <Hey />
+          </PleaseSignIn>
+        </WithTheme>
       </MockedProvider>,
     );
     await wait(500);
@@ -60,10 +65,15 @@ describe('<PleaseSignIn />', () => {
   it('renders the circular progress when loading', async () => {
     const wrapper = mount(
       <MockedProvider mocks={notSignedInMocks}>
-        <PleaseSignIn {...props} />
+        <WithTheme>
+          <PleaseSignIn {...props}>
+            <Hey />
+          </PleaseSignIn>
+        </WithTheme>
       </MockedProvider>,
     );
 
+    wrapper.debug();
     const Progress = wrapper.find('CircularProgress');
     expect(Progress.exists()).toBe(true);
   });
@@ -71,7 +81,11 @@ describe('<PleaseSignIn />', () => {
   it('renders SignInForm when no user is signed in', async () => {
     const wrapper = mount(
       <MockedProvider mocks={notSignedInMocks}>
-        <PleaseSignIn {...props} />
+        <WithTheme>
+          <PleaseSignIn {...props}>
+            <Hey />
+          </PleaseSignIn>
+        </WithTheme>
       </MockedProvider>,
     );
     await wait();

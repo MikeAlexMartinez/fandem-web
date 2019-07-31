@@ -1,14 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<DrawerContents /> renders and matches the snapshot 1`] = `
-<DrawerContents
-  classes={
-    Object {
-      "drawerContainer": "DrawerContents-drawerContainer-1",
-      "drawerHeader": "DrawerContents-drawerHeader-2",
-      "userProfile": "DrawerContents-userProfile-3",
-    }
-  }
+<ThemeProvider
   theme={
     Object {
       "breakpoints": Object {
@@ -90,16 +83,16 @@ exports[`<DrawerContents /> renders and matches the snapshot 1`] = `
           "A700": "#616161",
         },
         "primary": Object {
-          "contrastText": "#fff",
-          "dark": "#303f9f",
-          "light": "#7986cb",
-          "main": "#3f51b5",
+          "contrastText": "rgba(0, 0, 0, 0.87)",
+          "dark": "#00b147",
+          "light": "#66ffa5",
+          "main": "#00e575",
         },
         "secondary": Object {
           "contrastText": "#fff",
-          "dark": "#c51162",
-          "light": "#ff4081",
-          "main": "#f50057",
+          "dark": "#000064",
+          "light": "#5c41c5",
+          "main": "#1f1693",
         },
         "text": Object {
           "disabled": "rgba(0, 0, 0, 0.38)",
@@ -264,6 +257,7 @@ exports[`<DrawerContents /> renders and matches the snapshot 1`] = `
           "letterSpacing": "0.00714em",
           "lineHeight": 1.57,
         },
+        "useNextVariants": true,
       },
       "zIndex": Object {
         "appBar": 1100,
@@ -275,6 +269,9 @@ exports[`<DrawerContents /> renders and matches the snapshot 1`] = `
       },
     }
   }
-  toggleDrawer={[Function]}
-/>
+>
+  <WithStyles(DrawerContents)
+    toggleDrawer={[Function]}
+  />
+</ThemeProvider>
 `;

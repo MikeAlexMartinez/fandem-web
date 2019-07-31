@@ -1,11 +1,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJSON from 'enzyme-to-json';
-import ResetFormComponent from './ResetForm';
+import WithTheme from '../../../__test__/mocks/WithTheme';import ResetFormComponent from './ResetForm';
 
-describe('<ResetForm />', () => {
+describe('<ResetFormComponent  />', () => {
   it('renders and matches the snapshot', () => {
-    const wrapper = shallow(<ResetFormComponent />);
+    const wrapper = shallow(
+      <WithTheme>
+        <ResetFormComponent  />
+      </WithTheme>,
+    );
     expect(toJSON(wrapper)).toMatchSnapshot();
   });
 });

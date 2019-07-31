@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { CircularProgress } from '@material-ui/core';
-import { withStyles } from '@material-ui/styles';
+import { withTheme, withStyles } from '@material-ui/styles';
 
 import Title from '../Title';
 import GameData from '../GameData';
 import GameplayDataSummary from '../GameplayDataSummary';
-import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import ErrorMessage from '../ErrorMessage';
 
 import styles from './GameplayInfo.styles';
 import GameweekAccordion from '../GameweekAccordion';
@@ -93,4 +93,4 @@ class GameplayInfo extends Component {
   }
 }
 
-export default withStyles(styles)(GameplayInfo);
+export default withStyles(styles, { withTheme: true })(GameplayInfo);

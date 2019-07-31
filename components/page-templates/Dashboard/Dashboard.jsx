@@ -17,10 +17,10 @@ const Dashboard = ({ token }) => {
       </PleaseSignIn>
     </GlobalStyles>
   );
-}
+};
 
 Dashboard.propTypes = {
-  token: PropTypes.string.isRequired,
+  token: PropTypes.string,
 };
 
 export default withStyles(styles)(Dashboard);

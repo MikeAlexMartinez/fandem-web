@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJSON from 'enzyme-to-json';
+import WithTheme from '../../../__test__/mocks/WithTheme';
 import EditProfileFormComponent from './EditProfileForm';
 import { fakeUser, fakeCountries, fakeTeams } from '../../../__test__/data/data';
 
@@ -19,11 +20,13 @@ const teams = {
 describe('<EditProfileForm />', () => {
   it('renders and matches the snapshot', () => {
     const wrapper = shallow(
-      <EditProfileFormComponent
-        user={fakeUser()}
-        countries={countries}
-        teams={teams}
-      />
+      <WithTheme>
+        <EditProfileFormComponent
+          user={fakeUser()}
+          countries={countries}
+          teams={teams}
+        />
+      </WithTheme>,
     );
     expect(toJSON(wrapper)).toMatchSnapshot();
   });
