@@ -1,9 +1,9 @@
-import { SheetsRegistry } from "jss";
+import { SheetsRegistry } from 'jss';
 import {
   createMuiTheme,
-  createGenerateClassName
-} from "@material-ui/core/styles";
-import muiTheme from "../styles/mui-theme";
+  createGenerateClassName,
+} from '@material-ui/core/styles';
+import muiTheme from '../styles/mui-theme';
 
 const theme = createMuiTheme(muiTheme);
 
@@ -12,7 +12,7 @@ function createPageContext() {
     theme,
     sheetsManager: new Map(),
     sheetsRegistry: new SheetsRegistry(),
-    generateClassName: createGenerateClassName()
+    generateClassName: createGenerateClassName(),
   };
 }
 

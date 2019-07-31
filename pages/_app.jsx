@@ -6,7 +6,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import { ApolloProvider } from 'react-apollo';
-import getPageContext from '../utils/get-page-context';
 import withApollo from '../lib/with-apollo';
 import muiTheme from '../styles/mui-theme';
 
@@ -24,11 +23,6 @@ class MyApp extends App {
     return { pageProps };
   }
 
-  constructor(props) {
-    super(props);
-    this.pageContext = getPageContext();
-  }
-
   componentDidMount() {
     // remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
@@ -43,20 +37,14 @@ class MyApp extends App {
       <Container>
         <ApolloProvider client={apollo}>
           <Head>
-            <title>fandem.1-0</title>
+            <title>fandem.10</title>
           </Head>
-          {/* MuiThemeProvider makes the theme available down the React
-              tree thanks to React context. */}
           <ThemeProvider
             theme={muiTheme}
           >
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
-              {/* CssBaseline kickstart an elegant, consistent,
-                * and simple baseline to build upon. */}
               <CssBaseline />
-              {/* Pass pageContext to the _document though the renderPage enhancer
-                  to render collected styles on server-side. */}
-              <Component pageContext={this.pageContext} {...pageProps} />
+              <Component {...pageProps} />
             </MuiPickersUtilsProvider>
           </ThemeProvider>
         </ApolloProvider>

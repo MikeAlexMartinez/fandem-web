@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'next/link';
 import Router from 'next/router';
 import { withStyles } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { Typography } from '@material-ui/core';
 
+import Link from '../../shared/NextLink';
 import GlobalStyles from '../../shared/GlobalStyles';
 import Background from '../../shared/Background/Background';
 import LargeButton from '../../shared/LargeButton/LargeButton';
@@ -26,8 +26,8 @@ const Home = ({ classes }) => (
           </Typography>
         </div>
         <div
-          className={`${classes.leftMargin} ${
-            classes.topMargin
+          className={`${classes.leftmargin} ${
+            classes.topmargin
           } row jc-start ai-center`}
         >
           <Link href="/signup">

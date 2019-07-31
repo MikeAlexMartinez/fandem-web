@@ -27,8 +27,8 @@ export default function signUpStyles() {
     // paper: {
     //   ...theme.mixins.gutters(),
     //   width: "400px",
-    //   paddingTop: theme.spacing.unit * 2,
-    //   paddingBottom: theme.spacing.unit * 2
+    //   paddingTop: theme.spacing(2),
+    //   paddingBottom: theme.spacing(2)
     // },
     // textField: {
     //   width: "100%",
