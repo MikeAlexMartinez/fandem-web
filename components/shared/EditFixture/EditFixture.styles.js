@@ -15,8 +15,7 @@ export default function editFixtureStyles(theme) {
       marginRight: '0.2em',
     },
     kickoffContainer: {
-      display: 'flex',
-      'flex-wrap': 'wrap',
+      padding: '0.5em 0',
     },
     kickoffTime: {
       marginLeft: theme.spacing(1),

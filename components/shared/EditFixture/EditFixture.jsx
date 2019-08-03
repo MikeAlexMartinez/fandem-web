@@ -9,7 +9,7 @@ import {
   TextField, Switch,
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
-// import { DateTimePicker } from '@material-ui/pickers';
+import { DateTimePicker } from '@material-ui/pickers';
 import { GAME_DATA_QUERY } from '../../../db/queries/fpl.queries';
 import { UPDATE_FIXTURE_MUTATION } from '../../../db/mutations/fpl.mutations';
 
@@ -19,6 +19,7 @@ import ErrorMessage from '../ErrorMessage';
 import FormInput from '../FormInput';
 
 import styles from './EditFixture.styles';
+import ChangeGameweek from '../ChangeGameweek/ChangeGameweek';
 
 class EditFixture extends Component {
   constructor(props) {
@@ -199,24 +200,15 @@ class EditFixture extends Component {
                     </FormInput>
                   </div>
                   {/* kickoffTime */}
-                  <div className={classnames(classes.formRow, 'flex row jc-center ai-center')}>
+                  <div className={classnames('flex row jc-center ai-center')}>
                     <div className={classnames(classes.kickoffContainer)}>
-                      {/* <DateTimePicker
-                        label="DateTimePicker"
+                      <DateTimePicker
+                        label="Date & Kickoff Time"
                         inputVariant="outlined"
                         value={kickoffTime}
                         onChange={this.captureChange('kickoffTime')}
-                      /> */}
-                      {/* <TextField
-                        id="datetime-local"
-                        label="Kickoff Time"
-                        type="datetime-local"
-                        defaultValue={kickoffTime}
-                        className={classes.kickoffTime}
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                      /> */}
+                      />
+
                     </div>
                   </div>
                   {/* finished */}
@@ -231,6 +223,15 @@ class EditFixture extends Component {
                     </div>
                   </div>
                   {/* gameweek */}
+                  <div className={classnames('flex row jc-center ai-center')}>
+                    <div className={classnames(classes.kickoffContainer)}>
+                      <ChangeGameweek
+                        gameweekId={eventId}
+                        gameweekName={event.name}
+                        updateGameweek={() => {}}
+                      />
+                    </div>
+                  </div>
                 </div>
               </DialogContent>
               <DialogActions
@@ -240,7 +241,7 @@ class EditFixture extends Component {
                 )}
                 classes={{
                   root: classes.actionRoot,
-                  action: classes.actionRoot,
+                  spacing: classes.actions,
                 }}
               >
                 <Button

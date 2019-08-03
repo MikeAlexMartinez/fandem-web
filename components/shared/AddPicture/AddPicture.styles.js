@@ -1,11 +1,11 @@
 export default function (theme) {
-  const paddingSize = theme.spacing.unit * 3;
+  const paddingSize = theme.spacing(3);
   return {
     container: {
       minHeight: '250px',
     },
     image: {
-      margin: `${theme.spacing.unit}px auto`,
+      margin: `${theme.spacing(1)}px auto`,
       maxHeight: '180px',
     },
     input: {
