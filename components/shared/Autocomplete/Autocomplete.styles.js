@@ -23,12 +23,12 @@ export default function autocompleteStyles(theme) {
       fontSize: 16,
     },
     placeholder: {
-      position: 'absolute',
+      // position: 'absolute',
       paddingLeft: 2,
       fontSize: 16,
     },
     paper: {
-      position: 'absolute',
+      // position: 'absolute',
       zIndex: 1,
       marginTop: theme.spacing(1),
       left: 0,

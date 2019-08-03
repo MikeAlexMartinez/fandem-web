@@ -1,7 +1,7 @@
 export const fixtureStatus = {
   NOT_STARTED: 'NOT_STARTED',
   STARTED: 'STARTED',
-  FINISHED: 'NOT_STARTED',
+  FINISHED: 'FINISHED',
 };
 
 export const determineFixtureStatus = ({

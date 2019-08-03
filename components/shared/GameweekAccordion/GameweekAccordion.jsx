@@ -54,7 +54,9 @@ const GameweekAccordion = ({
           </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <FixtureGrid fixtures={gameweek.fixtures} />
+          {openGameweek === gameweek.fplEventId && (
+            <FixtureGrid fixtures={gameweek.fixtures} />
+          )}
         </ExpansionPanelDetails>
       </ExpansionPanel>
     ))) || (

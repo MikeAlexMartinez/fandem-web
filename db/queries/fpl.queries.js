@@ -82,11 +82,9 @@ export const USER_INFO_QUERY = gql`
   }
 `;
 
-export const UNSELECTED_GAMEWEEKS_QUERY = gql`
-  query UNSELECTED_GAMEWEEKS_QUERY($gameweekId: Id!) {
-    unselectedGameweeks(where: {
-      id_not: $gameweekId
-    }) {
+export const GAMEWEEKS_QUERY = gql`
+  query GAMEWEEKS_QUERY {
+    gameweeks {
       id
       name
     }

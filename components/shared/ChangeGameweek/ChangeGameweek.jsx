@@ -1,35 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/styles';
+import { Select, MenuItem, OutlinedInput } from '@material-ui/core';
 
 import styles from './ChangeGameweek.styles';
-import UnselectedGameweeks from '../UnselectedGameweeks';
+import Gameweeks from '../Gameweeks';
 import ErrorMessage from '../ErrorMessage';
-import Autocomplete from '../Autocomplete';
 
-const ChangeGameweek = ({ classes, gameweekId, gameweekName, updateGameweek }) => (
-  <UnselectedGameweeks
-    gameweekId={gameweekId}
-  >
-    {(unselectedGameweeks, { error, loading }) => {
-      if (error) return <ErrorMessage message="Unable to load gameweeks" />;
-      if (loading) return <div>Loading...</div>;
+const ChangeGameweek = ({ gameweekId, gameweekName, updateGameweek }) => (
+  <Gameweeks>
+    {({ data, error, loading }) => {
+      if (loading) return <div>Loading Gameweeks...</div>;
+      const { gameweeks } = data;
+      if (error || !gameweeks || gameweeks.length < 1) return <ErrorMessage message="Unable to load gameweeks" />;
       return (
-        <Autocomplete
-          initialValue={gameweekName}
-          list={unselectedGameweeks.data.gameweek}
-          handleChange={change => updateGameweek(change)}
-          placeholder="Select A Gameweek"
-          label="Gameweek"
-        />
+        <Select
+          value={gameweekId}
+          onChange={evt => updateGameweek(evt.target.value)}
+          input={<OutlinedInput fullWidth labelWidth={0} name="gameweek" id="outlined-gameweekinput" />}
+        >
+          <MenuItem value={gameweekId}>{gameweekName}</MenuItem>
+          {gameweeks.map(gameweek => (
+            <MenuItem key={gameweek.id} value={gameweek.id}>{gameweek.name}</MenuItem>
+          ))}
+        </Select>
       );
     }}
-  </UnselectedGameweeks>
+  </Gameweeks>
 );
 
 ChangeGameweek.propTypes = {
-  classes: PropTypes.object.isRequired,
-  gameweekId: PropTypes.number.isRequired,
+  // classes: PropTypes.object.isRequired,
+  gameweekId: PropTypes.string.isRequired,
   gameweekName: PropTypes.string.isRequired,
   updateGameweek: PropTypes.func.isRequired,
 };

@@ -12,9 +12,13 @@ export default function editFixtureStyles(theme) {
     },
     thinInput: {
       width: '50px',
-      marginRight: '0.2em',
     },
     kickoffContainer: {
+      padding: '0.5em 0',
+    },
+    selectGameweekContainer: {
+      minHeight: '60px',
+      width: '100%',
       padding: '0.5em 0',
     },
     kickoffTime: {

@@ -24,18 +24,34 @@ import ChangeGameweek from '../ChangeGameweek/ChangeGameweek';
 class EditFixture extends Component {
   constructor(props) {
     super(props);
+    const { fixture } = props;
+    const {
+      fplCode,
+      teamHScore,
+      teamAScore,
+      finished,
+      kickoffTime,
+      minutes,
+      event,
+    } = fixture;
     this.state = {
-      form: {},
+      form: {
+        fplCode,
+        teamHScore: teamHScore || 0,
+        teamAScore: teamAScore || 0,
+        finished,
+        kickoffTime,
+        minutes: minutes || 0,
+        eventId: event.id,
+      },
     };
   }
 
   captureChange = key => (value) => {
-    const { form } = this.state;
-    console.log(value);
     this.setState(prevState => ({
       ...prevState,
       form: {
-        ...form,
+        ...prevState.form,
         [key]: value,
       },
     }));
@@ -46,6 +62,7 @@ class EditFixture extends Component {
     this.setState(prevState => ({
       ...prevState,
       form: {
+        ...prevState.form,
         [key]: target.checked,
       },
     }));
@@ -57,35 +74,24 @@ class EditFixture extends Component {
     } = this.props;
     const { form } = this.state;
     const {
-      fplCode,
-      teamHScore,
-      teamAScore,
-      finished,
-      kickoffTime,
-      minutes,
-      event,
-      teamH,
-      teamA,
-    } = fixture;
-    const eventId = (event && event.id) || 'placeholder-id';
-    const homeTeamName = (teamH && teamH.homeTeam && teamH.homeTeam.name) || '';
-    const awayTeamName = (teamA && teamA.awayTeam && teamA.awayTeam.name) || '';
-    const variables = {
-      fplCode,
       teamHScore,
       teamAScore,
       finished,
       kickoffTime,
       minutes,
       eventId,
-    };
-    const hasFinished = form && (typeof form.finished === 'boolean')
-      ? form.finished
-      : !!(finished);
+    } = form;
+    const {
+      event: { name: eventName },
+      teamH,
+      teamA,
+    } = fixture;
+    const homeTeamName = (teamH && teamH.homeTeam && teamH.homeTeam.name) || '';
+    const awayTeamName = (teamA && teamA.awayTeam && teamA.awayTeam.name) || '';
     return (
       <Mutation
         mutation={UPDATE_FIXTURE_MUTATION}
-        variables={variables}
+        variables={form}
         refetchQueries={[{
           query: GAME_DATA_QUERY,
         }]}
@@ -107,7 +113,7 @@ class EditFixture extends Component {
                   {/* Home Team - Score */}
                   <div className={classnames(classes.formRow, 'flex row jc-sb ai-center')}>
                     <Typography variant="h5">{homeTeamName}</Typography>
-                    <FormInput value={`${(teamHScore || 0)}`} outputValue={this.captureChange('teamHScore')}>
+                    <FormInput value={`${teamHScore}`} outputValue={val => this.captureChange('teamHScore')(+val)}>
                       {({
                         // isValid, hasChanged,
                         touched, errors, value,
@@ -138,7 +144,7 @@ class EditFixture extends Component {
                   {/* Away Team - Score */}
                   <div className={classnames(classes.formRow, 'flex row jc-sb ai-center')}>
                     <Typography variant="h5">{awayTeamName}</Typography>
-                    <FormInput value={`${(teamAScore || 0)}`} outputValue={this.captureChange('teamAScore')}>
+                    <FormInput value={`${teamAScore}`} outputValue={val => this.captureChange('teamAScore')(+val)}>
                       {({
                         // isValid, hasChanged,
                         touched, errors, value,
@@ -170,7 +176,7 @@ class EditFixture extends Component {
                   {/* Minutes */}
                   <div className={classnames(classes.formRow, 'flex row jc-sb ai-center')}>
                     <Typography variant="h5">Minutes</Typography>
-                    <FormInput value={`${(minutes || 0)}`} outputValue={this.captureChange('minutes')}>
+                    <FormInput value={`${minutes}`} outputValue={val => this.captureChange('minutes')(+val)}>
                       {({
                         // isValid, hasChanged,
                         touched, errors, value,
@@ -199,6 +205,16 @@ class EditFixture extends Component {
                       )}
                     </FormInput>
                   </div>
+                  {/* gameweek */}
+                  <div className={classnames('flex row jc-center ai-center')}>
+                    <div className={classnames(classes.selectGameweekContainer)}>
+                      <ChangeGameweek
+                        gameweekId={eventId}
+                        gameweekName={eventName}
+                        updateGameweek={this.captureChange('eventId')}
+                      />
+                    </div>
+                  </div>
                   {/* kickoffTime */}
                   <div className={classnames('flex row jc-center ai-center')}>
                     <div className={classnames(classes.kickoffContainer)}>
@@ -208,7 +224,6 @@ class EditFixture extends Component {
                         value={kickoffTime}
                         onChange={this.captureChange('kickoffTime')}
                       />
-
                     </div>
                   </div>
                   {/* finished */}
@@ -216,19 +231,9 @@ class EditFixture extends Component {
                     <Typography variant="h5">Finished</Typography>
                     <div className={classnames(classes.toggleRow, 'flex row jc-end')}>
                       <Switch
-                        checked={hasFinished}
+                        checked={finished}
                         onChange={this.toggleCheckbox('finished')}
                         color="primary"
-                      />
-                    </div>
-                  </div>
-                  {/* gameweek */}
-                  <div className={classnames('flex row jc-center ai-center')}>
-                    <div className={classnames(classes.kickoffContainer)}>
-                      <ChangeGameweek
-                        gameweekId={eventId}
-                        gameweekName={event.name}
-                        updateGameweek={() => {}}
                       />
                     </div>
                   </div>
@@ -260,7 +265,6 @@ class EditFixture extends Component {
                   type="submit"
                   disabled={false}
                   onClick={async () => {
-                    console.log('Submitting Form');
                     try {
                       await updateFixture();
                     } catch (err) {

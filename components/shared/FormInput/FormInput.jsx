@@ -51,7 +51,7 @@ class FormInput extends Component {
       errors,
     };
     this.setState(newState);
-    outputValue(newState);
+    outputValue(newState.value);
   }
 
   render() {

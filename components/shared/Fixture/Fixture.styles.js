@@ -28,7 +28,7 @@ export default function fixtureStyles(theme) {
       fontSize: '0.8rem',
       fontWeight: theme.typography.fontWeightMedium,
       color: theme.palette.grey[400],
-      textAlign: 'center',
+      'text-align': 'center',
     },
     fixture: {
       width: '100%',

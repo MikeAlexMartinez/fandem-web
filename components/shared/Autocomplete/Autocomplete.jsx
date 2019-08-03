@@ -68,6 +68,10 @@ Autocomplete.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
   placeholder: PropTypes.string.isRequired,
+  initialValue: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  list: PropTypes.arrayOf(PropTypes.any),
+  handleChange: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles, { withTheme: true })(Autocomplete);

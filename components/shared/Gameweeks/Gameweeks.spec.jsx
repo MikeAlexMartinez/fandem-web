@@ -5,21 +5,19 @@ import { MockedProvider } from 'react-apollo/test-utils';
 
 import wait from '../../../__test__/utils/wait';
 
-import UnselectedGameweeks from './index';
-import { UNSELECTED_GAMEWEEKS_QUERY } from '../../../db/queries/fpl.queries';
+import Gameweeks from './index';
+import { GAMEWEEKS_QUERY } from '../../../db/queries/fpl.queries';
 import { fakeGameweeks } from '../../../__test__/data/data';
 import TestQueryChild from '../../../__test__/mocks/TestQueryChild';
-
-const gameweekId = 123456;
 
 const successMock = [
   {
     request: {
-      query: UNSELECTED_GAMEWEEKS_QUERY,
+      query: GAMEWEEKS_QUERY,
     },
     result: {
       data: {
-        unselectedGameweeks: fakeGameweeks(),
+        gameweeks: fakeGameweeks(),
       },
     },
   },
@@ -28,7 +26,7 @@ const successMock = [
 const errorMock = [
   {
     request: {
-      query: UNSELECTED_GAMEWEEKS_QUERY,
+      query: GAMEWEEKS_QUERY,
     },
     result: {
       data: null,
@@ -45,11 +43,11 @@ function testGameweeksChild({ data, error, loading }) {
   if (error) {
     return <div className="error">Error!</div>;
   }
-  if (data && data.unselectedGameweeks) {
-    const { unselectedGameweeks } = data;
+  if (data && data.gameweeks) {
+    const { gameweeks } = data;
     return (
       <div>
-        {unselectedGameweeks && unselectedGameweeks.length > 0 && unselectedGameweeks.map(
+        {gameweeks && gameweeks.length > 0 && gameweeks.map(
           gameweek => <div key={gameweek.id} id={gameweek.id}>{gameweek.name}</div>,
         )}
       </div>
@@ -59,7 +57,7 @@ function testGameweeksChild({ data, error, loading }) {
 }
 testGameweeksChild.propTypes = {
   data: PropTypes.shape({
-    unselectedGameweeks: PropTypes.arrayOf(PropTypes.shape({
+    gameweeks: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
     })),
@@ -72,11 +70,9 @@ describe('<GameData />', () => {
   it('renders child component with passed results', async () => {
     const wrapper = mount(
       <MockedProvider mocks={successMock} addTypename={false}>
-        <UnselectedGameweeks
-          gameweekId={gameweekId}
-        >
+        <Gameweeks>
           {testGameweeksChild}
-        </UnselectedGameweeks>
+        </Gameweeks>
       </MockedProvider>,
     );
 
@@ -86,11 +82,9 @@ describe('<GameData />', () => {
   it('renders error component on error', async () => {
     const wrapper = mount(
       <MockedProvider mocks={errorMock} addTypename={false}>
-        <UnselectedGameweeks
-          gameweekId={gameweekId}
-        >
+        <Gameweeks>
           {testGameweeksChild}
-        </UnselectedGameweeks>
+        </Gameweeks>
       </MockedProvider>,
     );
 
@@ -103,11 +97,9 @@ describe('<GameData />', () => {
   it('renders loading component when loading', async () => {
     const wrapper = mount(
       <MockedProvider mocks={successMock} addTypename={false}>
-        <UnselectedGameweeks
-          gameweekId={gameweekId}
-        >
+        <Gameweeks>
           {TestQueryChild}
-        </UnselectedGameweeks>
+        </Gameweeks>
       </MockedProvider>,
     );
 
